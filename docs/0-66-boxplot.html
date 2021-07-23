@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="0.66 Boxplot | Fundamentos de R: Prácticas" />
+<meta property="og:type" content="book" />
+
+
+<meta property="og:description" content="Material del curso" />
+
+
+<meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
+
+<meta name="date" content="2021-07-23" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+
+<meta name="description" content="Material del curso">
+
+<title>0.66 Boxplot | Fundamentos de R: Prácticas</title>
+
+<script src="libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+
+<link rel="stylesheet" href="toc.css" type="text/css" />
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+/* show arrow before summary tag as in bootstrap
+TODO: remove if boostrap in updated in html_document (rmarkdown#1485) */
+details > summary {
+  display: list-item;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li><a href="index.html#inicio">Inicio</a></li>
+<li><a href="breve-introducción-a-ejercicios.html#breve-introducción-a-ejercicios">Breve introducción a Ejercicios</a></li>
+<li class="has-sub"><a href="ro1-consola-de-r.html#ro1-consola-de-r">RO1 Consola de R</a><ul>
+<li><a href="0-1-pimeras-líneas-de-comando-r.html#pimeras-líneas-de-comando-r"><span class="toc-section-number">0.1</span> Pimeras líneas de comando (R)</a></li>
+</ul></li>
+<li class="has-sub"><a href="r02-rstudio.html#r02-rstudio">R02 Rstudio</a><ul>
+<li><a href="0-2-crear-un-archivo-de-script-r.html#crear-un-archivo-de-script-r"><span class="toc-section-number">0.2</span> Crear un archivo de script (R)</a></li>
+<li><a href="0-3-r.html#r"><span class="toc-section-number">0.3</span> (R)</a></li>
+<li><a href="0-4-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.4</span> interacción con R (RR)</a></li>
+</ul></li>
+<li class="has-sub"><a href="r03-básicos.html#r03-básicos">R03 Básicos</a><ul>
+<li><a href="0-5-ayudas-1-rr.html#ayudas-1-rr"><span class="toc-section-number">0.5</span> Ayudas 1 (RR)</a></li>
+<li><a href="0-6-ayudas-2-rrr.html#ayudas-2-rrr"><span class="toc-section-number">0.6</span> Ayudas 2 (RRR)</a></li>
+<li><a href="0-7-cómputos-rrr.html#cómputos-rrr"><span class="toc-section-number">0.7</span> Cómputos (RRR)</a></li>
+<li><a href="0-8-comandos-básicos-rrr.html#comandos-básicos-rrr"><span class="toc-section-number">0.8</span> Comandos básicos (RRR)</a></li>
+<li><a href="0-9-creando-vectores-rr.html#creando-vectores-rr"><span class="toc-section-number">0.9</span> Creando vectores (RR)</a></li>
+<li><a href="0-10-nombres-de-objetos-rr.html#nombres-de-objetos-rr"><span class="toc-section-number">0.10</span> Nombres de objetos (RR)</a></li>
+<li><a href="0-11-operando-con-vectores-rr.html#operando-con-vectores-rr"><span class="toc-section-number">0.11</span> Operando con vectores (RR)</a></li>
+<li><a href="0-12-dar-nombre-a-los-elementos-de-un-vector-rrr.html#dar-nombre-a-los-elementos-de-un-vector-rrr"><span class="toc-section-number">0.12</span> Dar nombre a los elementos de un vector (RRR)</a></li>
+<li><a href="0-13-aplicando-funciones-a-vectores-rr.html#aplicando-funciones-a-vectores-rr"><span class="toc-section-number">0.13</span> Aplicando funciones a vectores (RR)</a></li>
+<li><a href="0-14-pruebas-y-operaciones-lógicas-rrr.html#pruebas-y-operaciones-lógicas-rrr"><span class="toc-section-number">0.14</span> Pruebas y operaciones lógicas (RRR)</a></li>
+<li><a href="0-15-pruebas-lógicas.html#pruebas-lógicas"><span class="toc-section-number">0.15</span> Pruebas lógicas</a></li>
+<li><a href="debugging-detectando-errores.html#debugging-detectando-errores">Debugging, detectando errores</a></li>
+</ul></li>
+<li class="has-sub"><a href="r04-indexación-y-filtros.html#r04-indexación-y-filtros">R04 Indexación y Filtros</a><ul>
+<li><a href="0-16-vector-letters-r.html#vector-letters-r"><span class="toc-section-number">0.16</span> Vector LETTERS (R)</a></li>
+<li><a href="0-17-indexación-de-vectores-rr.html#indexación-de-vectores-rr"><span class="toc-section-number">0.17</span> Indexación de vectores (RR)</a></li>
+<li><a href="0-18-indexación-de-vectores-rrr.html#indexación-de-vectores-rrr"><span class="toc-section-number">0.18</span> Indexación de vectores (RRR)</a></li>
+<li><a href="0-19-indexación-de-vectores-rrr-1.html#indexación-de-vectores-rrr-1"><span class="toc-section-number">0.19</span> Indexación de vectores (RRR)</a></li>
+<li><a href="0-20-indexación-de-vectores-rrr-2.html#indexación-de-vectores-rrr-2"><span class="toc-section-number">0.20</span> Indexación de vectores (RRR)</a></li>
+<li><a href="0-21-indexación-índices-lógicos-vs-which-rrr.html#indexación-índices-lógicos-vs-which-rrr"><span class="toc-section-number">0.21</span> Indexación: índices lógicos vs which (RRR)</a></li>
+<li><a href="0-22-indexación-en-vectores-ejemplo-colors-rrr.html#indexación-en-vectores-ejemplo-colors-rrr"><span class="toc-section-number">0.22</span> Indexación en vectores ejemplo colors() (RRR)</a></li>
+<li><a href="debugging-detectando-errores-1.html#debugging-detectando-errores-1">Debugging, detectando errores</a></li>
+</ul></li>
+<li class="has-sub"><a href="r05-workspace-y-rhistory.html#r05-workspace-y-rhistory">R05 Workspace y RHistory</a><ul>
+<li><a href="0-23-responder-con-verdadero-o-falso-rrr.html#responder-con-verdadero-o-falso-rrr"><span class="toc-section-number">0.23</span> Responder con Verdadero o Falso (RRR)</a></li>
+<li><a href="0-24-salvar-y-cargar-objetos-rr.html#salvar-y-cargar-objetos-rr"><span class="toc-section-number">0.24</span> Salvar y cargar objetos (RR)</a></li>
+<li><a href="0-25-debugging-detectando-errores-2.html#debugging-detectando-errores-2"><span class="toc-section-number">0.25</span> Debugging, detectando errores</a></li>
+</ul></li>
+<li class="has-sub"><a href="r06-importar-y-exportar.html#r06-importar-y-exportar">R06 Importar y Exportar</a><ul>
+<li><a href="0-26-responder-con-verdadero-o-falso-rrr-1.html#responder-con-verdadero-o-falso-rrr-1"><span class="toc-section-number">0.26</span> Responder con Verdadero o Falso (RRR)</a></li>
+<li><a href="0-27-read-table-y-write-table.html#read.table-y-write.table"><span class="toc-section-number">0.27</span> read.table y write.table</a></li>
+<li><a href="0-28-debugging-detectando-errores-3.html#debugging-detectando-errores-3"><span class="toc-section-number">0.28</span> Debugging, detectando errores</a></li>
+</ul></li>
+<li class="has-sub"><a href="r07-objetos-1.html#r07-objetos-1">R07 Objetos 1</a><ul>
+<li><a href="0-29-vectores-1-rr.html#vectores-1-rr"><span class="toc-section-number">0.29</span> Vectores 1 (RR)</a></li>
+<li><a href="0-30-vectores-2-rr.html#vectores-2-rr"><span class="toc-section-number">0.30</span> Vectores 2 (RR)</a></li>
+</ul></li>
+<li class="has-sub"><a href="r08-objetos2.html#r08-objetos2">R08 Objetos2</a><ul>
+<li><a href="0-31-responder-con-verdadero-o-falso-rrr-2.html#responder-con-verdadero-o-falso-rrr-2"><span class="toc-section-number">0.31</span> Responder con verdadero o falso (RRR)</a></li>
+<li><a href="0-32-generar-un-data-frame-1-r.html#generar-un-data.frame-1-r"><span class="toc-section-number">0.32</span> Generar un data.frame 1 (R)</a></li>
+<li><a href="0-33-agregar-columnas-a-un-data-frame-rr.html#agregar-columnas-a-un-data.frame-rr"><span class="toc-section-number">0.33</span> Agregar columnas a un data.frame (RR)</a></li>
+<li><a href="0-34-generar-un-data-frame-2-seq-rep-paste-rrr.html#generar-un-data.frame-2-seq-rep-paste-rrr"><span class="toc-section-number">0.34</span> Generar un data.frame 2: seq(), rep(), paste() (RRR)</a></li>
+<li><a href="0-35-sort-vs-order-rr.html#sort-vs-order-rr"><span class="toc-section-number">0.35</span> sort vs order (RR)</a></li>
+<li><a href="0-36-ordenar-un-data-frame-rrr.html#ordenar-un-data.frame-rrr"><span class="toc-section-number">0.36</span> Ordenar un data.frame (RRR)</a></li>
+<li><a href="0-37-generar-matrices-rr.html#generar-matrices-rr"><span class="toc-section-number">0.37</span> Generar matrices (RR)</a></li>
+<li><a href="0-38-combinar-matrices-rr.html#combinar-matrices-rr"><span class="toc-section-number">0.38</span> Combinar matrices (RR)</a></li>
+<li><a href="0-39-nombrar-columnas-de-matrices-rr.html#nombrar-columnas-de-matrices-rr"><span class="toc-section-number">0.39</span> Nombrar columnas de matrices (RR)</a></li>
+<li><a href="0-40-generar-listas-rr.html#generar-listas-rr"><span class="toc-section-number">0.40</span> Generar listas (RR)</a></li>
+<li><a href="0-41-función-split-rrr.html#función-split-rrr"><span class="toc-section-number">0.41</span> Función split (RRR)</a></li>
+<li><a href="0-42-generar-arrays-rrr.html#generar-arrays-rrr"><span class="toc-section-number">0.42</span> Generar arrays (RRR)</a></li>
+<li><a href="0-43-indexar-data-frame-sencillorr.html#indexar-data-frame-sencillorr"><span class="toc-section-number">0.43</span> indexar data frame sencillo(RR)</a></li>
+<li><a href="0-44-indexar-data-frame-rrr.html#indexar-data.frame-rrr"><span class="toc-section-number">0.44</span> indexar data.frame (RRR)</a></li>
+<li><a href="0-45-eliminando-duplicados.html#eliminando-duplicados"><span class="toc-section-number">0.45</span> Eliminando duplicados</a></li>
+<li><a href="0-46-indexar-una-matrizrr.html#indexar-una-matrizrr"><span class="toc-section-number">0.46</span> indexar una matriz(RR)</a></li>
+<li><a href="0-47-indexar-una-lista-1-rr.html#indexar-una-lista-1-rr"><span class="toc-section-number">0.47</span> indexar una lista 1 (RR)</a></li>
+<li><a href="0-48-indexar-una-lista-2-rrr.html#indexar-una-lista-2-rrr"><span class="toc-section-number">0.48</span> Indexar una lista 2 (RRR)</a></li>
+<li><a href="0-49-obtener-valores-de-una-salida-de-prueba-estadística-rrr.html#obtener-valores-de-una-salida-de-prueba-estadística-rrr"><span class="toc-section-number">0.49</span> Obtener valores de una salida de prueba estadística (RRR)</a></li>
+<li><a href="0-50-valores-esperados-lm-rrr.html#valores-esperados-lm-rrr"><span class="toc-section-number">0.50</span> Valores esperados lm (RRR)</a></li>
+<li><a href="0-51-debugging-detectando-errores-4.html#debugging-detectando-errores-4"><span class="toc-section-number">0.51</span> Debugging, detectando errores</a></li>
+</ul></li>
+<li class="has-sub"><a href="r09-gráficos-1.html#r09-gráficos-1">R09 Gráficos 1</a><ul>
+<li><a href="0-52-figura-sencilla-r.html#figura-sencilla-r"><span class="toc-section-number">0.52</span> Figura sencilla (R)</a></li>
+<li><a href="0-53-configurar-figuras-rr.html#configurar-figuras-rr"><span class="toc-section-number">0.53</span> Configurar figuras (RR)</a></li>
+<li><a href="0-54-axis-rrr.html#axis-rrr"><span class="toc-section-number">0.54</span> axis (RRR)</a></li>
+<li><a href="0-55-figura-sencilla-rr.html#figura-sencilla-rr"><span class="toc-section-number">0.55</span> Figura sencilla (RR)</a></li>
+<li><a href="0-56-posiciones-doubs-rrr.html#posiciones-doubs-rrr"><span class="toc-section-number">0.56</span> Posiciones Doubs (RRR)</a></li>
+<li><a href="0-57-rotulando-puntos-rrr.html#rotulando-puntos-rrr"><span class="toc-section-number">0.57</span> Rotulando puntos (RRR)</a></li>
+<li><a href="0-58-regresión-rrrr.html#regresión-rrrr"><span class="toc-section-number">0.58</span> Regresión (RRRR)</a></li>
+<li><a href="0-59-histograma-rrr.html#histograma-rrr"><span class="toc-section-number">0.59</span> Histograma (RRR)</a></li>
+<li><a href="0-60-factores-para-ordenar-figuras-rrr.html#factores-para-ordenar-figuras-rrr"><span class="toc-section-number">0.60</span> Factores para ordenar figuras (RRR)</a></li>
+<li><a href="0-61-usando-reshape-para-generar-boxplots-rrr.html#usando-reshape-para-generar-boxplots-rrr"><span class="toc-section-number">0.61</span> Usando reshape para generar boxplots (RRR)</a></li>
+</ul></li>
+<li class="has-sub"><a href="r10-gráficos-2.html#r10-gráficos-2">R10 Gráficos 2</a><ul>
+<li><a href="0-62-figura-múltiple-simple-rr.html#figura-múltiple-simple-rr"><span class="toc-section-number">0.62</span> Figura múltiple simple (RR)</a></li>
+<li><a href="0-63-dispersión-2-rr.html#dispersión-2-rr"><span class="toc-section-number">0.63</span> Dispersión 2 (RR)</a></li>
+<li><a href="0-64-figura-completa-rrrr.html#figura-completa-rrrr"><span class="toc-section-number">0.64</span> Figura completa (RRRR)</a></li>
+</ul></li>
+<li class="has-sub"><a href="r11-gráficos3.html#r11-gráficos3">R11 Gráficos3</a><ul>
+<li><a href="0-65-pairs-rr.html#pairs-rr"><span class="toc-section-number">0.65</span> Pairs (RR)</a></li>
+<li><a href="0-66-boxplot.html#boxplot"><span class="toc-section-number">0.66</span> Boxplot</a></li>
+<li><a href="0-67-gráficos-condicionales-xyplot.html#gráficos-condicionales-xyplot"><span class="toc-section-number">0.67</span> Gráficos condicionales xyplot</a></li>
+<li><a href="0-68-gráficos-condicionales-coplot.html#gráficos-condicionales-coplot"><span class="toc-section-number">0.68</span> Gráficos condicionales coplot</a></li>
+<li><a href="0-69-debugging-detectando-errores-5.html#debugging-detectando-errores-5"><span class="toc-section-number">0.69</span> Debugging, detectando errores</a></li>
+</ul></li>
+<li class="has-sub"><a href="r12-resumir.html#r12-resumir">R12 Resumir</a><ul>
+<li><a href="0-70-summary-r.html#summary-r"><span class="toc-section-number">0.70</span> summary (R)</a></li>
+<li><a href="0-71-table-r.html#table-r"><span class="toc-section-number">0.71</span> table (R)</a></li>
+<li><a href="0-72-apply-rr.html#apply-rr"><span class="toc-section-number">0.72</span> apply (RR)</a></li>
+<li><a href="0-73-apply-rrr.html#apply-rrr"><span class="toc-section-number">0.73</span> apply (RRR)</a></li>
+<li><a href="0-74-tapply-rrr.html#tapply-rrr"><span class="toc-section-number">0.74</span> tapply (RRR)</a></li>
+<li><a href="0-75-múltiples-variables-rr.html#múltiples-variables-rr"><span class="toc-section-number">0.75</span> Múltiples variables (RR)</a></li>
+<li><a href="0-76-grep-which-resumir-rrrr.html#grep-which-resumir-rrrr"><span class="toc-section-number">0.76</span> grep() which() resumir (RRRR)</a></li>
+<li><a href="0-77-debugging-detectando-errores-6.html#debugging-detectando-errores-6"><span class="toc-section-number">0.77</span> Debugging, detectando errores</a></li>
+</ul></li>
+<li class="has-sub"><a href="r13-condicionales.html#r13-condicionales">R13 Condicionales</a><ul>
+<li><a href="0-78-ifelse-rr.html#ifelse-rr"><span class="toc-section-number">0.78</span> ifelse (RR)</a></li>
+<li><a href="0-79-ifelse-rrr.html#ifelse-rrr"><span class="toc-section-number">0.79</span> ifelse (RRR)</a></li>
+<li><a href="0-80-figura-cuadrantes-rrr.html#figura-cuadrantes-rrr"><span class="toc-section-number">0.80</span> Figura cuadrantes (RRR)</a></li>
+<li><a href="0-81-if-rrr.html#if-rrr"><span class="toc-section-number">0.81</span> if (RRR)</a></li>
+<li><a href="0-82-if-plot-rrr.html#if-plot-rrr"><span class="toc-section-number">0.82</span> if + plot (RRR)</a></li>
+</ul></li>
+<li class="has-sub"><a href="r14-funciones.html#r14-funciones">R14 Funciones</a><ul>
+<li><a href="0-83-funciones-elevar-al-cuadrado-r.html#funciones-elevar-al-cuadrado-r"><span class="toc-section-number">0.83</span> Funciones: elevar al cuadrado (R)</a></li>
+<li><a href="0-84-funciones-elevar-al-cuadrado-2-rrr.html#funciones-elevar-al-cuadrado-2-rrr"><span class="toc-section-number">0.84</span> Funciones: elevar al cuadrado 2 (RRR)</a></li>
+<li><a href="0-85-funciones-promedio-rr.html#funciones-promedio-rr"><span class="toc-section-number">0.85</span> Funciones: Promedio (RR)</a></li>
+<li><a href="0-86-funciones-promedio-2-rrr.html#funciones-promedio-2-rrr"><span class="toc-section-number">0.86</span> Funciones: Promedio 2 (RRR)</a></li>
+<li><a href="0-87-función-obtener-números-pares-o-impares.html#función-obtener-números-pares-o-impares"><span class="toc-section-number">0.87</span> Función obtener números pares o impares</a></li>
+<li><a href="0-88-funciones-no-contar-los-nas-rrr.html#funciones-no-contar-los-nas-rrr"><span class="toc-section-number">0.88</span> Funciones: No contar los NAs (RRR)</a></li>
+<li><a href="0-89-función-frecuencia-relativa-rrr.html#función-frecuencia-relativa-rrr"><span class="toc-section-number">0.89</span> Función frecuencia relativa (RRR)</a></li>
+<li><a href="0-90-debugging-detectando-errores-7.html#debugging-detectando-errores-7"><span class="toc-section-number">0.90</span> Debugging, detectando errores</a></li>
+</ul></li>
+<li class="has-sub"><a href="r15-loops.html#r15-loops">R15 Loops</a><ul>
+<li><a href="0-91-loops-paso-a-paso.html#loops-paso-a-paso"><span class="toc-section-number">0.91</span> Loops: paso a paso</a></li>
+<li><a href="0-92-loop-muy-sencillo-r.html#loop-muy-sencillo-r"><span class="toc-section-number">0.92</span> loop muy sencillo (R)</a></li>
+<li><a href="0-93-figura-múltiple-rr.html#figura-múltiple-rr"><span class="toc-section-number">0.93</span> Figura múltiple (RR)</a></li>
+<li><a href="0-94-figura-múltiple-con-leyenda-rrr.html#figura-múltiple-con-leyenda-rrr"><span class="toc-section-number">0.94</span> Figura múltiple con leyenda (RRR)</a></li>
+<li><a href="0-95-efecto-de-la-varianza-rrr.html#efecto-de-la-varianza-rrr"><span class="toc-section-number">0.95</span> Efecto de la varianza (RRR)</a></li>
+<li><a href="0-96-figuras-múltiples-rrrr.html#figuras-múltiples-rrrr"><span class="toc-section-number">0.96</span> Figuras múltiples (RRRR)</a></li>
+<li><a href="0-97-multiples-archivos-gráficos-rrrr.html#multiples-archivos-gráficos-rrrr"><span class="toc-section-number">0.97</span> Multiples archivos gráficos (RRRR)</a></li>
+<li><a href="0-98-helping-bart-rrr.html#helping-bart-rrr"><span class="toc-section-number">0.98</span> Helping Bart (RRR)</a></li>
+</ul></li>
+<li><a href="references.html#references">References</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="boxplot" class="section level2">
+<h2><span class="header-section-number">0.66</span> Boxplot</h2>
+<p>Generar una figura boxplot de la variable fosfato (pho) discriminando por sección del río Doubs. Notar la orientación de la leyenda de los ejes. Recurrir a la función <em><strong>axis()</strong></em>.</p>
+<!-- RTA -->
+<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
+</div>
+<p style="text-align: center;">
+<a href="0-65-pairs-rr.html"><button class="btn btn-default">Previous</button></a>
+<a href="0-67-gráficos-condicionales-xyplot.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>

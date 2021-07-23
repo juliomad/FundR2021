@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>0.50 Valores esperados lm (RRR) | Fundamentos de R: Prácticas</title>
+  <meta name="description" content="Material del curso" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="0.50 Valores esperados lm (RRR) | Fundamentos de R: Prácticas" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Material del curso" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="0.50 Valores esperados lm (RRR) | Fundamentos de R: Prácticas" />
+  
+  <meta name="twitter:description" content="Material del curso" />
+  
+
+<meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
+
+
+<meta name="date" content="2021-07-23" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="obtener-valores-de-una-salida-de-prueba-estadística-rrr.html"/>
+<link rel="next" href="debugging-detectando-errores-4.html"/>
+<script src="assets/jquery-2.2.3/jquery.min.js"></script>
+<link href="assets/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="assets/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="assets/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="assets/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="toc.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><i>  --- Curso R 2021</i></li>
+<li><i>  --- UNPSJB & CENPAT-CONICET</i></li>
+<li><i>  --- Puerto Madryn</i></li>
+
+<li class="divider"></li>
+<li><a href="index.html#section"></a></li>
+<li class="chapter" data-level="" data-path="breve-introducción-a-ejercicios.html"><a href="breve-introducción-a-ejercicios.html"><i class="fa fa-check"></i>Breve introducción a Ejercicios</a></li>
+<li class="chapter" data-level="" data-path="ro1-consola-de-r.html"><a href="ro1-consola-de-r.html"><i class="fa fa-check"></i>RO1 Consola de R</a><ul>
+<li class="chapter" data-level="0.1" data-path="pimeras-líneas-de-comando-r.html"><a href="pimeras-líneas-de-comando-r.html"><i class="fa fa-check"></i><b>0.1</b> Pimeras líneas de comando (R)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r02-rstudio.html"><a href="r02-rstudio.html"><i class="fa fa-check"></i>R02 Rstudio</a><ul>
+<li class="chapter" data-level="0.2" data-path="crear-un-archivo-de-script-r.html"><a href="crear-un-archivo-de-script-r.html"><i class="fa fa-check"></i><b>0.2</b> Crear un archivo de script (R)</a></li>
+<li class="chapter" data-level="0.3" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>0.3</b> (R)</a></li>
+<li class="chapter" data-level="0.4" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.4</b> interacción con R (RR)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r03-básicos.html"><a href="r03-básicos.html"><i class="fa fa-check"></i>R03 Básicos</a><ul>
+<li class="chapter" data-level="0.5" data-path="ayudas-1-rr.html"><a href="ayudas-1-rr.html"><i class="fa fa-check"></i><b>0.5</b> Ayudas 1 (RR)</a></li>
+<li class="chapter" data-level="0.6" data-path="ayudas-2-rrr.html"><a href="ayudas-2-rrr.html"><i class="fa fa-check"></i><b>0.6</b> Ayudas 2 (RRR)</a></li>
+<li class="chapter" data-level="0.7" data-path="cómputos-rrr.html"><a href="cómputos-rrr.html"><i class="fa fa-check"></i><b>0.7</b> Cómputos (RRR)</a></li>
+<li class="chapter" data-level="0.8" data-path="comandos-básicos-rrr.html"><a href="comandos-básicos-rrr.html"><i class="fa fa-check"></i><b>0.8</b> Comandos básicos (RRR)</a></li>
+<li class="chapter" data-level="0.9" data-path="creando-vectores-rr.html"><a href="creando-vectores-rr.html"><i class="fa fa-check"></i><b>0.9</b> Creando vectores (RR)</a></li>
+<li class="chapter" data-level="0.10" data-path="nombres-de-objetos-rr.html"><a href="nombres-de-objetos-rr.html"><i class="fa fa-check"></i><b>0.10</b> Nombres de objetos (RR)</a></li>
+<li class="chapter" data-level="0.11" data-path="operando-con-vectores-rr.html"><a href="operando-con-vectores-rr.html"><i class="fa fa-check"></i><b>0.11</b> Operando con vectores (RR)</a></li>
+<li class="chapter" data-level="0.12" data-path="dar-nombre-a-los-elementos-de-un-vector-rrr.html"><a href="dar-nombre-a-los-elementos-de-un-vector-rrr.html"><i class="fa fa-check"></i><b>0.12</b> Dar nombre a los elementos de un vector (RRR)</a></li>
+<li class="chapter" data-level="0.13" data-path="aplicando-funciones-a-vectores-rr.html"><a href="aplicando-funciones-a-vectores-rr.html"><i class="fa fa-check"></i><b>0.13</b> Aplicando funciones a vectores (RR)</a></li>
+<li class="chapter" data-level="0.14" data-path="pruebas-y-operaciones-lógicas-rrr.html"><a href="pruebas-y-operaciones-lógicas-rrr.html"><i class="fa fa-check"></i><b>0.14</b> Pruebas y operaciones lógicas (RRR)</a></li>
+<li class="chapter" data-level="0.15" data-path="pruebas-lógicas.html"><a href="pruebas-lógicas.html"><i class="fa fa-check"></i><b>0.15</b> Pruebas lógicas</a></li>
+<li class="chapter" data-level="" data-path="debugging-detectando-errores.html"><a href="debugging-detectando-errores.html"><i class="fa fa-check"></i>Debugging, detectando errores</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r04-indexación-y-filtros.html"><a href="r04-indexación-y-filtros.html"><i class="fa fa-check"></i>R04 Indexación y Filtros</a><ul>
+<li class="chapter" data-level="0.16" data-path="vector-letters-r.html"><a href="vector-letters-r.html"><i class="fa fa-check"></i><b>0.16</b> Vector LETTERS (R)</a></li>
+<li class="chapter" data-level="0.17" data-path="indexación-de-vectores-rr.html"><a href="indexación-de-vectores-rr.html"><i class="fa fa-check"></i><b>0.17</b> Indexación de vectores (RR)</a></li>
+<li class="chapter" data-level="0.18" data-path="indexación-de-vectores-rrr.html"><a href="indexación-de-vectores-rrr.html"><i class="fa fa-check"></i><b>0.18</b> Indexación de vectores (RRR)</a></li>
+<li class="chapter" data-level="0.19" data-path="indexación-de-vectores-rrr-1.html"><a href="indexación-de-vectores-rrr-1.html"><i class="fa fa-check"></i><b>0.19</b> Indexación de vectores (RRR)</a></li>
+<li class="chapter" data-level="0.20" data-path="indexación-de-vectores-rrr-2.html"><a href="indexación-de-vectores-rrr-2.html"><i class="fa fa-check"></i><b>0.20</b> Indexación de vectores (RRR)</a></li>
+<li class="chapter" data-level="0.21" data-path="indexación-índices-lógicos-vs-which-rrr.html"><a href="indexación-índices-lógicos-vs-which-rrr.html"><i class="fa fa-check"></i><b>0.21</b> Indexación: índices lógicos vs which (RRR)</a></li>
+<li class="chapter" data-level="0.22" data-path="indexación-en-vectores-ejemplo-colors-rrr.html"><a href="indexación-en-vectores-ejemplo-colors-rrr.html"><i class="fa fa-check"></i><b>0.22</b> Indexación en vectores ejemplo colors() (RRR)</a></li>
+<li class="chapter" data-level="" data-path="debugging-detectando-errores-1.html"><a href="debugging-detectando-errores-1.html"><i class="fa fa-check"></i>Debugging, detectando errores</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r05-workspace-y-rhistory.html"><a href="r05-workspace-y-rhistory.html"><i class="fa fa-check"></i>R05 Workspace y RHistory</a><ul>
+<li class="chapter" data-level="0.23" data-path="responder-con-verdadero-o-falso-rrr.html"><a href="responder-con-verdadero-o-falso-rrr.html"><i class="fa fa-check"></i><b>0.23</b> Responder con Verdadero o Falso (RRR)</a></li>
+<li class="chapter" data-level="0.24" data-path="salvar-y-cargar-objetos-rr.html"><a href="salvar-y-cargar-objetos-rr.html"><i class="fa fa-check"></i><b>0.24</b> Salvar y cargar objetos (RR)</a></li>
+<li class="chapter" data-level="0.25" data-path="debugging-detectando-errores-2.html"><a href="debugging-detectando-errores-2.html"><i class="fa fa-check"></i><b>0.25</b> Debugging, detectando errores</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r06-importar-y-exportar.html"><a href="r06-importar-y-exportar.html"><i class="fa fa-check"></i>R06 Importar y Exportar</a><ul>
+<li class="chapter" data-level="0.26" data-path="responder-con-verdadero-o-falso-rrr-1.html"><a href="responder-con-verdadero-o-falso-rrr-1.html"><i class="fa fa-check"></i><b>0.26</b> Responder con Verdadero o Falso (RRR)</a></li>
+<li class="chapter" data-level="0.27" data-path="read-table-y-write-table.html"><a href="read-table-y-write-table.html"><i class="fa fa-check"></i><b>0.27</b> read.table y write.table</a></li>
+<li class="chapter" data-level="0.28" data-path="debugging-detectando-errores-3.html"><a href="debugging-detectando-errores-3.html"><i class="fa fa-check"></i><b>0.28</b> Debugging, detectando errores</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r07-objetos-1.html"><a href="r07-objetos-1.html"><i class="fa fa-check"></i>R07 Objetos 1</a><ul>
+<li class="chapter" data-level="0.29" data-path="vectores-1-rr.html"><a href="vectores-1-rr.html"><i class="fa fa-check"></i><b>0.29</b> Vectores 1 (RR)</a></li>
+<li class="chapter" data-level="0.30" data-path="vectores-2-rr.html"><a href="vectores-2-rr.html"><i class="fa fa-check"></i><b>0.30</b> Vectores 2 (RR)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r08-objetos2.html"><a href="r08-objetos2.html"><i class="fa fa-check"></i>R08 Objetos2</a><ul>
+<li class="chapter" data-level="0.31" data-path="responder-con-verdadero-o-falso-rrr-2.html"><a href="responder-con-verdadero-o-falso-rrr-2.html"><i class="fa fa-check"></i><b>0.31</b> Responder con verdadero o falso (RRR)</a></li>
+<li class="chapter" data-level="0.32" data-path="generar-un-data-frame-1-r.html"><a href="generar-un-data-frame-1-r.html"><i class="fa fa-check"></i><b>0.32</b> Generar un data.frame 1 (R)</a></li>
+<li class="chapter" data-level="0.33" data-path="agregar-columnas-a-un-data-frame-rr.html"><a href="agregar-columnas-a-un-data-frame-rr.html"><i class="fa fa-check"></i><b>0.33</b> Agregar columnas a un data.frame (RR)</a></li>
+<li class="chapter" data-level="0.34" data-path="generar-un-data-frame-2-seq-rep-paste-rrr.html"><a href="generar-un-data-frame-2-seq-rep-paste-rrr.html"><i class="fa fa-check"></i><b>0.34</b> Generar un data.frame 2: seq(), rep(), paste() (RRR)</a></li>
+<li class="chapter" data-level="0.35" data-path="sort-vs-order-rr.html"><a href="sort-vs-order-rr.html"><i class="fa fa-check"></i><b>0.35</b> sort vs order (RR)</a></li>
+<li class="chapter" data-level="0.36" data-path="ordenar-un-data-frame-rrr.html"><a href="ordenar-un-data-frame-rrr.html"><i class="fa fa-check"></i><b>0.36</b> Ordenar un data.frame (RRR)</a></li>
+<li class="chapter" data-level="0.37" data-path="generar-matrices-rr.html"><a href="generar-matrices-rr.html"><i class="fa fa-check"></i><b>0.37</b> Generar matrices (RR)</a></li>
+<li class="chapter" data-level="0.38" data-path="combinar-matrices-rr.html"><a href="combinar-matrices-rr.html"><i class="fa fa-check"></i><b>0.38</b> Combinar matrices (RR)</a></li>
+<li class="chapter" data-level="0.39" data-path="nombrar-columnas-de-matrices-rr.html"><a href="nombrar-columnas-de-matrices-rr.html"><i class="fa fa-check"></i><b>0.39</b> Nombrar columnas de matrices (RR)</a></li>
+<li class="chapter" data-level="0.40" data-path="generar-listas-rr.html"><a href="generar-listas-rr.html"><i class="fa fa-check"></i><b>0.40</b> Generar listas (RR)</a></li>
+<li class="chapter" data-level="0.41" data-path="función-split-rrr.html"><a href="función-split-rrr.html"><i class="fa fa-check"></i><b>0.41</b> Función split (RRR)</a></li>
+<li class="chapter" data-level="0.42" data-path="generar-arrays-rrr.html"><a href="generar-arrays-rrr.html"><i class="fa fa-check"></i><b>0.42</b> Generar arrays (RRR)</a></li>
+<li class="chapter" data-level="0.43" data-path="indexar-data-frame-sencillorr.html"><a href="indexar-data-frame-sencillorr.html"><i class="fa fa-check"></i><b>0.43</b> indexar data frame sencillo(RR)</a></li>
+<li class="chapter" data-level="0.44" data-path="indexar-data-frame-rrr.html"><a href="indexar-data-frame-rrr.html"><i class="fa fa-check"></i><b>0.44</b> indexar data.frame (RRR)</a></li>
+<li class="chapter" data-level="0.45" data-path="eliminando-duplicados.html"><a href="eliminando-duplicados.html"><i class="fa fa-check"></i><b>0.45</b> Eliminando duplicados</a></li>
+<li class="chapter" data-level="0.46" data-path="indexar-una-matrizrr.html"><a href="indexar-una-matrizrr.html"><i class="fa fa-check"></i><b>0.46</b> indexar una matriz(RR)</a></li>
+<li class="chapter" data-level="0.47" data-path="indexar-una-lista-1-rr.html"><a href="indexar-una-lista-1-rr.html"><i class="fa fa-check"></i><b>0.47</b> indexar una lista 1 (RR)</a></li>
+<li class="chapter" data-level="0.48" data-path="indexar-una-lista-2-rrr.html"><a href="indexar-una-lista-2-rrr.html"><i class="fa fa-check"></i><b>0.48</b> Indexar una lista 2 (RRR)</a></li>
+<li class="chapter" data-level="0.49" data-path="obtener-valores-de-una-salida-de-prueba-estadística-rrr.html"><a href="obtener-valores-de-una-salida-de-prueba-estadística-rrr.html"><i class="fa fa-check"></i><b>0.49</b> Obtener valores de una salida de prueba estadística (RRR)</a></li>
+<li class="chapter" data-level="0.50" data-path="valores-esperados-lm-rrr.html"><a href="valores-esperados-lm-rrr.html"><i class="fa fa-check"></i><b>0.50</b> Valores esperados lm (RRR)</a></li>
+<li class="chapter" data-level="0.51" data-path="debugging-detectando-errores-4.html"><a href="debugging-detectando-errores-4.html"><i class="fa fa-check"></i><b>0.51</b> Debugging, detectando errores</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r09-gráficos-1.html"><a href="r09-gráficos-1.html"><i class="fa fa-check"></i>R09 Gráficos 1</a><ul>
+<li class="chapter" data-level="0.52" data-path="figura-sencilla-r.html"><a href="figura-sencilla-r.html"><i class="fa fa-check"></i><b>0.52</b> Figura sencilla (R)</a></li>
+<li class="chapter" data-level="0.53" data-path="configurar-figuras-rr.html"><a href="configurar-figuras-rr.html"><i class="fa fa-check"></i><b>0.53</b> Configurar figuras (RR)</a></li>
+<li class="chapter" data-level="0.54" data-path="axis-rrr.html"><a href="axis-rrr.html"><i class="fa fa-check"></i><b>0.54</b> axis (RRR)</a></li>
+<li class="chapter" data-level="0.55" data-path="figura-sencilla-rr.html"><a href="figura-sencilla-rr.html"><i class="fa fa-check"></i><b>0.55</b> Figura sencilla (RR)</a></li>
+<li class="chapter" data-level="0.56" data-path="posiciones-doubs-rrr.html"><a href="posiciones-doubs-rrr.html"><i class="fa fa-check"></i><b>0.56</b> Posiciones Doubs (RRR)</a></li>
+<li class="chapter" data-level="0.57" data-path="rotulando-puntos-rrr.html"><a href="rotulando-puntos-rrr.html"><i class="fa fa-check"></i><b>0.57</b> Rotulando puntos (RRR)</a></li>
+<li class="chapter" data-level="0.58" data-path="regresión-rrrr.html"><a href="regresión-rrrr.html"><i class="fa fa-check"></i><b>0.58</b> Regresión (RRRR)</a></li>
+<li class="chapter" data-level="0.59" data-path="histograma-rrr.html"><a href="histograma-rrr.html"><i class="fa fa-check"></i><b>0.59</b> Histograma (RRR)</a></li>
+<li class="chapter" data-level="0.60" data-path="factores-para-ordenar-figuras-rrr.html"><a href="factores-para-ordenar-figuras-rrr.html"><i class="fa fa-check"></i><b>0.60</b> Factores para ordenar figuras (RRR)</a></li>
+<li class="chapter" data-level="0.61" data-path="usando-reshape-para-generar-boxplots-rrr.html"><a href="usando-reshape-para-generar-boxplots-rrr.html"><i class="fa fa-check"></i><b>0.61</b> Usando reshape para generar boxplots (RRR)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r10-gráficos-2.html"><a href="r10-gráficos-2.html"><i class="fa fa-check"></i>R10 Gráficos 2</a><ul>
+<li class="chapter" data-level="0.62" data-path="figura-múltiple-simple-rr.html"><a href="figura-múltiple-simple-rr.html"><i class="fa fa-check"></i><b>0.62</b> Figura múltiple simple (RR)</a></li>
+<li class="chapter" data-level="0.63" data-path="dispersión-2-rr.html"><a href="dispersión-2-rr.html"><i class="fa fa-check"></i><b>0.63</b> Dispersión 2 (RR)</a></li>
+<li class="chapter" data-level="0.64" data-path="figura-completa-rrrr.html"><a href="figura-completa-rrrr.html"><i class="fa fa-check"></i><b>0.64</b> Figura completa (RRRR)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r11-gráficos3.html"><a href="r11-gráficos3.html"><i class="fa fa-check"></i>R11 Gráficos3</a><ul>
+<li class="chapter" data-level="0.65" data-path="pairs-rr.html"><a href="pairs-rr.html"><i class="fa fa-check"></i><b>0.65</b> Pairs (RR)</a></li>
+<li class="chapter" data-level="0.66" data-path="boxplot.html"><a href="boxplot.html"><i class="fa fa-check"></i><b>0.66</b> Boxplot</a></li>
+<li class="chapter" data-level="0.67" data-path="gráficos-condicionales-xyplot.html"><a href="gráficos-condicionales-xyplot.html"><i class="fa fa-check"></i><b>0.67</b> Gráficos condicionales xyplot</a></li>
+<li class="chapter" data-level="0.68" data-path="gráficos-condicionales-coplot.html"><a href="gráficos-condicionales-coplot.html"><i class="fa fa-check"></i><b>0.68</b> Gráficos condicionales coplot</a></li>
+<li class="chapter" data-level="0.69" data-path="debugging-detectando-errores-5.html"><a href="debugging-detectando-errores-5.html"><i class="fa fa-check"></i><b>0.69</b> Debugging, detectando errores</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r12-resumir.html"><a href="r12-resumir.html"><i class="fa fa-check"></i>R12 Resumir</a><ul>
+<li class="chapter" data-level="0.70" data-path="summary-r.html"><a href="summary-r.html"><i class="fa fa-check"></i><b>0.70</b> summary (R)</a></li>
+<li class="chapter" data-level="0.71" data-path="table-r.html"><a href="table-r.html"><i class="fa fa-check"></i><b>0.71</b> table (R)</a></li>
+<li class="chapter" data-level="0.72" data-path="apply-rr.html"><a href="apply-rr.html"><i class="fa fa-check"></i><b>0.72</b> apply (RR)</a></li>
+<li class="chapter" data-level="0.73" data-path="apply-rrr.html"><a href="apply-rrr.html"><i class="fa fa-check"></i><b>0.73</b> apply (RRR)</a></li>
+<li class="chapter" data-level="0.74" data-path="tapply-rrr.html"><a href="tapply-rrr.html"><i class="fa fa-check"></i><b>0.74</b> tapply (RRR)</a></li>
+<li class="chapter" data-level="0.75" data-path="múltiples-variables-rr.html"><a href="múltiples-variables-rr.html"><i class="fa fa-check"></i><b>0.75</b> Múltiples variables (RR)</a></li>
+<li class="chapter" data-level="0.76" data-path="grep-which-resumir-rrrr.html"><a href="grep-which-resumir-rrrr.html"><i class="fa fa-check"></i><b>0.76</b> grep() which() resumir (RRRR)</a></li>
+<li class="chapter" data-level="0.77" data-path="debugging-detectando-errores-6.html"><a href="debugging-detectando-errores-6.html"><i class="fa fa-check"></i><b>0.77</b> Debugging, detectando errores</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r13-condicionales.html"><a href="r13-condicionales.html"><i class="fa fa-check"></i>R13 Condicionales</a><ul>
+<li class="chapter" data-level="0.78" data-path="ifelse-rr.html"><a href="ifelse-rr.html"><i class="fa fa-check"></i><b>0.78</b> ifelse (RR)</a></li>
+<li class="chapter" data-level="0.79" data-path="ifelse-rrr.html"><a href="ifelse-rrr.html"><i class="fa fa-check"></i><b>0.79</b> ifelse (RRR)</a></li>
+<li class="chapter" data-level="0.80" data-path="figura-cuadrantes-rrr.html"><a href="figura-cuadrantes-rrr.html"><i class="fa fa-check"></i><b>0.80</b> Figura cuadrantes (RRR)</a></li>
+<li class="chapter" data-level="0.81" data-path="if-rrr.html"><a href="if-rrr.html"><i class="fa fa-check"></i><b>0.81</b> if (RRR)</a></li>
+<li class="chapter" data-level="0.82" data-path="if-plot-rrr.html"><a href="if-plot-rrr.html"><i class="fa fa-check"></i><b>0.82</b> if + plot (RRR)</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r14-funciones.html"><a href="r14-funciones.html"><i class="fa fa-check"></i>R14 Funciones</a><ul>
+<li class="chapter" data-level="0.83" data-path="funciones-elevar-al-cuadrado-r.html"><a href="funciones-elevar-al-cuadrado-r.html"><i class="fa fa-check"></i><b>0.83</b> Funciones: elevar al cuadrado (R)</a></li>
+<li class="chapter" data-level="0.84" data-path="funciones-elevar-al-cuadrado-2-rrr.html"><a href="funciones-elevar-al-cuadrado-2-rrr.html"><i class="fa fa-check"></i><b>0.84</b> Funciones: elevar al cuadrado 2 (RRR)</a></li>
+<li class="chapter" data-level="0.85" data-path="funciones-promedio-rr.html"><a href="funciones-promedio-rr.html"><i class="fa fa-check"></i><b>0.85</b> Funciones: Promedio (RR)</a></li>
+<li class="chapter" data-level="0.86" data-path="funciones-promedio-2-rrr.html"><a href="funciones-promedio-2-rrr.html"><i class="fa fa-check"></i><b>0.86</b> Funciones: Promedio 2 (RRR)</a></li>
+<li class="chapter" data-level="0.87" data-path="función-obtener-números-pares-o-impares.html"><a href="función-obtener-números-pares-o-impares.html"><i class="fa fa-check"></i><b>0.87</b> Función obtener números pares o impares</a></li>
+<li class="chapter" data-level="0.88" data-path="funciones-no-contar-los-nas-rrr.html"><a href="funciones-no-contar-los-nas-rrr.html"><i class="fa fa-check"></i><b>0.88</b> Funciones: No contar los NAs (RRR)</a></li>
+<li class="chapter" data-level="0.89" data-path="función-frecuencia-relativa-rrr.html"><a href="función-frecuencia-relativa-rrr.html"><i class="fa fa-check"></i><b>0.89</b> Función frecuencia relativa (RRR)</a></li>
+<li class="chapter" data-level="0.90" data-path="debugging-detectando-errores-7.html"><a href="debugging-detectando-errores-7.html"><i class="fa fa-check"></i><b>0.90</b> Debugging, detectando errores</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="r15-loops.html"><a href="r15-loops.html"><i class="fa fa-check"></i>R15 Loops</a><ul>
+<li class="chapter" data-level="0.91" data-path="loops-paso-a-paso.html"><a href="loops-paso-a-paso.html"><i class="fa fa-check"></i><b>0.91</b> Loops: paso a paso</a></li>
+<li class="chapter" data-level="0.92" data-path="loop-muy-sencillo-r.html"><a href="loop-muy-sencillo-r.html"><i class="fa fa-check"></i><b>0.92</b> loop muy sencillo (R)</a></li>
+<li class="chapter" data-level="0.93" data-path="figura-múltiple-rr.html"><a href="figura-múltiple-rr.html"><i class="fa fa-check"></i><b>0.93</b> Figura múltiple (RR)</a></li>
+<li class="chapter" data-level="0.94" data-path="figura-múltiple-con-leyenda-rrr.html"><a href="figura-múltiple-con-leyenda-rrr.html"><i class="fa fa-check"></i><b>0.94</b> Figura múltiple con leyenda (RRR)</a></li>
+<li class="chapter" data-level="0.95" data-path="efecto-de-la-varianza-rrr.html"><a href="efecto-de-la-varianza-rrr.html"><i class="fa fa-check"></i><b>0.95</b> Efecto de la varianza (RRR)</a></li>
+<li class="chapter" data-level="0.96" data-path="figuras-múltiples-rrrr.html"><a href="figuras-múltiples-rrrr.html"><i class="fa fa-check"></i><b>0.96</b> Figuras múltiples (RRRR)</a></li>
+<li class="chapter" data-level="0.97" data-path="multiples-archivos-gráficos-rrrr.html"><a href="multiples-archivos-gráficos-rrrr.html"><i class="fa fa-check"></i><b>0.97</b> Multiples archivos gráficos (RRRR)</a></li>
+<li class="chapter" data-level="0.98" data-path="helping-bart-rrr.html"><a href="helping-bart-rrr.html"><i class="fa fa-check"></i><b>0.98</b> Helping Bart (RRR)</a></li>
+</ul></li>
+<li class="divider"></li>
+<i>Created with bookdown</i></a></li>
+<li><a href="https://github.com/rstudio/bookdown">
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fundamentos de R: Prácticas</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="valores-esperados-lm-rrr" class="section level2">
+<h2><span class="header-section-number">0.50</span> Valores esperados lm (RRR)</h2>
+<ol style="list-style-type: decimal">
+<li>En base a los valores de los coeficientes (a, b) y utilizando la función <strong><em>abline()</em></strong> agregar los valores esperados a la figura del punto anterior</li>
+</ol>
+<!-- RTA -->
+<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-128-1.png" width="672" /></p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="obtener-valores-de-una-salida-de-prueba-estadística-rrr.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="debugging-detectando-errores-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="assets/gitbook-2.6.7/js/app.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/lunr.js"></script>
+<script src="assets/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="assets/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="assets/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["R_ejercicios2021.pdf"],
+"toc": {
+"collapse": "section",
+"toc_depth": 3,
+"scroll_highlight": true
+},
+"language": {
+"label": {
+"fig": "FIGURE. ",
+"tab": "Table. "
+}
+},
+"toolbar": {
+"position": "static"
+},
+"search": true
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
