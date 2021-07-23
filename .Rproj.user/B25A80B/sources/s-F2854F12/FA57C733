@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1627041699359.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "203621217",
+    "id" : "FA57C733",
+    "lastKnownWriteTime" : 1627041695,
+    "last_content_update" : 1627041695,
+    "path" : "~/aaa/cursos/ofrecidos/R/R2021_virtual/practicas/bookdown/R_ejercicios2021/index.Rmd",
+    "project_path" : "index.Rmd",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
