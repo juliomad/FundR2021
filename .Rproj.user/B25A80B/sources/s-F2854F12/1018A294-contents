@@ -1,9 +1,0 @@
-bookdown::gitbook:
-  css: style.css
-  config:
-    toc:
-      before: |
-        <li><a href="./">Fundamentos de R</a></li>
-      after: |
-        <li><a </a></li>
-    download: ["pdf", "epub"]
