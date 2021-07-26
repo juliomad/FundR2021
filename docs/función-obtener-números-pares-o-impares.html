@@ -24,7 +24,7 @@
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,8 +142,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="r02-rstudio.html"><a href="r02-rstudio.html"><i class="fa fa-check"></i>R02 Rstudio</a><ul>
 <li class="chapter" data-level="0.2" data-path="crear-un-archivo-de-script-r.html"><a href="crear-un-archivo-de-script-r.html"><i class="fa fa-check"></i><b>0.2</b> Crear un archivo de script (R)</a></li>
-<li class="chapter" data-level="0.3" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>0.3</b> (R)</a></li>
-<li class="chapter" data-level="0.4" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.4</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.3" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.3</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.4" data-path="visualizar-en-consola-rr.html"><a href="visualizar-en-consola-rr.html"><i class="fa fa-check"></i><b>0.4</b> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="r03-básicos.html"><a href="r03-básicos.html"><i class="fa fa-check"></i>R03 Básicos</a><ul>
 <li class="chapter" data-level="0.5" data-path="ayudas-1-rr.html"><a href="ayudas-1-rr.html"><i class="fa fa-check"></i><b>0.5</b> Ayudas 1 (RR)</a></li>
@@ -291,9 +291,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="función-obtener-números-pares-o-impares" class="section level2">
 <h2><span class="header-section-number">0.87</span> Función obtener números pares o impares</h2>
 <p>Dado un vector numérico cualquiera, como el que se muestra a continuación:</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">51</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">51</span>)</a></code></pre></div>
 <p>Mediante el siguiente comando se puede obtener un vector de 1’s y 0’s para aquellos valores impares y pares del vector</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1">x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1">x <span class="op">%%</span><span class="st"> </span><span class="dv">2</span></a></code></pre></div>
 <pre><code>## [1] 1 0 1 1 1 0 0 1</code></pre>
 <p>Generar una función, que llamaremos <strong><strong>parimpar</strong></strong> que permita obtener los valores pares o impares de un vector numérico. La función deberá tener dos argumentos, el primero, al que llamaremos <strong><strong>vec</strong></strong>, corresponderá al vector de entrada y el segundo al que llamaremos impar tomará valor por defecto TRUE y seleccionará a los valores impares, mientras que seleccionará a los pares en caso de ser FALSE</p>
 <p>Pasos sugeridos
@@ -301,11 +301,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 * generar un vector lógico (idx2) con la condición vec %% 2 == 0 (pares)
 * incluir un condicional que indexe por idx1 en caso de que el parámetro impar sea T y que indexe por idx2 en caso contrario</p>
 <p>Probando la función</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">51</span>)</a>
-<a class="sourceLine" id="cb178-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb178-3" data-line-number="3"><span class="kw">parimpar</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">8</span>,<span class="dv">2</span>,<span class="dv">51</span>)</a>
+<a class="sourceLine" id="cb180-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb180-3" data-line-number="3"><span class="kw">parimpar</span>(x)</a></code></pre></div>
 <pre><code>## [1]  1  2  9  2 NA 51  2 NA</code></pre>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1"><span class="kw">parimpar</span>(x, F)</a></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1"><span class="kw">parimpar</span>(x, F)</a></code></pre></div>
 <pre><code>## [1] 2 8 2</code></pre>
 </div>
             </section>

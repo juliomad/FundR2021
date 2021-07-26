@@ -14,7 +14,7 @@
 
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -158,8 +158,8 @@ details > summary {
 </ul></li>
 <li class="has-sub"><a href="r02-rstudio.html#r02-rstudio">R02 Rstudio</a><ul>
 <li><a href="0-2-crear-un-archivo-de-script-r.html#crear-un-archivo-de-script-r"><span class="toc-section-number">0.2</span> Crear un archivo de script (R)</a></li>
-<li><a href="0-3-r.html#r"><span class="toc-section-number">0.3</span> (R)</a></li>
-<li><a href="0-4-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.4</span> interacción con R (RR)</a></li>
+<li><a href="0-3-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.3</span> interacción con R (RR)</a></li>
+<li><a href="0-4-visualizar-en-consola-rr.html#visualizar-en-consola-rr"><span class="toc-section-number">0.4</span> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="has-sub"><a href="r03-básicos.html#r03-básicos">R03 Básicos</a><ul>
 <li><a href="0-5-ayudas-1-rr.html#ayudas-1-rr"><span class="toc-section-number">0.5</span> Ayudas 1 (RR)</a></li>
@@ -293,96 +293,96 @@ details > summary {
 <h2><span class="header-section-number">0.91</span> Loops: paso a paso</h2>
 <p>En este ejemplo vamos a analizar la conveniencia de utilizar loops cuando realizamos tareas repetida.</p>
 <p>Supongamos que tenemos los siguientes datos</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">1000</span>, <span class="dv">10</span>, <span class="dv">1</span>), <span class="dt">ncol=</span> <span class="dv">10</span>) <span class="co"># una matríz de diez columnas, con números aleatorios con distribución de error normal con media 10 y varianza 1</span></a></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">rnorm</span>(<span class="dv">1000</span>, <span class="dv">10</span>, <span class="dv">1</span>), <span class="dt">ncol=</span> <span class="dv">10</span>) <span class="co"># una matríz de diez columnas, con números aleatorios con distribución de error normal con media 10 y varianza 1</span></a></code></pre></div>
 <p>Ahora queremos generar una figura compuesta con histogramas de los valores de cada una de las columnas de x, indicando en cada figura cuál es la columna que se está graficando. Para lo cual generamos una ventana grafica y damos los comandos de diez histogramas, como se muestra a continuación.</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">nombres &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;columna&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) <span class="co"># rótulo para indicar cuál es la columna que se está graficando</span></a></code></pre></div>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1"><span class="cf">if</span> (<span class="kw">Sys.info</span>()[<span class="st">&#39;sysname&#39;</span>] <span class="op">==</span><span class="st"> &quot;Windows&quot;</span>) <span class="kw">windows</span>() <span class="cf">else</span> <span class="kw">x11</span>() <span class="co">## abre una ventana gráfica usando la función windows() si tu sistema operativo es windows() o x11() si tu sistema operativo es linux</span></a>
-<a class="sourceLine" id="cb214-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb214-3" data-line-number="3"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb214-4" data-line-number="4"><span class="co">#figura 1</span></a>
-<a class="sourceLine" id="cb214-5" data-line-number="5"><span class="kw">hist</span>(x[ ,<span class="dv">1</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb214-6" data-line-number="6"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>)) <span class="co">#redefinimos los ejes para poner el rótulo en la misma posición en todas las figuras.</span></a>
-<a class="sourceLine" id="cb214-7" data-line-number="7"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">1</span>]) <span class="co">#rótulo indicando la columna que se está graficando</span></a>
-<a class="sourceLine" id="cb214-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb214-9" data-line-number="9"><span class="co">#figura 2</span></a>
-<a class="sourceLine" id="cb214-10" data-line-number="10"><span class="kw">hist</span>(x[ ,<span class="dv">2</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb214-11" data-line-number="11"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb214-12" data-line-number="12"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">2</span>])</a>
-<a class="sourceLine" id="cb214-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb214-14" data-line-number="14"><span class="co">#figura 3</span></a>
-<a class="sourceLine" id="cb214-15" data-line-number="15"><span class="kw">hist</span>(x[ ,<span class="dv">3</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb214-16" data-line-number="16"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb214-17" data-line-number="17"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">3</span>])</a>
-<a class="sourceLine" id="cb214-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb214-19" data-line-number="19"><span class="co">#figura 4</span></a>
-<a class="sourceLine" id="cb214-20" data-line-number="20"><span class="kw">hist</span>(x[ ,<span class="dv">4</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb214-21" data-line-number="21"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb214-22" data-line-number="22"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">4</span>])</a>
-<a class="sourceLine" id="cb214-23" data-line-number="23"></a>
-<a class="sourceLine" id="cb214-24" data-line-number="24"><span class="co">#figura 5</span></a>
-<a class="sourceLine" id="cb214-25" data-line-number="25"><span class="kw">hist</span>(x[ ,<span class="dv">5</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb214-26" data-line-number="26"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb214-27" data-line-number="27"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">5</span>])</a>
-<a class="sourceLine" id="cb214-28" data-line-number="28"></a>
-<a class="sourceLine" id="cb214-29" data-line-number="29"><span class="co">#figura 6</span></a>
-<a class="sourceLine" id="cb214-30" data-line-number="30"><span class="kw">hist</span>(x[ ,<span class="dv">6</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb214-31" data-line-number="31"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb214-32" data-line-number="32"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">6</span>])</a>
-<a class="sourceLine" id="cb214-33" data-line-number="33"></a>
-<a class="sourceLine" id="cb214-34" data-line-number="34"><span class="co">#figura 7</span></a>
-<a class="sourceLine" id="cb214-35" data-line-number="35"><span class="kw">hist</span>(x[ ,<span class="dv">7</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb214-36" data-line-number="36"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb214-37" data-line-number="37"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">7</span>])</a>
-<a class="sourceLine" id="cb214-38" data-line-number="38"></a>
-<a class="sourceLine" id="cb214-39" data-line-number="39"><span class="co">#figura 8</span></a>
-<a class="sourceLine" id="cb214-40" data-line-number="40"><span class="kw">hist</span>(x[ ,<span class="dv">8</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb214-41" data-line-number="41"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb214-42" data-line-number="42"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">8</span>])</a>
-<a class="sourceLine" id="cb214-43" data-line-number="43"></a>
-<a class="sourceLine" id="cb214-44" data-line-number="44"><span class="co">#figura 9</span></a>
-<a class="sourceLine" id="cb214-45" data-line-number="45"><span class="kw">hist</span>(x[ ,<span class="dv">9</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb214-46" data-line-number="46"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb214-47" data-line-number="47"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">9</span>])</a>
-<a class="sourceLine" id="cb214-48" data-line-number="48"></a>
-<a class="sourceLine" id="cb214-49" data-line-number="49"><span class="co">#figura 10</span></a>
-<a class="sourceLine" id="cb214-50" data-line-number="50"><span class="kw">hist</span>(x[ ,<span class="dv">10</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb214-51" data-line-number="51"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb214-52" data-line-number="52"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">10</span>])</a></code></pre></div>
-<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-259-1.png" width="672" /></p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">nombres &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;columna&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">10</span>) <span class="co"># rótulo para indicar cuál es la columna que se está graficando</span></a></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1"><span class="cf">if</span> (<span class="kw">Sys.info</span>()[<span class="st">&#39;sysname&#39;</span>] <span class="op">==</span><span class="st"> &quot;Windows&quot;</span>) <span class="kw">windows</span>() <span class="cf">else</span> <span class="kw">x11</span>() <span class="co">## abre una ventana gráfica usando la función windows() si tu sistema operativo es windows() o x11() si tu sistema operativo es linux</span></a>
+<a class="sourceLine" id="cb216-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb216-3" data-line-number="3"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb216-4" data-line-number="4"><span class="co">#figura 1</span></a>
+<a class="sourceLine" id="cb216-5" data-line-number="5"><span class="kw">hist</span>(x[ ,<span class="dv">1</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb216-6" data-line-number="6"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>)) <span class="co">#redefinimos los ejes para poner el rótulo en la misma posición en todas las figuras.</span></a>
+<a class="sourceLine" id="cb216-7" data-line-number="7"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">1</span>]) <span class="co">#rótulo indicando la columna que se está graficando</span></a>
+<a class="sourceLine" id="cb216-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb216-9" data-line-number="9"><span class="co">#figura 2</span></a>
+<a class="sourceLine" id="cb216-10" data-line-number="10"><span class="kw">hist</span>(x[ ,<span class="dv">2</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb216-11" data-line-number="11"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb216-12" data-line-number="12"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb216-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb216-14" data-line-number="14"><span class="co">#figura 3</span></a>
+<a class="sourceLine" id="cb216-15" data-line-number="15"><span class="kw">hist</span>(x[ ,<span class="dv">3</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb216-16" data-line-number="16"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb216-17" data-line-number="17"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">3</span>])</a>
+<a class="sourceLine" id="cb216-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb216-19" data-line-number="19"><span class="co">#figura 4</span></a>
+<a class="sourceLine" id="cb216-20" data-line-number="20"><span class="kw">hist</span>(x[ ,<span class="dv">4</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb216-21" data-line-number="21"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb216-22" data-line-number="22"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">4</span>])</a>
+<a class="sourceLine" id="cb216-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb216-24" data-line-number="24"><span class="co">#figura 5</span></a>
+<a class="sourceLine" id="cb216-25" data-line-number="25"><span class="kw">hist</span>(x[ ,<span class="dv">5</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb216-26" data-line-number="26"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb216-27" data-line-number="27"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">5</span>])</a>
+<a class="sourceLine" id="cb216-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb216-29" data-line-number="29"><span class="co">#figura 6</span></a>
+<a class="sourceLine" id="cb216-30" data-line-number="30"><span class="kw">hist</span>(x[ ,<span class="dv">6</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb216-31" data-line-number="31"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb216-32" data-line-number="32"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">6</span>])</a>
+<a class="sourceLine" id="cb216-33" data-line-number="33"></a>
+<a class="sourceLine" id="cb216-34" data-line-number="34"><span class="co">#figura 7</span></a>
+<a class="sourceLine" id="cb216-35" data-line-number="35"><span class="kw">hist</span>(x[ ,<span class="dv">7</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb216-36" data-line-number="36"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb216-37" data-line-number="37"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">7</span>])</a>
+<a class="sourceLine" id="cb216-38" data-line-number="38"></a>
+<a class="sourceLine" id="cb216-39" data-line-number="39"><span class="co">#figura 8</span></a>
+<a class="sourceLine" id="cb216-40" data-line-number="40"><span class="kw">hist</span>(x[ ,<span class="dv">8</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb216-41" data-line-number="41"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb216-42" data-line-number="42"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">8</span>])</a>
+<a class="sourceLine" id="cb216-43" data-line-number="43"></a>
+<a class="sourceLine" id="cb216-44" data-line-number="44"><span class="co">#figura 9</span></a>
+<a class="sourceLine" id="cb216-45" data-line-number="45"><span class="kw">hist</span>(x[ ,<span class="dv">9</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb216-46" data-line-number="46"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb216-47" data-line-number="47"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">9</span>])</a>
+<a class="sourceLine" id="cb216-48" data-line-number="48"></a>
+<a class="sourceLine" id="cb216-49" data-line-number="49"><span class="co">#figura 10</span></a>
+<a class="sourceLine" id="cb216-50" data-line-number="50"><span class="kw">hist</span>(x[ ,<span class="dv">10</span>], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb216-51" data-line-number="51"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb216-52" data-line-number="52"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[<span class="dv">10</span>])</a></code></pre></div>
+<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-260-1.png" width="672" /></p>
 <p>Muy bien, para hacerlo escribimos los comandos para hacer un histograma, luego lo copiamos 9 veces y reemplazamos en la indexación de cada caso por la columna y el nombre de la columna correspondiente. NO es tanto trabajo después de todo. Sin embargo, ahora vemos que la leyendas de los ejes no son las que nos gustaría tener, y el color no nos convence. Tendríamos entonces que editar uno por uno los comandos para modificar cada histograma. Esto además de ser tedioso aumenta las chances de que cometamos errores.</p>
 <p>Una opción un poco más saludable es generar una sola vez los comandos e ir cambiando los valores de indexación (donde dice REEMPLAZAR en el código que sigue). Cada vez que lo corramos se irán completando los paneles de nuestra figura múltiple hasta que completemos los 10 histogramas</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1"><span class="cf">if</span> (<span class="kw">Sys.info</span>()[<span class="st">&#39;sysname&#39;</span>] <span class="op">==</span><span class="st"> &quot;Windows&quot;</span>) <span class="kw">windows</span>() <span class="cf">else</span> <span class="kw">x11</span>() </a>
-<a class="sourceLine" id="cb215-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb215-3" data-line-number="3"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb215-4" data-line-number="4"><span class="co">#figura</span></a>
-<a class="sourceLine" id="cb215-5" data-line-number="5"><span class="kw">hist</span>(x[ ,REEMPLAZAR], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb215-6" data-line-number="6"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>)) </a>
-<a class="sourceLine" id="cb215-7" data-line-number="7"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[REEMPLAZAR]) <span class="co">#rótulo indicando la columna que se está graficando</span></a></code></pre></div>
-<p>Para optimizar un poco más podríamos hacer la indexación usando un índice, que podríamos llamar <em>i</em>. En cada caso podríamos entonces dar valores a <em>i</em> de uno a 10, según corresponda en cada caso. La ventaja es que tendríamos que escribir una sola vez el valor de <em>i</em> en cada figura y no necesitamos “tocar” el código, de hecho podemos dar valores de <em>i</em> en consola</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1"><span class="cf">if</span> (<span class="kw">Sys.info</span>()[<span class="st">&#39;sysname&#39;</span>] <span class="op">==</span><span class="st"> &quot;Windows&quot;</span>) <span class="kw">windows</span>() <span class="cf">else</span> <span class="kw">x11</span>() </a>
-<a class="sourceLine" id="cb216-2" data-line-number="2"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb216-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb216-4" data-line-number="4">i =<span class="st"> </span><span class="dv">5</span> <span class="co"># VAMOS CAMBIANDO LOS VALORES DE _i_ de 1 a 10, uno por vez y volvemos a correr desde acá hasta donde dice ## FINAL !!!!!!!</span></a>
-<a class="sourceLine" id="cb216-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb216-6" data-line-number="6"><span class="co">#figura</span></a>
-<a class="sourceLine" id="cb216-7" data-line-number="7"><span class="kw">hist</span>(x[ ,i], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb216-8" data-line-number="8"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb216-9" data-line-number="9"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[i])</a>
-<a class="sourceLine" id="cb216-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb216-11" data-line-number="11"><span class="co">## FINAL</span></a></code></pre></div>
-<p>Muy bien, avanzamos bastante, ahora podríamos cambiar cualquier argumento del plot y simplemente deberíamos repetir estos pasos otra vez 10 veces. Pero mejor todavía, podríamos dar los comandos adecuados para que las repeticiones las haga R!!!! Aquí es donde vienen los loop en nuestra ayuda. En las siguientes líneas de comando reemplazar los tres puntos por lo que corresponda para que el loop haga la tarea por nosotros</p>
 <div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1"><span class="cf">if</span> (<span class="kw">Sys.info</span>()[<span class="st">&#39;sysname&#39;</span>] <span class="op">==</span><span class="st"> &quot;Windows&quot;</span>) <span class="kw">windows</span>() <span class="cf">else</span> <span class="kw">x11</span>() </a>
 <a class="sourceLine" id="cb217-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb217-3" data-line-number="3"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb217-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb217-5" data-line-number="5"><span class="cf">for</span>(i <span class="cf">in</span> ...){</a>
-<a class="sourceLine" id="cb217-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb217-7" data-line-number="7"><span class="co">#figura</span></a>
-<a class="sourceLine" id="cb217-8" data-line-number="8"><span class="kw">hist</span>(x[ ,...], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb217-9" data-line-number="9"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb217-10" data-line-number="10"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[...])</a>
-<a class="sourceLine" id="cb217-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb217-12" data-line-number="12">} <span class="co">## FINAL</span></a></code></pre></div>
+<a class="sourceLine" id="cb217-4" data-line-number="4"><span class="co">#figura</span></a>
+<a class="sourceLine" id="cb217-5" data-line-number="5"><span class="kw">hist</span>(x[ ,REEMPLAZAR], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb217-6" data-line-number="6"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>)) </a>
+<a class="sourceLine" id="cb217-7" data-line-number="7"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[REEMPLAZAR]) <span class="co">#rótulo indicando la columna que se está graficando</span></a></code></pre></div>
+<p>Para optimizar un poco más podríamos hacer la indexación usando un índice, que podríamos llamar <em>i</em>. En cada caso podríamos entonces dar valores a <em>i</em> de uno a 10, según corresponda en cada caso. La ventaja es que tendríamos que escribir una sola vez el valor de <em>i</em> en cada figura y no necesitamos “tocar” el código, de hecho podemos dar valores de <em>i</em> en consola</p>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="cf">if</span> (<span class="kw">Sys.info</span>()[<span class="st">&#39;sysname&#39;</span>] <span class="op">==</span><span class="st"> &quot;Windows&quot;</span>) <span class="kw">windows</span>() <span class="cf">else</span> <span class="kw">x11</span>() </a>
+<a class="sourceLine" id="cb218-2" data-line-number="2"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb218-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb218-4" data-line-number="4">i =<span class="st"> </span><span class="dv">5</span> <span class="co"># VAMOS CAMBIANDO LOS VALORES DE _i_ de 1 a 10, uno por vez y volvemos a correr desde acá hasta donde dice ## FINAL !!!!!!!</span></a>
+<a class="sourceLine" id="cb218-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb218-6" data-line-number="6"><span class="co">#figura</span></a>
+<a class="sourceLine" id="cb218-7" data-line-number="7"><span class="kw">hist</span>(x[ ,i], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb218-8" data-line-number="8"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb218-9" data-line-number="9"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[i])</a>
+<a class="sourceLine" id="cb218-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb218-11" data-line-number="11"><span class="co">## FINAL</span></a></code></pre></div>
+<p>Muy bien, avanzamos bastante, ahora podríamos cambiar cualquier argumento del plot y simplemente deberíamos repetir estos pasos otra vez 10 veces. Pero mejor todavía, podríamos dar los comandos adecuados para que las repeticiones las haga R!!!! Aquí es donde vienen los loop en nuestra ayuda. En las siguientes líneas de comando reemplazar los tres puntos por lo que corresponda para que el loop haga la tarea por nosotros</p>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1"><span class="cf">if</span> (<span class="kw">Sys.info</span>()[<span class="st">&#39;sysname&#39;</span>] <span class="op">==</span><span class="st"> &quot;Windows&quot;</span>) <span class="kw">windows</span>() <span class="cf">else</span> <span class="kw">x11</span>() </a>
+<a class="sourceLine" id="cb219-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb219-3" data-line-number="3"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb219-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb219-5" data-line-number="5"><span class="cf">for</span>(i <span class="cf">in</span> ...){</a>
+<a class="sourceLine" id="cb219-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb219-7" data-line-number="7"><span class="co">#figura</span></a>
+<a class="sourceLine" id="cb219-8" data-line-number="8"><span class="kw">hist</span>(x[ ,...], <span class="dt">main=</span> <span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb219-9" data-line-number="9"><span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb219-10" data-line-number="10"><span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">8</span>, nombres[...])</a>
+<a class="sourceLine" id="cb219-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb219-12" data-line-number="12">} <span class="co">## FINAL</span></a></code></pre></div>
 <!-- RTA -->
 </div>
 <p style="text-align: center;">

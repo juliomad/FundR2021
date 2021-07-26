@@ -24,7 +24,7 @@
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,8 +142,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="r02-rstudio.html"><a href="r02-rstudio.html"><i class="fa fa-check"></i>R02 Rstudio</a><ul>
 <li class="chapter" data-level="0.2" data-path="crear-un-archivo-de-script-r.html"><a href="crear-un-archivo-de-script-r.html"><i class="fa fa-check"></i><b>0.2</b> Crear un archivo de script (R)</a></li>
-<li class="chapter" data-level="0.3" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>0.3</b> (R)</a></li>
-<li class="chapter" data-level="0.4" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.4</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.3" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.3</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.4" data-path="visualizar-en-consola-rr.html"><a href="visualizar-en-consola-rr.html"><i class="fa fa-check"></i><b>0.4</b> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="r03-básicos.html"><a href="r03-básicos.html"><i class="fa fa-check"></i>R03 Básicos</a><ul>
 <li class="chapter" data-level="0.5" data-path="ayudas-1-rr.html"><a href="ayudas-1-rr.html"><i class="fa fa-check"></i><b>0.5</b> Ayudas 1 (RR)</a></li>
@@ -291,69 +291,69 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="debugging-detectando-errores-4" class="section level2">
 <h2><span class="header-section-number">0.51</span> Debugging, detectando errores</h2>
 <p>Correr las siguientes líneas de comando para generar datos de prueba. Examinar cada uno de los objetos</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1"><span class="kw">rm</span>( <span class="dt">list =</span> <span class="kw">ls</span>() ) <span class="co">#eliminemos primero todos los objetos</span></a></code></pre></div>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1">  x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb106-2" data-line-number="2">        y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span> ,<span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb106-3" data-line-number="3">        z &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">200</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb106-4" data-line-number="4">        g  &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">100</span>, T)</a>
-<a class="sourceLine" id="cb106-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb106-6" data-line-number="6">        tabla &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x, y, g)</a>
-<a class="sourceLine" id="cb106-7" data-line-number="7">        matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>( <span class="kw">c</span>(x, y, g ), <span class="dt">ncol=</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb106-8" data-line-number="8">        lista &lt;-<span class="st"> </span><span class="kw">list</span>(tabla, matriz)</a></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1"><span class="kw">rm</span>( <span class="dt">list =</span> <span class="kw">ls</span>() ) <span class="co">#eliminemos primero todos los objetos</span></a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">  x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb108-2" data-line-number="2">        y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span> ,<span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb108-3" data-line-number="3">        z &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">200</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb108-4" data-line-number="4">        g  &lt;-<span class="st"> </span><span class="kw">sample</span>(letters, <span class="dv">100</span>, T)</a>
+<a class="sourceLine" id="cb108-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb108-6" data-line-number="6">        tabla &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x, y, g)</a>
+<a class="sourceLine" id="cb108-7" data-line-number="7">        matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>( <span class="kw">c</span>(x, y, g ), <span class="dt">ncol=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb108-8" data-line-number="8">        lista &lt;-<span class="st"> </span><span class="kw">list</span>(tabla, matriz)</a></code></pre></div>
 <p>Para cada una de las siguientes líneas de código explicar por que se obtiene un mensaje de error, warnning, o un resultado no esperado</p>
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1"><span class="kw">dim</span>( <span class="kw">data.frame</span>(x, y, z) )</a></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="kw">dim</span>( <span class="kw">data.frame</span>(x, y, z) )</a></code></pre></div>
 <!--
 z tiene distinta longitud que x y y
 -->
 <ol start="2" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="kw">dim</span>(X)</a></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="kw">dim</span>(X)</a></code></pre></div>
 <!--
 X (may) no existe
 -->
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1"><span class="kw">dim</span>(y)</a></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="kw">dim</span>(y)</a></code></pre></div>
 <!--
 la función dim() no es aplicable a vectores, debería ser length(y)
 -->
 <ol start="4" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="kw">cbind</span>(x, y, z)</a></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"><span class="kw">cbind</span>(x, y, z)</a></code></pre></div>
 <!--
 Aviso de que está reciclando valores ya que x, y y z tienen distinta dimensión
 -->
 <ol start="5" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">ncol=</span><span class="dv">2</span>, <span class="dt">nrow=</span><span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1"><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, <span class="dt">ncol=</span><span class="dv">2</span>, <span class="dt">nrow=</span><span class="dv">3</span>)</a></code></pre></div>
 <!--
 Aviso porque está recortando valores dadas las dimensiones de la matriz (6)
 -->
 <ol start="7" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"><span class="kw">matrix</span>( <span class="kw">c</span>(x, y, z), <span class="dt">ncol=</span><span class="dv">3</span> )</a></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="kw">matrix</span>( <span class="kw">c</span>(x, y, z), <span class="dt">ncol=</span><span class="dv">3</span> )</a></code></pre></div>
 <!--
 Aviso de que está reciclando valores ya que x, y y z tienen distinta dimensión
 -->
 <ol start="8" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1">matriz<span class="op">$</span>x</a></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1">matriz<span class="op">$</span>x</a></code></pre></div>
 <!--
 El signo pesos se aplica a data.frame y list, pero no a matrices
 -->
 <ol start="9" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="kw">names</span>( lista[<span class="dv">1</span>] )</a></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"><span class="kw">names</span>( lista[<span class="dv">1</span>] )</a></code></pre></div>
 <!--
 Sobra una comilla en main
 -->

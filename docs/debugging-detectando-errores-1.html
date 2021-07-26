@@ -14,7 +14,7 @@
 
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -158,8 +158,8 @@ details > summary {
 </ul></li>
 <li class="has-sub"><a href="r02-rstudio.html#r02-rstudio">R02 Rstudio</a><ul>
 <li><a href="0-2-crear-un-archivo-de-script-r.html#crear-un-archivo-de-script-r"><span class="toc-section-number">0.2</span> Crear un archivo de script (R)</a></li>
-<li><a href="0-3-r.html#r"><span class="toc-section-number">0.3</span> (R)</a></li>
-<li><a href="0-4-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.4</span> interacción con R (RR)</a></li>
+<li><a href="0-3-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.3</span> interacción con R (RR)</a></li>
+<li><a href="0-4-visualizar-en-consola-rr.html#visualizar-en-consola-rr"><span class="toc-section-number">0.4</span> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="has-sub"><a href="r03-básicos.html#r03-básicos">R03 Básicos</a><ul>
 <li><a href="0-5-ayudas-1-rr.html#ayudas-1-rr"><span class="toc-section-number">0.5</span> Ayudas 1 (RR)</a></li>
@@ -292,22 +292,22 @@ details > summary {
 <div id="debugging-detectando-errores-1" class="section level2 unnumbered">
 <h2>Debugging, detectando errores</h2>
 <p>Para cada una de las siguientes líneas de código explicar porqué se obtiene un mensaje de error, warnning, o un resultado no esperado</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">rm</span>( <span class="dt">list =</span> <span class="kw">ls</span>() ) <span class="co">#eliminemos primero todos los objetos</span></a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">rm</span>( <span class="dt">list =</span> <span class="kw">ls</span>() ) <span class="co">#eliminemos primero todos los objetos</span></a></code></pre></div>
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">k &lt;-<span class="st"> </span><span class="kw">letters</span>(<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">k &lt;-<span class="st"> </span><span class="kw">letters</span>(<span class="dv">1</span>)</a></code></pre></div>
 <!-- letters[1] -->
 <ol start="2" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="kw">month.name</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">month.name</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)</a></code></pre></div>
 <!-- month.name[1:10] -->
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>)</a>
-<a class="sourceLine" id="cb39-2" data-line-number="2">txt &lt;-<span class="st"> </span>letters[y]</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>)</a>
+<a class="sourceLine" id="cb41-2" data-line-number="2">txt &lt;-<span class="st"> </span>letters[y]</a></code></pre></div>
 <!-- y no es numérico -->
 
 </div>

@@ -24,7 +24,7 @@
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,8 +142,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="r02-rstudio.html"><a href="r02-rstudio.html"><i class="fa fa-check"></i>R02 Rstudio</a><ul>
 <li class="chapter" data-level="0.2" data-path="crear-un-archivo-de-script-r.html"><a href="crear-un-archivo-de-script-r.html"><i class="fa fa-check"></i><b>0.2</b> Crear un archivo de script (R)</a></li>
-<li class="chapter" data-level="0.3" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>0.3</b> (R)</a></li>
-<li class="chapter" data-level="0.4" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.4</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.3" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.3</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.4" data-path="visualizar-en-consola-rr.html"><a href="visualizar-en-consola-rr.html"><i class="fa fa-check"></i><b>0.4</b> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="r03-básicos.html"><a href="r03-básicos.html"><i class="fa fa-check"></i>R03 Básicos</a><ul>
 <li class="chapter" data-level="0.5" data-path="ayudas-1-rr.html"><a href="ayudas-1-rr.html"><i class="fa fa-check"></i><b>0.5</b> Ayudas 1 (RR)</a></li>
@@ -293,11 +293,11 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Vamos a ejemplificar el uso de algunos de los resultados obtenidos de una prueba estadística, que en este cas será una regresión lineal.</p>
 <p>Las siguientes líneas generan datos simulados de una variable independiente (x) y de una variable dependiente (y). La variable está simulada con un error normal aditivo, con un intercepto = 0.2 y una pendiente = 0.3.</p>
 <!-- RTA -->
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">100</span>) <span class="co">## Valores de x</span></a>
-<a class="sourceLine" id="cb102-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="fl">0.2</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.3</span> <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">2</span>) <span class="co">## valores de y agregando un error normal aditivo</span></a>
-<a class="sourceLine" id="cb102-3" data-line-number="3"><span class="kw">plot</span>(x, y)</a></code></pre></div>
-<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-124-1.png" width="672" /></p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1">modelo &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x) <span class="co"># modelo lineal simple (distribución normal) de y en función de x </span></a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>, <span class="dv">1</span>, <span class="dv">100</span>) <span class="co">## Valores de x</span></a>
+<a class="sourceLine" id="cb104-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="fl">0.2</span> <span class="op">+</span><span class="st"> </span><span class="fl">0.3</span> <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">2</span>) <span class="co">## valores de y agregando un error normal aditivo</span></a>
+<a class="sourceLine" id="cb104-3" data-line-number="3"><span class="kw">plot</span>(x, y)</a></code></pre></div>
+<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-125-1.png" width="672" /></p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1">modelo &lt;-<span class="st"> </span><span class="kw">lm</span>(y <span class="op">~</span><span class="st"> </span>x) <span class="co"># modelo lineal simple (distribución normal) de y en función de x </span></a></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>¿Qué tipo de objeto es modelo? Si la respuesta no es informativa recurrir a la ayuda de lm y leer la sección <strong>value</strong></li>
 </ol>

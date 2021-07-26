@@ -24,7 +24,7 @@
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,8 +142,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="r02-rstudio.html"><a href="r02-rstudio.html"><i class="fa fa-check"></i>R02 Rstudio</a><ul>
 <li class="chapter" data-level="0.2" data-path="crear-un-archivo-de-script-r.html"><a href="crear-un-archivo-de-script-r.html"><i class="fa fa-check"></i><b>0.2</b> Crear un archivo de script (R)</a></li>
-<li class="chapter" data-level="0.3" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>0.3</b> (R)</a></li>
-<li class="chapter" data-level="0.4" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.4</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.3" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.3</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.4" data-path="visualizar-en-consola-rr.html"><a href="visualizar-en-consola-rr.html"><i class="fa fa-check"></i><b>0.4</b> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="r03-básicos.html"><a href="r03-básicos.html"><i class="fa fa-check"></i>R03 Básicos</a><ul>
 <li class="chapter" data-level="0.5" data-path="ayudas-1-rr.html"><a href="ayudas-1-rr.html"><i class="fa fa-check"></i><b>0.5</b> Ayudas 1 (RR)</a></li>
@@ -291,23 +291,23 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="figura-múltiple-rr" class="section level2">
 <h2><span class="header-section-number">0.93</span> Figura múltiple (RR)</h2>
 <p>Queremos evaluar visualmente cambios en la dispersión de un conjunto de datos aleatorios, con distribución normal, cuando modificamos el valor de sigma. Sabemos que la siguiente función nos va a dar 100 valores aletorios con estructura de error normal, con media= 10 y desvío estandar = 1</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1">miX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb223-2" data-line-number="2"><span class="kw">hist</span>(miX)</a></code></pre></div>
-<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-269-1.png" width="672" /></p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">miX &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span>, <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb225-2" data-line-number="2"><span class="kw">hist</span>(miX)</a></code></pre></div>
+<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-270-1.png" width="672" /></p>
 <p>El objetivo es generar mediante un loop una figura de paneles múltiples (4 filas y dos columnas), donde en cada panel se graficará un histograma con distribuciones normales de 100 valores, con media= 10. Cada figura tendrá un valor de sd definido a priori de acuerdo al vector miSD, como se muestra a continuación</p>
 <!-- RTA -->
-<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-270-1.png" width="672" /></p>
+<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-271-1.png" width="672" /></p>
 <p>Estructura</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">333</span>) <span class="co"># definimos la semilla para que todos obtengamos los mismos números pseudoaleatorios</span></a>
-<a class="sourceLine" id="cb224-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb224-3" data-line-number="3">miSD &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from=</span> <span class="fl">0.5</span>, <span class="dt">to=</span> <span class="dv">4</span>, <span class="dt">by=</span> <span class="fl">0.5</span>) <span class="co"># valores de sd que queremos evaluar</span></a>
-<a class="sourceLine" id="cb224-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb224-5" data-line-number="5"><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>) ) <span class="co">#definimos los paneles y márgenes de las figuras</span></a>
-<a class="sourceLine" id="cb224-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb224-7" data-line-number="7">  <span class="cf">for</span> (i <span class="cf">in</span> miSD){</a>
-<a class="sourceLine" id="cb224-8" data-line-number="8">    miX &lt;-<span class="st"> </span><span class="kw">rnorm</span>( <span class="dv">100</span>, <span class="dv">10</span>, <span class="dt">sd=</span> COMPLETAR )</a>
-<a class="sourceLine" id="cb224-9" data-line-number="9">    <span class="kw">hist</span>(miX, <span class="dt">main=</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">xlim=</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">30</span>))</a>
-<a class="sourceLine" id="cb224-10" data-line-number="10">    }</a></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">333</span>) <span class="co"># definimos la semilla para que todos obtengamos los mismos números pseudoaleatorios</span></a>
+<a class="sourceLine" id="cb226-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb226-3" data-line-number="3">miSD &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from=</span> <span class="fl">0.5</span>, <span class="dt">to=</span> <span class="dv">4</span>, <span class="dt">by=</span> <span class="fl">0.5</span>) <span class="co"># valores de sd que queremos evaluar</span></a>
+<a class="sourceLine" id="cb226-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb226-5" data-line-number="5"><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>) ) <span class="co">#definimos los paneles y márgenes de las figuras</span></a>
+<a class="sourceLine" id="cb226-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb226-7" data-line-number="7">  <span class="cf">for</span> (i <span class="cf">in</span> miSD){</a>
+<a class="sourceLine" id="cb226-8" data-line-number="8">    miX &lt;-<span class="st"> </span><span class="kw">rnorm</span>( <span class="dv">100</span>, <span class="dv">10</span>, <span class="dt">sd=</span> COMPLETAR )</a>
+<a class="sourceLine" id="cb226-9" data-line-number="9">    <span class="kw">hist</span>(miX, <span class="dt">main=</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">xlim=</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">30</span>))</a>
+<a class="sourceLine" id="cb226-10" data-line-number="10">    }</a></code></pre></div>
 </div>
             </section>
 

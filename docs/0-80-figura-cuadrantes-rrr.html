@@ -14,7 +14,7 @@
 
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -158,8 +158,8 @@ details > summary {
 </ul></li>
 <li class="has-sub"><a href="r02-rstudio.html#r02-rstudio">R02 Rstudio</a><ul>
 <li><a href="0-2-crear-un-archivo-de-script-r.html#crear-un-archivo-de-script-r"><span class="toc-section-number">0.2</span> Crear un archivo de script (R)</a></li>
-<li><a href="0-3-r.html#r"><span class="toc-section-number">0.3</span> (R)</a></li>
-<li><a href="0-4-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.4</span> interacción con R (RR)</a></li>
+<li><a href="0-3-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.3</span> interacción con R (RR)</a></li>
+<li><a href="0-4-visualizar-en-consola-rr.html#visualizar-en-consola-rr"><span class="toc-section-number">0.4</span> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="has-sub"><a href="r03-básicos.html#r03-básicos">R03 Básicos</a><ul>
 <li><a href="0-5-ayudas-1-rr.html#ayudas-1-rr"><span class="toc-section-number">0.5</span> Ayudas 1 (RR)</a></li>
@@ -293,24 +293,24 @@ details > summary {
 <h2><span class="header-section-number">0.80</span> Figura cuadrantes (RRR)</h2>
 <p>En base al resultado del punto anterior generar una figura como se muestra a continuación</p>
 <!-- RTA -->
-<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-218-1.png" width="672" /></p>
+<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-219-1.png" width="672" /></p>
 <p>Estructura</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="kw">plot</span>(env<span class="op">$</span>lon, env<span class="op">$</span>lat, <span class="dt">xlab=</span> <span class="st">&quot;longitud&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;latitud&quot;</span>, <span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="dt">type=</span> <span class="st">&quot;n&quot;</span>)</a>
-<a class="sourceLine" id="cb153-2" data-line-number="2">  <span class="kw">points</span>(COMPLETAR, <span class="dt">pch=</span> <span class="dv">16</span>, <span class="dt">col=</span> <span class="st">&quot;red&quot;</span>)</a>
-<a class="sourceLine" id="cb153-3" data-line-number="3">  <span class="kw">points</span>(COMPLETAR, <span class="dt">pch=</span> <span class="dv">16</span>, <span class="dt">col=</span> <span class="st">&quot;black&quot;</span>)</a>
-<a class="sourceLine" id="cb153-4" data-line-number="4">  <span class="kw">points</span>(COMPLETAR, <span class="dt">pch=</span> <span class="dv">16</span>, <span class="dt">col=</span> <span class="st">&quot;green&quot;</span>)</a>
-<a class="sourceLine" id="cb153-5" data-line-number="5">  <span class="kw">points</span>(COMPLETAR, <span class="dt">pch=</span> <span class="dv">16</span>, <span class="dt">col=</span> <span class="st">&quot;blue&quot;</span>)</a>
-<a class="sourceLine" id="cb153-6" data-line-number="6">  <span class="co"># eje x</span></a>
-<a class="sourceLine" id="cb153-7" data-line-number="7">  <span class="kw">axis</span>(<span class="dt">side=</span> <span class="dv">2</span>, <span class="dt">las=</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb153-8" data-line-number="8">  <span class="co"># líneas medias de lon y lat</span></a>
-<a class="sourceLine" id="cb153-9" data-line-number="9">  <span class="kw">abline</span>(<span class="dt">h=</span> COMPLETAR, <span class="dt">lty=</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb153-10" data-line-number="10">  <span class="kw">abline</span>(<span class="dt">v=</span> COMPLETAR, <span class="dt">lty=</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb153-11" data-line-number="11">  <span class="co"># leyendas de cuadrantes</span></a>
-<a class="sourceLine" id="cb153-12" data-line-number="12">  <span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
-<a class="sourceLine" id="cb153-13" data-line-number="13">  <span class="kw">text</span>(<span class="st">&quot;NE&quot;</span>, <span class="dt">x=</span> <span class="fl">9.2</span>, <span class="dt">y=</span> <span class="fl">6.1</span>)</a>
-<a class="sourceLine" id="cb153-14" data-line-number="14">  <span class="kw">text</span>(<span class="st">&quot;NO&quot;</span>, <span class="dt">x=</span> <span class="fl">4.5</span>, <span class="dt">y=</span> <span class="fl">6.1</span>)</a>
-<a class="sourceLine" id="cb153-15" data-line-number="15">  <span class="kw">text</span>(<span class="st">&quot;SE&quot;</span>, <span class="dt">x=</span> <span class="fl">9.2</span>, <span class="dt">y=</span> <span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb153-16" data-line-number="16">  <span class="kw">text</span>(<span class="st">&quot;SO&quot;</span>, <span class="dt">x=</span> <span class="fl">4.5</span>, <span class="dt">y=</span> <span class="fl">0.5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1"><span class="kw">plot</span>(env<span class="op">$</span>lon, env<span class="op">$</span>lat, <span class="dt">xlab=</span> <span class="st">&quot;longitud&quot;</span>, <span class="dt">ylab=</span> <span class="st">&quot;latitud&quot;</span>, <span class="dt">yaxt=</span><span class="st">&quot;n&quot;</span>, <span class="dt">type=</span> <span class="st">&quot;n&quot;</span>)</a>
+<a class="sourceLine" id="cb155-2" data-line-number="2">  <span class="kw">points</span>(COMPLETAR, <span class="dt">pch=</span> <span class="dv">16</span>, <span class="dt">col=</span> <span class="st">&quot;red&quot;</span>)</a>
+<a class="sourceLine" id="cb155-3" data-line-number="3">  <span class="kw">points</span>(COMPLETAR, <span class="dt">pch=</span> <span class="dv">16</span>, <span class="dt">col=</span> <span class="st">&quot;black&quot;</span>)</a>
+<a class="sourceLine" id="cb155-4" data-line-number="4">  <span class="kw">points</span>(COMPLETAR, <span class="dt">pch=</span> <span class="dv">16</span>, <span class="dt">col=</span> <span class="st">&quot;green&quot;</span>)</a>
+<a class="sourceLine" id="cb155-5" data-line-number="5">  <span class="kw">points</span>(COMPLETAR, <span class="dt">pch=</span> <span class="dv">16</span>, <span class="dt">col=</span> <span class="st">&quot;blue&quot;</span>)</a>
+<a class="sourceLine" id="cb155-6" data-line-number="6">  <span class="co"># eje x</span></a>
+<a class="sourceLine" id="cb155-7" data-line-number="7">  <span class="kw">axis</span>(<span class="dt">side=</span> <span class="dv">2</span>, <span class="dt">las=</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb155-8" data-line-number="8">  <span class="co"># líneas medias de lon y lat</span></a>
+<a class="sourceLine" id="cb155-9" data-line-number="9">  <span class="kw">abline</span>(<span class="dt">h=</span> COMPLETAR, <span class="dt">lty=</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb155-10" data-line-number="10">  <span class="kw">abline</span>(<span class="dt">v=</span> COMPLETAR, <span class="dt">lty=</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb155-11" data-line-number="11">  <span class="co"># leyendas de cuadrantes</span></a>
+<a class="sourceLine" id="cb155-12" data-line-number="12">  <span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">10</span>))</a>
+<a class="sourceLine" id="cb155-13" data-line-number="13">  <span class="kw">text</span>(<span class="st">&quot;NE&quot;</span>, <span class="dt">x=</span> <span class="fl">9.2</span>, <span class="dt">y=</span> <span class="fl">6.1</span>)</a>
+<a class="sourceLine" id="cb155-14" data-line-number="14">  <span class="kw">text</span>(<span class="st">&quot;NO&quot;</span>, <span class="dt">x=</span> <span class="fl">4.5</span>, <span class="dt">y=</span> <span class="fl">6.1</span>)</a>
+<a class="sourceLine" id="cb155-15" data-line-number="15">  <span class="kw">text</span>(<span class="st">&quot;SE&quot;</span>, <span class="dt">x=</span> <span class="fl">9.2</span>, <span class="dt">y=</span> <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb155-16" data-line-number="16">  <span class="kw">text</span>(<span class="st">&quot;SO&quot;</span>, <span class="dt">x=</span> <span class="fl">4.5</span>, <span class="dt">y=</span> <span class="fl">0.5</span>)</a></code></pre></div>
 </div>
 <p style="text-align: center;">
 <a href="0-79-ifelse-rrr.html"><button class="btn btn-default">Previous</button></a>

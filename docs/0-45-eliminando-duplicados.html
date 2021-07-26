@@ -14,7 +14,7 @@
 
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -158,8 +158,8 @@ details > summary {
 </ul></li>
 <li class="has-sub"><a href="r02-rstudio.html#r02-rstudio">R02 Rstudio</a><ul>
 <li><a href="0-2-crear-un-archivo-de-script-r.html#crear-un-archivo-de-script-r"><span class="toc-section-number">0.2</span> Crear un archivo de script (R)</a></li>
-<li><a href="0-3-r.html#r"><span class="toc-section-number">0.3</span> (R)</a></li>
-<li><a href="0-4-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.4</span> interacción con R (RR)</a></li>
+<li><a href="0-3-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.3</span> interacción con R (RR)</a></li>
+<li><a href="0-4-visualizar-en-consola-rr.html#visualizar-en-consola-rr"><span class="toc-section-number">0.4</span> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="has-sub"><a href="r03-básicos.html#r03-básicos">R03 Básicos</a><ul>
 <li><a href="0-5-ayudas-1-rr.html#ayudas-1-rr"><span class="toc-section-number">0.5</span> Ayudas 1 (RR)</a></li>
@@ -292,13 +292,13 @@ details > summary {
 <div id="eliminando-duplicados" class="section level2">
 <h2><span class="header-section-number">0.45</span> Eliminando duplicados</h2>
 <p>Las siguientes líneas de comando generan una tabla con registros que a propósito están repetidos (una o más veces). El objetivo es utilizar una combinación de comandos, eliminar las repeticiones de los registros repetidos. Propongo utilizar las funciones unique() y match() para realizar la tarea</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">200</span>)</a>
-<a class="sourceLine" id="cb99-2" data-line-number="2">sitio &lt;-<span class="st">  </span><span class="kw">paste</span>(<span class="st">&quot;sitio&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">sep=</span> <span class="st">&quot; &quot;</span>)</a>
-<a class="sourceLine" id="cb99-3" data-line-number="3">humedad &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">20</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb99-4" data-line-number="4">datos &lt;-<span class="st"> </span><span class="kw">data.frame</span>(sitio, humedad)</a>
-<a class="sourceLine" id="cb99-5" data-line-number="5">datos &lt;-<span class="st"> </span>datos[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dv">30</span>, <span class="dt">replace=</span>T), ]</a>
-<a class="sourceLine" id="cb99-6" data-line-number="6"><span class="kw">rownames</span>(datos) &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
-<a class="sourceLine" id="cb99-7" data-line-number="7">datos</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">200</span>)</a>
+<a class="sourceLine" id="cb101-2" data-line-number="2">sitio &lt;-<span class="st">  </span><span class="kw">paste</span>(<span class="st">&quot;sitio&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">sep=</span> <span class="st">&quot; &quot;</span>)</a>
+<a class="sourceLine" id="cb101-3" data-line-number="3">humedad &lt;-<span class="st"> </span><span class="kw">sample</span>(<span class="dv">20</span><span class="op">:</span><span class="dv">100</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb101-4" data-line-number="4">datos &lt;-<span class="st"> </span><span class="kw">data.frame</span>(sitio, humedad)</a>
+<a class="sourceLine" id="cb101-5" data-line-number="5">datos &lt;-<span class="st"> </span>datos[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dv">30</span>, <span class="dt">replace=</span>T), ]</a>
+<a class="sourceLine" id="cb101-6" data-line-number="6"><span class="kw">rownames</span>(datos) &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb101-7" data-line-number="7">datos</a></code></pre></div>
 <pre><code>##       sitio humedad
 ## 1  sitio 18      63
 ## 2  sitio 12      63

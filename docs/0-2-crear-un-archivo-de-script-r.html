@@ -14,7 +14,7 @@
 
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -158,8 +158,8 @@ details > summary {
 </ul></li>
 <li class="has-sub"><a href="r02-rstudio.html#r02-rstudio">R02 Rstudio</a><ul>
 <li><a href="0-2-crear-un-archivo-de-script-r.html#crear-un-archivo-de-script-r"><span class="toc-section-number">0.2</span> Crear un archivo de script (R)</a></li>
-<li><a href="0-3-r.html#r"><span class="toc-section-number">0.3</span> (R)</a></li>
-<li><a href="0-4-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.4</span> interacción con R (RR)</a></li>
+<li><a href="0-3-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.3</span> interacción con R (RR)</a></li>
+<li><a href="0-4-visualizar-en-consola-rr.html#visualizar-en-consola-rr"><span class="toc-section-number">0.4</span> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="has-sub"><a href="r03-básicos.html#r03-básicos">R03 Básicos</a><ul>
 <li><a href="0-5-ayudas-1-rr.html#ayudas-1-rr"><span class="toc-section-number">0.5</span> Ayudas 1 (RR)</a></li>
@@ -292,10 +292,25 @@ details > summary {
 <div id="crear-un-archivo-de-script-r" class="section level2">
 <h2><span class="header-section-number">0.2</span> Crear un archivo de script (R)</h2>
 <p>Desde el RStudio abrir un nuevo archivo de texto (file/new file/Text File) al que llamaremos script_RO2.<span style="color:red">txt</span></p>
+<p>En el script recién creado pegar el siguiente código:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Este es mi primer script de ejercicios en R</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">5</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">x</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="kw">mean</span>(x)</a></code></pre></div>
+<p>¿Se ven las líneas de código con diferentes colores?</p>
+<p>¿Se puede usar la combinación de teclas CTR + R (los usuarios linux probablemente deban usar CTR + enter) para enviar código a la consola?</p>
+<p>Ahora guardar el <strong>script_R02.<span style="color:red">txt</span></strong>, como <strong>script_R02.<span style="color:red">R</span></strong> (File/Save as)<br />
+¿Se aprecia algún cambio en los colores del código?<br />
+¿Se puede usar la combinación de teclas CTR + R (los usuarios linux probablemente deban usar CTR + enter) para enviar código a la consola?<br />
+Si funciona en la consola debería verse:</p>
+<pre><code>## [1]  5  6  7  8  9 10</code></pre>
+<pre><code>## [1] 7.5</code></pre>
+<p>¿Que se puede concluir acerca de la diferencia entre guardar un script con extensión txt o r/R?</p>
+<!-- **RTA** Cuando guardamos el archivo con extensión txt, el RStudio lo procesa como a un archivo de texto común. Al leer el archivo con extensión r/R, entiende que tiene un formato particular y habilita las funcionalidades específicas para ese idioma de programación. -->
 </div>
 <p style="text-align: center;">
 <a href="r02-rstudio.html"><button class="btn btn-default">Previous</button></a>
-<a href="0-3-r.html"><button class="btn btn-default">Next</button></a>
+<a href="0-3-interacción-con-r-rr.html"><button class="btn btn-default">Next</button></a>
 </p>
 </div>
 </div>

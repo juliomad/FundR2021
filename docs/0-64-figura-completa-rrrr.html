@@ -14,7 +14,7 @@
 
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -158,8 +158,8 @@ details > summary {
 </ul></li>
 <li class="has-sub"><a href="r02-rstudio.html#r02-rstudio">R02 Rstudio</a><ul>
 <li><a href="0-2-crear-un-archivo-de-script-r.html#crear-un-archivo-de-script-r"><span class="toc-section-number">0.2</span> Crear un archivo de script (R)</a></li>
-<li><a href="0-3-r.html#r"><span class="toc-section-number">0.3</span> (R)</a></li>
-<li><a href="0-4-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.4</span> interacción con R (RR)</a></li>
+<li><a href="0-3-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.3</span> interacción con R (RR)</a></li>
+<li><a href="0-4-visualizar-en-consola-rr.html#visualizar-en-consola-rr"><span class="toc-section-number">0.4</span> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="has-sub"><a href="r03-básicos.html#r03-básicos">R03 Básicos</a><ul>
 <li><a href="0-5-ayudas-1-rr.html#ayudas-1-rr"><span class="toc-section-number">0.5</span> Ayudas 1 (RR)</a></li>
@@ -296,7 +296,7 @@ details > summary {
 <li><p>Generar una figura múltiple de dos paneles, mostrando dos gráfico de dispersión. El gráfico del panel superior corresponde a la relación amonio (variable amm) vs fosfato (variable pho) y el del panel inferior a nitrato (ni) vs fosfato (pho). Los colores negro, rojo y verde corresponden respectivamente a las secciones lower, middle y upper.</p></li>
 </ol>
 <!-- RTA -->
-<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-176-1.png" width="672" /></p>
+<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
 <p>Lineamientos generales</p>
 <ul>
 <li>Definir la función <em><strong>par()</strong></em> para componer una figura con dos paneles (superior e inferior)<br />
@@ -310,18 +310,18 @@ details > summary {
 </li>
 <li>Utilizar los parámetros mar y oma para ajustar los márgenes internos y externos de la/las figuras</li>
 </ul>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1"><span class="kw">par</span>( <span class="dt">mfrow=</span> <span class="kw">c</span>(), <span class="dt">mar=</span><span class="kw">c</span>(), <span class="dt">oma=</span> <span class="kw">c</span>() )</a>
-<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="kw">plot</span>()</a>
-<a class="sourceLine" id="cb127-3" data-line-number="3"><span class="kw">axis</span>()</a>
-<a class="sourceLine" id="cb127-4" data-line-number="4"><span class="kw">abline</span>()</a>
-<a class="sourceLine" id="cb127-5" data-line-number="5"><span class="kw">par</span>( <span class="dt">usr=</span> <span class="kw">c</span>() )</a>
-<a class="sourceLine" id="cb127-6" data-line-number="6"><span class="kw">text</span>()</a>
-<a class="sourceLine" id="cb127-7" data-line-number="7"><span class="co">#segunda figura</span></a>
-<a class="sourceLine" id="cb127-8" data-line-number="8"><span class="kw">plot</span>()</a>
-<a class="sourceLine" id="cb127-9" data-line-number="9"><span class="kw">axis</span>()</a>
-<a class="sourceLine" id="cb127-10" data-line-number="10"><span class="kw">abline</span>()</a>
-<a class="sourceLine" id="cb127-11" data-line-number="11"><span class="kw">par</span>( <span class="dt">usr=</span> <span class="kw">c</span>() )</a>
-<a class="sourceLine" id="cb127-12" data-line-number="12"><span class="kw">text</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="kw">par</span>( <span class="dt">mfrow=</span> <span class="kw">c</span>(), <span class="dt">mar=</span><span class="kw">c</span>(), <span class="dt">oma=</span> <span class="kw">c</span>() )</a>
+<a class="sourceLine" id="cb129-2" data-line-number="2"><span class="kw">plot</span>()</a>
+<a class="sourceLine" id="cb129-3" data-line-number="3"><span class="kw">axis</span>()</a>
+<a class="sourceLine" id="cb129-4" data-line-number="4"><span class="kw">abline</span>()</a>
+<a class="sourceLine" id="cb129-5" data-line-number="5"><span class="kw">par</span>( <span class="dt">usr=</span> <span class="kw">c</span>() )</a>
+<a class="sourceLine" id="cb129-6" data-line-number="6"><span class="kw">text</span>()</a>
+<a class="sourceLine" id="cb129-7" data-line-number="7"><span class="co">#segunda figura</span></a>
+<a class="sourceLine" id="cb129-8" data-line-number="8"><span class="kw">plot</span>()</a>
+<a class="sourceLine" id="cb129-9" data-line-number="9"><span class="kw">axis</span>()</a>
+<a class="sourceLine" id="cb129-10" data-line-number="10"><span class="kw">abline</span>()</a>
+<a class="sourceLine" id="cb129-11" data-line-number="11"><span class="kw">par</span>( <span class="dt">usr=</span> <span class="kw">c</span>() )</a>
+<a class="sourceLine" id="cb129-12" data-line-number="12"><span class="kw">text</span>()</a></code></pre></div>
 
 </div>
 <!-- </div> -->

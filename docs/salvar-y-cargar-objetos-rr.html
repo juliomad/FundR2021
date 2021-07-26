@@ -24,7 +24,7 @@
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,8 +142,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="r02-rstudio.html"><a href="r02-rstudio.html"><i class="fa fa-check"></i>R02 Rstudio</a><ul>
 <li class="chapter" data-level="0.2" data-path="crear-un-archivo-de-script-r.html"><a href="crear-un-archivo-de-script-r.html"><i class="fa fa-check"></i><b>0.2</b> Crear un archivo de script (R)</a></li>
-<li class="chapter" data-level="0.3" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>0.3</b> (R)</a></li>
-<li class="chapter" data-level="0.4" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.4</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.3" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.3</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.4" data-path="visualizar-en-consola-rr.html"><a href="visualizar-en-consola-rr.html"><i class="fa fa-check"></i><b>0.4</b> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="r03-básicos.html"><a href="r03-básicos.html"><i class="fa fa-check"></i>R03 Básicos</a><ul>
 <li class="chapter" data-level="0.5" data-path="ayudas-1-rr.html"><a href="ayudas-1-rr.html"><i class="fa fa-check"></i><b>0.5</b> Ayudas 1 (RR)</a></li>
@@ -291,14 +291,14 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="salvar-y-cargar-objetos-rr" class="section level2">
 <h2><span class="header-section-number">0.24</span> Salvar y cargar objetos (RR)</h2>
 <p>Correr la siguiente línea para remover todos los objetos creados durante esta sesión</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="kw">rm</span>( <span class="dt">list =</span> <span class="kw">ls</span>() )</a></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1"><span class="kw">rm</span>( <span class="dt">list =</span> <span class="kw">ls</span>() )</a></code></pre></div>
 <p>Comprobar que no hay objetos en nuestra sesión</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1"><span class="kw">ls</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1"><span class="kw">ls</span>()</a></code></pre></div>
 <pre><code>## character(0)</code></pre>
 <p>Dados los siguientes objetos</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb43-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb43-3" data-line-number="3">z &lt;-<span class="st"> </span>letters</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb45-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb45-3" data-line-number="3">z &lt;-<span class="st"> </span>letters</a></code></pre></div>
 <ol>
 <li>
 Guardar la sesión de trabajo

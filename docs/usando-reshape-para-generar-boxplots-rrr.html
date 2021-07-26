@@ -24,7 +24,7 @@
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,8 +142,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="r02-rstudio.html"><a href="r02-rstudio.html"><i class="fa fa-check"></i>R02 Rstudio</a><ul>
 <li class="chapter" data-level="0.2" data-path="crear-un-archivo-de-script-r.html"><a href="crear-un-archivo-de-script-r.html"><i class="fa fa-check"></i><b>0.2</b> Crear un archivo de script (R)</a></li>
-<li class="chapter" data-level="0.3" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>0.3</b> (R)</a></li>
-<li class="chapter" data-level="0.4" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.4</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.3" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.3</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.4" data-path="visualizar-en-consola-rr.html"><a href="visualizar-en-consola-rr.html"><i class="fa fa-check"></i><b>0.4</b> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="r03-básicos.html"><a href="r03-básicos.html"><i class="fa fa-check"></i>R03 Básicos</a><ul>
 <li class="chapter" data-level="0.5" data-path="ayudas-1-rr.html"><a href="ayudas-1-rr.html"><i class="fa fa-check"></i><b>0.5</b> Ayudas 1 (RR)</a></li>
@@ -307,7 +307,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 6 0.000000 15.929204</code></pre>
 <p>Se desea generar un gráfico boxplot mostrando variaciones en el contenido estomacal de truchas en tres años de muestreo, incluyendo solamente las tres presas más importantes en la dieta, como muestra la siguiente figura
 <!-- RTA --></p>
-<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
+<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
 <p>Sin embargo, habrán notado que el objeto <em>lago</em> está en formato ancho, mientras que la función boxplot requiere que los datos estén en formato largo</p>
 <p>Seguir los siguientes pasos para generar la figura
 1. Generar un nuevo objeto <em>x</em> con las variables “year”, “anfipodos”,“copepodos” y “cladoceros”</p>
@@ -316,7 +316,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li>Usando la función adecuada del paquete _reshape2, cambiar de formato ancho a formato largo y definir value.name= “frec”</li>
 </ol>
 <!-- RTA -->
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1"><span class="kw">head</span>(x); <span class="kw">tail</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"><span class="kw">head</span>(x); <span class="kw">tail</span>(x)</a></code></pre></div>
 <pre><code>##   year  variable     frec
 ## 1 2017 anfipodos 38.84514
 ## 2 2017 anfipodos 84.44976
@@ -334,15 +334,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <ol start="3" style="list-style-type: decimal">
 <li>Correr las siguientes líneas de comando para realizar la figura. NO es necesario endender cada uno de las líneas de comando utilizadas. La figura final tiene algunas modificaciones para lograr un formato más agradable. Si llamaron al objeto con otro nombre que no sea <em>x</em>, cambiar únicamente las partes de boxplot donde se haga referencia al objeto <em>x</em></li>
 </ol>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1">ley &lt;-<span class="st"> </span><span class="kw">rep</span>( <span class="kw">c</span>(<span class="dv">2004</span>, <span class="dv">2013</span>, <span class="dv">2017</span>), <span class="dv">3</span>) <span class="co">## un vector con los nombres del eje x</span></a>
-<a class="sourceLine" id="cb121-2" data-line-number="2"><span class="cf">if</span> (<span class="kw">Sys.info</span>()[<span class="st">&#39;sysname&#39;</span>] <span class="op">==</span><span class="st"> &quot;Windows&quot;</span>) <span class="kw">windows</span>() <span class="cf">else</span> <span class="kw">x11</span>() <span class="co">#chequea el sistema operativo (windows o linux) y abre una ventana gráfica de acuerdo a cada sistema</span></a>
-<a class="sourceLine" id="cb121-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb121-4" data-line-number="4"><span class="kw">par</span>(<span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">1</span>)) <span class="co"># define los valores de los márgenes de la figura</span></a>
-<a class="sourceLine" id="cb121-5" data-line-number="5"><span class="kw">boxplot</span>(x<span class="op">$</span>frec <span class="op">~</span><span class="st"> </span>x<span class="op">$</span>year <span class="op">+</span><span class="st"> </span>x<span class="op">$</span>variable, <span class="dt">names=</span> ley, <span class="dt">las=</span> <span class="dv">2</span>, <span class="dt">ylab=</span> <span class="st">&quot;Frecuencia relativa&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb121-6" data-line-number="6">  <span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">10</span>) ) <span class="co"># redefine la escala de x e y de la figura</span></a>
-<a class="sourceLine" id="cb121-7" data-line-number="7">  <span class="kw">text</span>(<span class="dt">x=</span> <span class="kw">c</span>(<span class="fl">1.5</span>, <span class="fl">3.8</span>, <span class="dv">6</span>, <span class="fl">8.5</span>), <span class="dt">y=</span> <span class="dv">-2</span>, <span class="kw">c</span>(<span class="st">&quot;anfipodos&quot;</span>,<span class="st">&quot;copepodos&quot;</span>, <span class="st">&quot;cladoceros&quot;</span>), <span class="dt">xpd=</span> <span class="ot">NA</span>) <span class="co"># el parámetro xpd= NA dice que text() opera fuera del área de trazado de la figura</span></a></code></pre></div>
-<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1"><span class="kw">dev.off</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1">ley &lt;-<span class="st"> </span><span class="kw">rep</span>( <span class="kw">c</span>(<span class="dv">2004</span>, <span class="dv">2013</span>, <span class="dv">2017</span>), <span class="dv">3</span>) <span class="co">## un vector con los nombres del eje x</span></a>
+<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="cf">if</span> (<span class="kw">Sys.info</span>()[<span class="st">&#39;sysname&#39;</span>] <span class="op">==</span><span class="st"> &quot;Windows&quot;</span>) <span class="kw">windows</span>() <span class="cf">else</span> <span class="kw">x11</span>() <span class="co">#chequea el sistema operativo (windows o linux) y abre una ventana gráfica de acuerdo a cada sistema</span></a>
+<a class="sourceLine" id="cb123-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb123-4" data-line-number="4"><span class="kw">par</span>(<span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">1</span>,<span class="dv">1</span>)) <span class="co"># define los valores de los márgenes de la figura</span></a>
+<a class="sourceLine" id="cb123-5" data-line-number="5"><span class="kw">boxplot</span>(x<span class="op">$</span>frec <span class="op">~</span><span class="st"> </span>x<span class="op">$</span>year <span class="op">+</span><span class="st"> </span>x<span class="op">$</span>variable, <span class="dt">names=</span> ley, <span class="dt">las=</span> <span class="dv">2</span>, <span class="dt">ylab=</span> <span class="st">&quot;Frecuencia relativa&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb123-6" data-line-number="6">  <span class="kw">par</span>(<span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">10</span>) ) <span class="co"># redefine la escala de x e y de la figura</span></a>
+<a class="sourceLine" id="cb123-7" data-line-number="7">  <span class="kw">text</span>(<span class="dt">x=</span> <span class="kw">c</span>(<span class="fl">1.5</span>, <span class="fl">3.8</span>, <span class="dv">6</span>, <span class="fl">8.5</span>), <span class="dt">y=</span> <span class="dv">-2</span>, <span class="kw">c</span>(<span class="st">&quot;anfipodos&quot;</span>,<span class="st">&quot;copepodos&quot;</span>, <span class="st">&quot;cladoceros&quot;</span>), <span class="dt">xpd=</span> <span class="ot">NA</span>) <span class="co"># el parámetro xpd= NA dice que text() opera fuera del área de trazado de la figura</span></a></code></pre></div>
+<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-167-1.png" width="672" /></p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1"><span class="kw">dev.off</span>()</a></code></pre></div>
 <pre><code>## png 
 ##   2</code></pre>
 

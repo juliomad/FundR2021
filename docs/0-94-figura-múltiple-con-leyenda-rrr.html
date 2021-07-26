@@ -14,7 +14,7 @@
 
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -158,8 +158,8 @@ details > summary {
 </ul></li>
 <li class="has-sub"><a href="r02-rstudio.html#r02-rstudio">R02 Rstudio</a><ul>
 <li><a href="0-2-crear-un-archivo-de-script-r.html#crear-un-archivo-de-script-r"><span class="toc-section-number">0.2</span> Crear un archivo de script (R)</a></li>
-<li><a href="0-3-r.html#r"><span class="toc-section-number">0.3</span> (R)</a></li>
-<li><a href="0-4-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.4</span> interacción con R (RR)</a></li>
+<li><a href="0-3-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.3</span> interacción con R (RR)</a></li>
+<li><a href="0-4-visualizar-en-consola-rr.html#visualizar-en-consola-rr"><span class="toc-section-number">0.4</span> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="has-sub"><a href="r03-básicos.html#r03-básicos">R03 Básicos</a><ul>
 <li><a href="0-5-ayudas-1-rr.html#ayudas-1-rr"><span class="toc-section-number">0.5</span> Ayudas 1 (RR)</a></li>
@@ -293,20 +293,20 @@ details > summary {
 <h2><span class="header-section-number">0.94</span> Figura múltiple con leyenda (RRR)</h2>
 <p>Dado que usamos par(mfrow) en el ejercicio anterior sabemos que los valores de sd se fueron completando por filas. Pero el lector, reviewer, etc. no tiene acceso al script. ¿Que tal si en cada figura agregamos una leyenda con el valor de sd utilizado?. El resultado debería verse como en la siguiente figura</p>
 <!-- RTA -->
-<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-272-1.png" width="672" /></p>
+<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-273-1.png" width="672" /></p>
 <p>Estructura</p>
 <p>Recordemos que con par(usr= c(0, 10, 0, 10)) reescaleamos nuestra figura para independizarnos de los valores de los ejes <em>x</em> y <em>y</em> (ver R10.Gráficos2)</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1"><span class="co">## RTA</span></a>
-<a class="sourceLine" id="cb225-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">333</span>)</a>
-<a class="sourceLine" id="cb225-3" data-line-number="3">miSD &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from=</span> <span class="fl">0.5</span>, <span class="dt">to=</span> <span class="dv">4</span>, <span class="dt">by=</span><span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb225-4" data-line-number="4"><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>) ) <span class="co">#definimos los paneles y márgenes de las figuras</span></a>
-<a class="sourceLine" id="cb225-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb225-6" data-line-number="6">  <span class="cf">for</span> (i <span class="cf">in</span> miSD){</a>
-<a class="sourceLine" id="cb225-7" data-line-number="7">    miX &lt;-<span class="st"> </span><span class="kw">rnorm</span>( <span class="dv">100</span>, <span class="dv">10</span>, <span class="dt">sd=</span> COMPLETAR )</a>
-<a class="sourceLine" id="cb225-8" data-line-number="8">    <span class="kw">hist</span>(miX, <span class="dt">main=</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">xlim=</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">30</span>))</a>
-<a class="sourceLine" id="cb225-9" data-line-number="9">    <span class="kw">par</span>( <span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">10</span>) ) <span class="co">## este comando redefine la escala de los ejes</span></a>
-<a class="sourceLine" id="cb225-10" data-line-number="10">    <span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">9</span>, <span class="kw">paste</span>( COMPLETAR ) ) <span class="co">## este comando agrega la leyenda en x y y de acuerdo a la nueva escala definida en par(usr)</span></a>
-<a class="sourceLine" id="cb225-11" data-line-number="11">    }</a></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1"><span class="co">## RTA</span></a>
+<a class="sourceLine" id="cb227-2" data-line-number="2"><span class="kw">set.seed</span>(<span class="dv">333</span>)</a>
+<a class="sourceLine" id="cb227-3" data-line-number="3">miSD &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dt">from=</span> <span class="fl">0.5</span>, <span class="dt">to=</span> <span class="dv">4</span>, <span class="dt">by=</span><span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb227-4" data-line-number="4"><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>) ) <span class="co">#definimos los paneles y márgenes de las figuras</span></a>
+<a class="sourceLine" id="cb227-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb227-6" data-line-number="6">  <span class="cf">for</span> (i <span class="cf">in</span> miSD){</a>
+<a class="sourceLine" id="cb227-7" data-line-number="7">    miX &lt;-<span class="st"> </span><span class="kw">rnorm</span>( <span class="dv">100</span>, <span class="dv">10</span>, <span class="dt">sd=</span> COMPLETAR )</a>
+<a class="sourceLine" id="cb227-8" data-line-number="8">    <span class="kw">hist</span>(miX, <span class="dt">main=</span> <span class="st">&quot;&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;&quot;</span>, <span class="dt">xlim=</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">5</span>, <span class="dv">30</span>))</a>
+<a class="sourceLine" id="cb227-9" data-line-number="9">    <span class="kw">par</span>( <span class="dt">usr=</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">0</span>, <span class="dv">10</span>) ) <span class="co">## este comando redefine la escala de los ejes</span></a>
+<a class="sourceLine" id="cb227-10" data-line-number="10">    <span class="kw">text</span>(<span class="dt">x=</span> <span class="dv">2</span>, <span class="dt">y=</span> <span class="dv">9</span>, <span class="kw">paste</span>( COMPLETAR ) ) <span class="co">## este comando agrega la leyenda en x y y de acuerdo a la nueva escala definida en par(usr)</span></a>
+<a class="sourceLine" id="cb227-11" data-line-number="11">    }</a></code></pre></div>
 </div>
 <p style="text-align: center;">
 <a href="0-93-figura-múltiple-rr.html"><button class="btn btn-default">Previous</button></a>

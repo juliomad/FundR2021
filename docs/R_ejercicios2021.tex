@@ -108,7 +108,7 @@
 
 \title{Fundamentos de R: Prácticas}
 \author{Patricia Dell'Arciprete y Julio Lancelotti}
-\date{2021-07-23}
+\date{2021-07-26}
 
 \begin{document}
 \maketitle
@@ -190,9 +190,6 @@ Abrir el programa R ({NO} el Rstudio), pegar el siguiente código y explicar que
 
 Desde el RStudio abrir un nuevo archivo de texto (file/new file/Text File) al que llamaremos script\_RO2.{txt}
 
-\hypertarget{r}{%
-\section{(R)}\label{r}}
-
 En el script recién creado pegar el siguiente código:
 
 \begin{Shaded}
@@ -248,6 +245,28 @@ Tipeando en el script y enviando el código a consola (CTRL + R)
 Copiando y pegando en consola
 
 Copiando y pegando en el script y enviando el código a consola (CTRL + R)
+
+\hypertarget{visualizar-en-consola-rr}{%
+\section{Visualizar en consola (RR)}\label{visualizar-en-consola-rr}}
+
+Visualizar en consola la salida del siguiente código
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{300}\OperatorTok{:}\DecValTok{400}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] 300 301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317
+##  [19] 318 319 320 321 322 323 324 325 326 327 328 329 330 331 332 333 334 335
+##  [37] 336 337 338 339 340 341 342 343 344 345 346 347 348 349 350 351 352 353
+##  [55] 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371
+##  [73] 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389
+##  [91] 390 391 392 393 394 395 396 397 398 399 400
+\end{verbatim}
+
+¿Qué nos indican los números entre corchetes a la izquierda de la consola?
 
 \hypertarget{r03-buxe1sicos}{%
 \chapter*{R03 Básicos}\label{r03-buxe1sicos}}
@@ -1831,7 +1850,7 @@ Las siguientes líneas generan datos simulados de una variable independiente (x)
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-124-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-125-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1871,7 +1890,7 @@ Las siguientes líneas generan datos simulados de una variable independiente (x)
   En base a los valores de los coeficientes (a, b) y utilizando la función \textbf{\emph{abline()}} agregar los valores esperados a la figura del punto anterior
 \end{enumerate}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-128-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-129-1.pdf}
 
 \hypertarget{debugging-detectando-errores-4}{%
 \section{Debugging, detectando errores}\label{debugging-detectando-errores-4}}
@@ -2014,7 +2033,7 @@ Dados los siguientes objetos:
 
 Obtener una figura como se muestra a continuación
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-141-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-142-1.pdf}
 
 \hypertarget{configurar-figuras-rr}{%
 \section{Configurar figuras (RR)}\label{configurar-figuras-rr}}
@@ -2034,7 +2053,7 @@ Modificar la figura del punto anterior con las siguientes características
 
 Modificar el script para rotar la leyenda de los valores del eje y, de la figura anterior, como se muestra en la siguiente figura
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-145-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-146-1.pdf}
 
 Para hacerlo examinar las opciones del parámetro \textbf{\emph{las}}
 
@@ -2077,7 +2096,7 @@ Para hacerlo examinar las opciones del parámetro \textbf{\emph{las}}
   Obtener la siguiente figura de las posiciones de los sitios de muestreo (Site, de la tabla DoubsEnv). Los colores negro, rojo y verde corresponden a las secciones (sec, de la tabla DoubsEnv) lower, middle y upper respectivamente.
 \end{enumerate}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-149-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-150-1.pdf}
 
 Pasos sugeridos
 
@@ -2102,7 +2121,7 @@ Pasos sugeridos
   Obtener la siguiente figura que corresponde a las posiciones de las estaciones de muestreo (variables lon y lat) y cuyo color corresponde a la sección (negro, rojo y verde para las secciones lower, middle y upper respectivamente). Donde cada número se refiere al ID del sitio (variable Site). Este paso puede hacerse mediante la función text(), donde los valores de \emph{\textbf{x}} y \emph{\textbf{y}} son los mismos usados en la figura
 \end{enumerate}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-151-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-152-1.pdf}
 
 \hypertarget{regresiuxf3n-rrrr}{%
 \section{Regresión (RRRR)}\label{regresiuxf3n-rrrr}}
@@ -2115,7 +2134,7 @@ Pasos sugeridos
   Obtener la siguiente figura tomando las variables amm y pho como \emph{\textbf{y}} y \emph{\textbf{x}} respectivamente. Para agregar la línea de regresión utilizar la función \emph{\textbf{abline()}}, tomando los valores de pendiente e intercepto que se muestran en la figura. Los colores negro, rojo y verde corresponden a las secciones lower, middle y upper respectivamente.
 \end{enumerate}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-152-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-153-1.pdf}
 
 \hypertarget{histograma-rrr}{%
 \section{Histograma (RRR)}\label{histograma-rrr}}
@@ -2129,7 +2148,7 @@ Pasos sugeridos
 
 Obtener la siguiente figura en base a la variable amm de DoubsEnv. Prestar atención a leyendas, tamaño de texto, colores y patrones de colores. Recurrir a la ayuda de hist()
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-154-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-155-1.pdf}
 
 \hypertarget{factores-para-ordenar-figuras-rrr}{%
 \section{Factores para ordenar figuras (RRR)}\label{factores-para-ordenar-figuras-rrr}}
@@ -2144,11 +2163,11 @@ El archivo soil.RData contiene datos simulados de un experimento hipotético. En
   Se quiere realizar una figura como la que se muestra a continuación para evaluar si hay diferencias entre sitios y los tipos de suelo. ** NOTA ** Por ahora no nos vamos a preocupar por embellecer la figura, simplemente nos interesa que se muestre en el orden adecuado. Como se muestra a continuación
 \end{enumerate}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-156-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-157-1.pdf}
 
 Sin embargo boxplot() ordena a las variables por un índice alfabético, y por lo tanto con los datos recién generados la figura quedaría como se muestra a continuación (correr los siguientes comandos para confirmarlo).
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-158-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-159-1.pdf}
 
 Si bien los sitios aparecen ordenados nos gustaría que la figura también muestre los boxplot de la variable considerando el órden de las calidades de suelo (fact) como se muestra en la primera figura.
 
@@ -2178,7 +2197,7 @@ El objeto \emph{lago}, que se encuentra en el archivo \emph{4-Datos/lago.RData},
 
 Se desea generar un gráfico boxplot mostrando variaciones en el contenido estomacal de truchas en tres años de muestreo, incluyendo solamente las tres presas más importantes en la dieta, como muestra la siguiente figura
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-161-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-162-1.pdf}
 
 Sin embargo, habrán notado que el objeto \emph{lago} está en formato ancho, mientras que la función boxplot requiere que los datos estén en formato largo
 
@@ -2239,7 +2258,7 @@ Seguir los siguientes pasos para generar la figura
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-166-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-167-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2279,7 +2298,7 @@ Trabajaremos con el objeto iris (del paquete base de R)
 
 Realizar una figura de dos paneles. En el panel superior graficar la relación entre las variables Sepal.Length y Sepal.With y en el panel inferior graficar un histograma de la variable Sepal.Length. En esta etapa no vamos a personalizar los ejes y leyendas, pero se espera que se modifiquen los parámetros \emph{\textbf{mar}} y \emph{\textbf{oma}} de \emph{\textbf{par()}}, para que la figura luzca similar a la que se muestra a continuación
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-169-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-170-1.pdf}
 
 \hypertarget{dispersiuxf3n-2-rr}{%
 \section{Dispersión 2 (RR)}\label{dispersiuxf3n-2-rr}}
@@ -2298,11 +2317,11 @@ Obtener la siguiente figura. Donde rojo corresponde a las hembras (H en el vecto
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-172-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-173-1.pdf}
 
 1.2 Obtener la siguiente figura. Prestar atención a leyendas, espacios entre figuras, tamaño de símbolos y texto y colores
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-174-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-175-1.pdf}
 
 \hypertarget{figura-completa-rrrr}{%
 \section{Figura completa (RRRR)}\label{figura-completa-rrrr}}
@@ -2315,7 +2334,7 @@ Obtener la siguiente figura. Donde rojo corresponde a las hembras (H en el vecto
   Generar una figura múltiple de dos paneles, mostrando dos gráfico de dispersión. El gráfico del panel superior corresponde a la relación amonio (variable amm) vs fosfato (variable pho) y el del panel inferior a nitrato (ni) vs fosfato (pho). Los colores negro, rojo y verde corresponden respectivamente a las secciones lower, middle y upper.
 \end{enumerate}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-176-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-177-1.pdf}
 
 Lineamientos generales
 
@@ -2367,21 +2386,21 @@ Lineamientos generales
   Utilizar la función \emph{pairs()} para analizar la relación entre las variables correspondientes a las columnas 7 a 14 de \textbf{\emph{env}}.
 \end{enumerate}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-179-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-180-1.pdf}
 
 \hypertarget{boxplot}{%
 \section{Boxplot}\label{boxplot}}
 
 Generar una figura boxplot de la variable fosfato (pho) discriminando por sección del río Doubs. Notar la orientación de la leyenda de los ejes. Recurrir a la función \emph{\textbf{axis()}}.
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-181-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-182-1.pdf}
 
 \hypertarget{gruxe1ficos-condicionales-xyplot}{%
 \section{Gráficos condicionales xyplot}\label{gruxe1ficos-condicionales-xyplot}}
 
 Utilizando las función gráfica \emph{\textbf{xyplot()}} del paquete \emph{\textbf{lattice}} generar una figura múltiple como la mostrada a continuación
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-183-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-184-1.pdf}
 
 \begin{verbatim}
 ## X11cairo 
@@ -2395,7 +2414,7 @@ La figura muestra la relación entre las variables fosfato (pho) y altura (alt) 
 
 Utilizar la función coplot del paquete lattice para generar la siguiente figura
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-185-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-186-1.pdf}
 
 \begin{verbatim}
 ## pdf 
@@ -2554,7 +2573,7 @@ Aplicar la función \textbf{\emph{table()}} a la variable sec
   Utilizando la función \textbf{\emph{apply()}} generar una figura múltiple de 8 paneles (4 filas y dos columnas) utilizando las columnas 7 a 14 de env. La figura se muestra a continuación
 \end{enumerate}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-200-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-201-1.pdf}
 
 Estructura
 
@@ -2774,7 +2793,7 @@ Ayuda: se puede hacer un vector para las posiciones N -- S y otro para las posic
 
 En base al resultado del punto anterior generar una figura como se muestra a continuación
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-218-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-219-1.pdf}
 
 Estructura
 
@@ -3459,7 +3478,7 @@ Ahora queremos generar una figura compuesta con histogramas de los valores de ca
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-259-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-260-1.pdf}
 
 Muy bien, para hacerlo escribimos los comandos para hacer un histograma, luego lo copiamos 9 veces y reemplazamos en la indexación de cada caso por la columna y el nombre de la columna correspondiente. NO es tanto trabajo después de todo. Sin embargo, ahora vemos que la leyendas de los ejes no son las que nos gustaría tener, y el color no nos convence. Tendríamos entonces que editar uno por uno los comandos para modificar cada histograma. Esto además de ser tedioso aumenta las chances de que cometamos errores.
 
@@ -3612,11 +3631,11 @@ Queremos evaluar visualmente cambios en la dispersión de un conjunto de datos a
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-269-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-270-1.pdf}
 
 El objetivo es generar mediante un loop una figura de paneles múltiples (4 filas y dos columnas), donde en cada panel se graficará un histograma con distribuciones normales de 100 valores, con media= 10. Cada figura tendrá un valor de sd definido a priori de acuerdo al vector miSD, como se muestra a continuación
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-270-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-271-1.pdf}
 
 Estructura
 
@@ -3640,7 +3659,7 @@ Estructura
 
 Dado que usamos par(mfrow) en el ejercicio anterior sabemos que los valores de sd se fueron completando por filas. Pero el lector, reviewer, etc. no tiene acceso al script. ¿Que tal si en cada figura agregamos una leyenda con el valor de sd utilizado?. El resultado debería verse como en la siguiente figura
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-272-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-273-1.pdf}
 
 Estructura
 
@@ -3696,11 +3715,11 @@ Por ejemplo, el siguiente código genera una figura de dos paneles, donde se mue
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-274-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-275-1.pdf}
 
 El ejercicio consiste en generar un loop para evaluar el efecto de sd en la dispersión de los datos alrededor del valor medio de y. El objetivo es generar una figura múltiple como la que se muestra a continuación
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-275-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-276-1.pdf}
 
 Estructura
 
@@ -3737,7 +3756,7 @@ Hemos visto que mediante el siguiente código podemos generar una figura múltip
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-278-1.pdf}
+\includegraphics{R_ejercicios2021_files/figure-latex/unnamed-chunk-279-1.pdf}
 
 Sin embargo nos gustaría poder personalizar más la figura. Por ejemplo, agregando el nombre de las variables (en castellano y sin abreviar) y opcionalmente una letra que identifique cada gráfico dentro de la figura general. Recurriremos al uso de un loop para generarlo
 

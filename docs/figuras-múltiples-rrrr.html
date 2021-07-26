@@ -24,7 +24,7 @@
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,8 +142,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="r02-rstudio.html"><a href="r02-rstudio.html"><i class="fa fa-check"></i>R02 Rstudio</a><ul>
 <li class="chapter" data-level="0.2" data-path="crear-un-archivo-de-script-r.html"><a href="crear-un-archivo-de-script-r.html"><i class="fa fa-check"></i><b>0.2</b> Crear un archivo de script (R)</a></li>
-<li class="chapter" data-level="0.3" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>0.3</b> (R)</a></li>
-<li class="chapter" data-level="0.4" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.4</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.3" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.3</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.4" data-path="visualizar-en-consola-rr.html"><a href="visualizar-en-consola-rr.html"><i class="fa fa-check"></i><b>0.4</b> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="r03-básicos.html"><a href="r03-básicos.html"><i class="fa fa-check"></i>R03 Básicos</a><ul>
 <li class="chapter" data-level="0.5" data-path="ayudas-1-rr.html"><a href="ayudas-1-rr.html"><i class="fa fa-check"></i><b>0.5</b> Ayudas 1 (RR)</a></li>
@@ -292,9 +292,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">0.96</span> Figuras múltiples (RRRR)</h2>
 <p>Asignar a un objeto que llamaremos <strong><em>env</em></strong> la tabla contenida en el archivos DoubsEnv.csv, que se encuentra en la carpeta 4-Datos (la descripción de la base de datos se encuentra en el archivo <a href="datos_eer.html">datos_eer.html</a>).</p>
 <p>Hemos visto que mediante el siguiente código podemos generar una figura múltiple de las variables ambientales de env</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb228-2" data-line-number="2"><span class="kw">apply</span>(env[ , <span class="dv">5</span><span class="op">:</span><span class="dv">14</span>], <span class="dv">2</span>, hist, <span class="dt">main=</span> <span class="st">&quot;&quot;</span>, <span class="dt">col=</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
-<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-278-1.png" width="672" /></p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1"><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb230-2" data-line-number="2"><span class="kw">apply</span>(env[ , <span class="dv">5</span><span class="op">:</span><span class="dv">14</span>], <span class="dv">2</span>, hist, <span class="dt">main=</span> <span class="st">&quot;&quot;</span>, <span class="dt">col=</span> <span class="st">&quot;grey&quot;</span>)</a></code></pre></div>
+<p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-279-1.png" width="672" /></p>
 <p>Sin embargo nos gustaría poder personalizar más la figura. Por ejemplo, agregando el nombre de las variables (en castellano y sin abreviar) y opcionalmente una letra que identifique cada gráfico dentro de la figura general. Recurriremos al uso de un loop para generarlo</p>
 <!-- RTA -->
 <p>Lineamientos<br />
@@ -307,17 +307,17 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 * Agregar el texto<br />
 * Fin del loop<br />
 * Leyenda “Frecuencia” en el eje y, común a todos los gráficos</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1">variables &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Altura&quot;</span>, <span class="st">&quot;Pendiente&quot;</span>, <span class="st">&quot;Descarga&quot;</span>, <span class="st">&quot;pH&quot;</span>, <span class="st">&quot;Dureza&quot;</span>, <span class="st">&quot;Fosfato&quot;</span>, <span class="st">&quot;Nitrato&quot;</span>, <span class="st">&quot;Amonio&quot;</span>, <span class="st">&quot;oxígeno&quot;</span>, <span class="st">&quot;Oxígeno disuelto&quot;</span>)</a>
-<a class="sourceLine" id="cb229-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb229-3" data-line-number="3">subEnv &lt;-<span class="st">  </span><span class="co">### subset de env con todas las filas y las columnas 5:14</span></a>
-<a class="sourceLine" id="cb229-4" data-line-number="4"><span class="kw">par</span>( <span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">oma=</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>) )</a>
-<a class="sourceLine" id="cb229-5" data-line-number="5">   <span class="cf">for</span>(i <span class="cf">in</span> ....){</a>
-<a class="sourceLine" id="cb229-6" data-line-number="6">     tg &lt;-<span class="st"> </span><span class="co"># un objeto con la columna i de subEnv</span></a>
-<a class="sourceLine" id="cb229-7" data-line-number="7"><span class="st">     </span><span class="kw">hist</span>(tg, .......) <span class="co"># entre los argumentos debería estar el nombre de la variable i</span></a>
-<a class="sourceLine" id="cb229-8" data-line-number="8">     <span class="kw">par</span>( <span class="kw">usr</span>(.....) )</a>
-<a class="sourceLine" id="cb229-9" data-line-number="9">     <span class="kw">text</span>( ...... ) <span class="co"># entre los argumentos debería estar la letra (a, b c, d, etc.) correspondiente a la variable i</span></a>
-<a class="sourceLine" id="cb229-10" data-line-number="10">     }</a>
-<a class="sourceLine" id="cb229-11" data-line-number="11">  <span class="kw">mtext</span>(.....) <span class="co"># leyenda del eje Y &quot;Frecuencia&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1">variables &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Altura&quot;</span>, <span class="st">&quot;Pendiente&quot;</span>, <span class="st">&quot;Descarga&quot;</span>, <span class="st">&quot;pH&quot;</span>, <span class="st">&quot;Dureza&quot;</span>, <span class="st">&quot;Fosfato&quot;</span>, <span class="st">&quot;Nitrato&quot;</span>, <span class="st">&quot;Amonio&quot;</span>, <span class="st">&quot;oxígeno&quot;</span>, <span class="st">&quot;Oxígeno disuelto&quot;</span>)</a>
+<a class="sourceLine" id="cb231-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb231-3" data-line-number="3">subEnv &lt;-<span class="st">  </span><span class="co">### subset de env con todas las filas y las columnas 5:14</span></a>
+<a class="sourceLine" id="cb231-4" data-line-number="4"><span class="kw">par</span>( <span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">2</span>), <span class="dt">mar=</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">1</span>), <span class="dt">oma=</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">1</span>) )</a>
+<a class="sourceLine" id="cb231-5" data-line-number="5">   <span class="cf">for</span>(i <span class="cf">in</span> ....){</a>
+<a class="sourceLine" id="cb231-6" data-line-number="6">     tg &lt;-<span class="st"> </span><span class="co"># un objeto con la columna i de subEnv</span></a>
+<a class="sourceLine" id="cb231-7" data-line-number="7"><span class="st">     </span><span class="kw">hist</span>(tg, .......) <span class="co"># entre los argumentos debería estar el nombre de la variable i</span></a>
+<a class="sourceLine" id="cb231-8" data-line-number="8">     <span class="kw">par</span>( <span class="kw">usr</span>(.....) )</a>
+<a class="sourceLine" id="cb231-9" data-line-number="9">     <span class="kw">text</span>( ...... ) <span class="co"># entre los argumentos debería estar la letra (a, b c, d, etc.) correspondiente a la variable i</span></a>
+<a class="sourceLine" id="cb231-10" data-line-number="10">     }</a>
+<a class="sourceLine" id="cb231-11" data-line-number="11">  <span class="kw">mtext</span>(.....) <span class="co"># leyenda del eje Y &quot;Frecuencia&quot;</span></a></code></pre></div>
 </div>
             </section>
 

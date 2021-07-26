@@ -14,7 +14,7 @@
 
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -158,8 +158,8 @@ details > summary {
 </ul></li>
 <li class="has-sub"><a href="r02-rstudio.html#r02-rstudio">R02 Rstudio</a><ul>
 <li><a href="0-2-crear-un-archivo-de-script-r.html#crear-un-archivo-de-script-r"><span class="toc-section-number">0.2</span> Crear un archivo de script (R)</a></li>
-<li><a href="0-3-r.html#r"><span class="toc-section-number">0.3</span> (R)</a></li>
-<li><a href="0-4-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.4</span> interacción con R (RR)</a></li>
+<li><a href="0-3-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.3</span> interacción con R (RR)</a></li>
+<li><a href="0-4-visualizar-en-consola-rr.html#visualizar-en-consola-rr"><span class="toc-section-number">0.4</span> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="has-sub"><a href="r03-básicos.html#r03-básicos">R03 Básicos</a><ul>
 <li><a href="0-5-ayudas-1-rr.html#ayudas-1-rr"><span class="toc-section-number">0.5</span> Ayudas 1 (RR)</a></li>
@@ -292,33 +292,33 @@ details > summary {
 <div id="debugging-detectando-errores-3" class="section level2">
 <h2><span class="header-section-number">0.28</span> Debugging, detectando errores</h2>
 <p>Para cada una de las siguientes líneas de código explicar porqué se obtiene un mensaje de error, warnning, o un resultado no esperado</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">rm</span>( <span class="dt">list =</span> <span class="kw">ls</span>() ) <span class="co">#eliminemos primero todos los objetos</span></a></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="co">#Generamos un objeto de prueba</span></a>
-<a class="sourceLine" id="cb49-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span></a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">rm</span>( <span class="dt">list =</span> <span class="kw">ls</span>() ) <span class="co">#eliminemos primero todos los objetos</span></a></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="co">#Generamos un objeto de prueba</span></a>
+<a class="sourceLine" id="cb51-2" data-line-number="2">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">100</span></a></code></pre></div>
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">read.table</span>(c<span class="op">:</span><span class="er">/</span>R2015<span class="op">/</span>R_Archivos<span class="op">/</span><span class="dv">4</span><span class="op">-</span>Datos<span class="op">/</span>MiTrayect1.csv, <span class="dt">sep=</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec=</span> <span class="st">&quot;.&quot;</span>, <span class="dt">header=</span> T )</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">read.table</span>(c<span class="op">:</span><span class="er">/</span>R2015<span class="op">/</span>R_Archivos<span class="op">/</span><span class="dv">4</span><span class="op">-</span>Datos<span class="op">/</span>MiTrayect1.csv, <span class="dt">sep=</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec=</span> <span class="st">&quot;.&quot;</span>, <span class="dt">header=</span> T )</a></code></pre></div>
 <!-- La ruta no está entre comillas -->
 <ol start="2" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw">read.table</span>(<span class="st">&quot;C:/R2015/R_Archivos/4-Datos/MiTrayect1.csv&quot;</span>, <span class="dt">sep=</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec=</span> <span class="st">&quot;.&quot;</span>, <span class="dt">header=</span> <span class="st">&quot;T&quot;</span> )</a></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">read.table</span>(<span class="st">&quot;C:/R2015/R_Archivos/4-Datos/MiTrayect1.csv&quot;</span>, <span class="dt">sep=</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec=</span> <span class="st">&quot;.&quot;</span>, <span class="dt">header=</span> <span class="st">&quot;T&quot;</span> )</a></code></pre></div>
 <!-- header= T (sin comillas) -->
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">write.table</span>(<span class="st">&quot;C:/R2015/R_Archivos/Resultados/nombre.csv&quot;</span>, <span class="dt">sep=</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec=</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">write.table</span>(<span class="st">&quot;C:/R2015/R_Archivos/Resultados/nombre.csv&quot;</span>, <span class="dt">sep=</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec=</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
 <!-- falta el objeto a guardar (x) -->
 <ol start="4" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">write.table</span>(x, <span class="st">&quot;C:/R2015/R_Archivos/Resultados/nombre.csv&quot;</span>, <span class="dt">sep=</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec=</span> <span class="st">&quot;.&quot;</span>, <span class="dt">header=</span> T)</a></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">write.table</span>(x, <span class="st">&quot;C:/R2015/R_Archivos/Resultados/nombre.csv&quot;</span>, <span class="dt">sep=</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec=</span> <span class="st">&quot;.&quot;</span>, <span class="dt">header=</span> T)</a></code></pre></div>
 <!-- header no es un argumento de write.table -->
 <ol start="5" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">write.table</span>(x <span class="st">&quot;C:/R2015/R_Archivos/Resultados/nombre.csv&quot;</span>, <span class="dt">sep=</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec=</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="kw">write.table</span>(x <span class="st">&quot;C:/R2015/R_Archivos/Resultados/nombre.csv&quot;</span>, <span class="dt">sep=</span> <span class="st">&quot;,&quot;</span>, <span class="dt">dec=</span> <span class="st">&quot;.&quot;</span>)</a></code></pre></div>
 <!-- Falta una coma entre tray3 y ruta -->
 
 </div>

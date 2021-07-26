@@ -14,7 +14,7 @@
 
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -158,8 +158,8 @@ details > summary {
 </ul></li>
 <li class="has-sub"><a href="r02-rstudio.html#r02-rstudio">R02 Rstudio</a><ul>
 <li><a href="0-2-crear-un-archivo-de-script-r.html#crear-un-archivo-de-script-r"><span class="toc-section-number">0.2</span> Crear un archivo de script (R)</a></li>
-<li><a href="0-3-r.html#r"><span class="toc-section-number">0.3</span> (R)</a></li>
-<li><a href="0-4-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.4</span> interacción con R (RR)</a></li>
+<li><a href="0-3-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.3</span> interacción con R (RR)</a></li>
+<li><a href="0-4-visualizar-en-consola-rr.html#visualizar-en-consola-rr"><span class="toc-section-number">0.4</span> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="has-sub"><a href="r03-básicos.html#r03-básicos">R03 Básicos</a><ul>
 <li><a href="0-5-ayudas-1-rr.html#ayudas-1-rr"><span class="toc-section-number">0.5</span> Ayudas 1 (RR)</a></li>
@@ -292,42 +292,42 @@ details > summary {
 <div id="debugging-detectando-errores-6" class="section level2">
 <h2><span class="header-section-number">0.77</span> Debugging, detectando errores</h2>
 <p>Correr las siguientes líneas de comando para generar datos de prueba. Examinar cada uno de los objetos</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="kw">rm</span>( <span class="dt">list =</span> <span class="kw">ls</span>() ) <span class="co">#eliminemos primero todos los objetos</span></a></code></pre></div>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">10</span>, <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb141-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span> ,<span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb141-3" data-line-number="3">z &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">200</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb141-4" data-line-number="4">g  &lt;-<span class="st"> </span><span class="kw">sample</span>(letters,<span class="dv">100</span>,T)</a>
-<a class="sourceLine" id="cb141-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb141-6" data-line-number="6">tabla &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x,y,g)</a>
-<a class="sourceLine" id="cb141-7" data-line-number="7">matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(x,y,g), <span class="dt">ncol=</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb141-8" data-line-number="8">lista &lt;-<span class="st"> </span><span class="kw">list</span>(tabla, matriz)</a></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="kw">rm</span>( <span class="dt">list =</span> <span class="kw">ls</span>() ) <span class="co">#eliminemos primero todos los objetos</span></a></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">10</span>, <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb143-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span> ,<span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb143-3" data-line-number="3">z &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">200</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb143-4" data-line-number="4">g  &lt;-<span class="st"> </span><span class="kw">sample</span>(letters,<span class="dv">100</span>,T)</a>
+<a class="sourceLine" id="cb143-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb143-6" data-line-number="6">tabla &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x,y,g)</a>
+<a class="sourceLine" id="cb143-7" data-line-number="7">matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(x,y,g), <span class="dt">ncol=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb143-8" data-line-number="8">lista &lt;-<span class="st"> </span><span class="kw">list</span>(tabla, matriz)</a></code></pre></div>
 <p>Para cada una de las siguientes líneas de código explicar porqué se obtiene un mensaje de error, warnning, o un resultado no esperado</p>
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="kw">apply</span>(lista[[<span class="dv">1</span>]], <span class="dv">2</span>, mean)</a></code></pre></div>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1"><span class="kw">apply</span>(lista[[<span class="dv">1</span>]][ ,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dv">2</span>, mean) <span class="co">#funciona</span></a></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="kw">apply</span>(lista[[<span class="dv">1</span>]], <span class="dv">2</span>, mean)</a></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1"><span class="kw">apply</span>(lista[[<span class="dv">1</span>]][ ,<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dv">2</span>, mean) <span class="co">#funciona</span></a></code></pre></div>
 <!--
 la tercera columna del primer elemento de la lista es texto
 -->
 <ol start="2" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="kw">apply</span>(lista[[<span class="dv">1</span>][<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dv">2</span>, mean)</a></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="kw">apply</span>(lista[[<span class="dv">1</span>][<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>], <span class="dv">2</span>, mean)</a></code></pre></div>
 <!--
 falta un corchete en lista[[1]]
 -->
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1"><span class="kw">tapply</span>(<span class="kw">c</span>(x,y), g, mean)</a></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1"><span class="kw">tapply</span>(<span class="kw">c</span>(x,y), g, mean)</a></code></pre></div>
 <!--
 el objeto g no puede ser usado porque tiene menos elementos que y y x
 -->
 <ol start="4" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="kw">colMeans</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="kw">colMeans</span>(x)</a></code></pre></div>
 <!--
 colMeans no está definido para vectores
 

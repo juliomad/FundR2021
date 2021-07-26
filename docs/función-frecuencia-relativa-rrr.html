@@ -24,7 +24,7 @@
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,8 +142,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="r02-rstudio.html"><a href="r02-rstudio.html"><i class="fa fa-check"></i>R02 Rstudio</a><ul>
 <li class="chapter" data-level="0.2" data-path="crear-un-archivo-de-script-r.html"><a href="crear-un-archivo-de-script-r.html"><i class="fa fa-check"></i><b>0.2</b> Crear un archivo de script (R)</a></li>
-<li class="chapter" data-level="0.3" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>0.3</b> (R)</a></li>
-<li class="chapter" data-level="0.4" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.4</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.3" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.3</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.4" data-path="visualizar-en-consola-rr.html"><a href="visualizar-en-consola-rr.html"><i class="fa fa-check"></i><b>0.4</b> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="r03-básicos.html"><a href="r03-básicos.html"><i class="fa fa-check"></i>R03 Básicos</a><ul>
 <li class="chapter" data-level="0.5" data-path="ayudas-1-rr.html"><a href="ayudas-1-rr.html"><i class="fa fa-check"></i><b>0.5</b> Ayudas 1 (RR)</a></li>
@@ -296,12 +296,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </blockquote>
 <p>Donde N<sub>i</sub> es el valor de la celda i y N es la suma de todos los valores del vector</p>
 <p>Los siguientes comandos generan datos simulados de 5 poblaciones de una especie hipotética de depredador que consume 5 tipos de presa.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">  presas &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;presa&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb194-2" data-line-number="2">  pobl &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;pob&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb194-3" data-line-number="3">  <span class="kw">set.seed</span>(<span class="dv">300</span>)</a>
-<a class="sourceLine" id="cb194-4" data-line-number="4">  datos &lt;-<span class="st"> </span><span class="kw">round</span>( <span class="kw">runif</span>(<span class="dv">25</span>, <span class="dv">1</span>, <span class="dv">100</span>), <span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb194-5" data-line-number="5">  tabla &lt;-<span class="st"> </span><span class="kw">matrix</span>(datos, <span class="dt">ncol=</span><span class="dv">5</span>, <span class="dt">dimnames=</span><span class="kw">list</span>(presas, pobl))</a>
-<a class="sourceLine" id="cb194-6" data-line-number="6">  tabla</a></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1">  presas &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;presa&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb196-2" data-line-number="2">  pobl &lt;-<span class="st"> </span><span class="kw">paste</span>(<span class="st">&quot;pob&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb196-3" data-line-number="3">  <span class="kw">set.seed</span>(<span class="dv">300</span>)</a>
+<a class="sourceLine" id="cb196-4" data-line-number="4">  datos &lt;-<span class="st"> </span><span class="kw">round</span>( <span class="kw">runif</span>(<span class="dv">25</span>, <span class="dv">1</span>, <span class="dv">100</span>), <span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb196-5" data-line-number="5">  tabla &lt;-<span class="st"> </span><span class="kw">matrix</span>(datos, <span class="dt">ncol=</span><span class="dv">5</span>, <span class="dt">dimnames=</span><span class="kw">list</span>(presas, pobl))</a>
+<a class="sourceLine" id="cb196-6" data-line-number="6">  tabla</a></code></pre></div>
 <pre><code>##         pob 1 pob 2 pob 3 pob 4 pob 5
 ## presa 1    92     2    94    99    99
 ## presa 2    77    76    33    89    50
@@ -313,22 +313,22 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <!-- RTA -->
 <p>Aplicando la función recién creada a la primera fila de la tabla debería dar el siguiente resultado</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1">prueba &lt;-<span class="st"> </span><span class="kw">FR</span>(tabla[<span class="dv">1</span>, ])</a>
-<a class="sourceLine" id="cb196-2" data-line-number="2">prueba</a></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1">prueba &lt;-<span class="st"> </span><span class="kw">FR</span>(tabla[<span class="dv">1</span>, ])</a>
+<a class="sourceLine" id="cb198-2" data-line-number="2">prueba</a></code></pre></div>
 <pre><code>##      pob 1      pob 2      pob 3      pob 4      pob 5 
 ## 23.8341969  0.5181347 24.3523316 25.6476684 25.6476684</code></pre>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1"><span class="kw">sum</span>(prueba)</a></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1"><span class="kw">sum</span>(prueba)</a></code></pre></div>
 <pre><code>## [1] 100</code></pre>
 <p>La tabla de salida debería verse como la siguiente (los valores obtenidos fueron redondeados ( <strong><em>round()</em></strong> ) a dos decimales)</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1">salida &lt;-<span class="st"> </span><span class="kw">round</span> (<span class="kw">apply</span>(tabla, <span class="dv">1</span>, FR), <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb200-2" data-line-number="2">salida</a></code></pre></div>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1">salida &lt;-<span class="st"> </span><span class="kw">round</span> (<span class="kw">apply</span>(tabla, <span class="dv">1</span>, FR), <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb202-2" data-line-number="2">salida</a></code></pre></div>
 <pre><code>##       presa 1 presa 2 presa 3 presa 4 presa 5
 ## pob 1   23.83   23.69   24.92   29.48   24.13
 ## pob 2    0.52   23.38   15.38   18.73   31.47
 ## pob 3   24.35   10.15   24.62   23.51   23.08
 ## pob 4   25.65   27.38   20.62   25.50   17.83
 ## pob 5   25.65   15.38   14.46    2.79    3.50</code></pre>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1"><span class="kw">colSums</span>(salida) <span class="co">## la suma de las frecuencias realtivas por columna debe dar 1</span></a></code></pre></div>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1"><span class="kw">colSums</span>(salida) <span class="co">## la suma de las frecuencias realtivas por columna debe dar 1</span></a></code></pre></div>
 <pre><code>## presa 1 presa 2 presa 3 presa 4 presa 5 
 ##  100.00   99.98  100.00  100.01  100.01</code></pre>
 <!-- ### 14.8 Función t test (RRR) -->

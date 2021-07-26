@@ -14,7 +14,7 @@
 
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -158,8 +158,8 @@ details > summary {
 </ul></li>
 <li class="has-sub"><a href="r02-rstudio.html#r02-rstudio">R02 Rstudio</a><ul>
 <li><a href="0-2-crear-un-archivo-de-script-r.html#crear-un-archivo-de-script-r"><span class="toc-section-number">0.2</span> Crear un archivo de script (R)</a></li>
-<li><a href="0-3-r.html#r"><span class="toc-section-number">0.3</span> (R)</a></li>
-<li><a href="0-4-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.4</span> interacción con R (RR)</a></li>
+<li><a href="0-3-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.3</span> interacción con R (RR)</a></li>
+<li><a href="0-4-visualizar-en-consola-rr.html#visualizar-en-consola-rr"><span class="toc-section-number">0.4</span> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="has-sub"><a href="r03-básicos.html#r03-básicos">R03 Básicos</a><ul>
 <li><a href="0-5-ayudas-1-rr.html#ayudas-1-rr"><span class="toc-section-number">0.5</span> Ayudas 1 (RR)</a></li>
@@ -292,62 +292,62 @@ details > summary {
 <div id="debugging-detectando-errores-5" class="section level2">
 <h2><span class="header-section-number">0.69</span> Debugging, detectando errores</h2>
 <p>Correr las siguientes líneas de comando para generar datos de prueba. Examinar cada uno de los objetos</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1"><span class="kw">rm</span>( <span class="dt">list =</span> <span class="kw">ls</span>() ) <span class="co">#eliminemos primero todos los objetos</span></a></code></pre></div>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1">    x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">10</span>, <span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb131-2" data-line-number="2">    y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span> ,<span class="dv">100</span>)</a>
-<a class="sourceLine" id="cb131-3" data-line-number="3">    z &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">200</span>, <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb131-4" data-line-number="4">        g  &lt;-<span class="st"> </span><span class="kw">sample</span>(letters,<span class="dv">100</span>, T)</a>
-<a class="sourceLine" id="cb131-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb131-6" data-line-number="6">        tabla &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x,y,g)</a>
-<a class="sourceLine" id="cb131-7" data-line-number="7">        matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(x,y,g), <span class="dt">ncol=</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb131-8" data-line-number="8">        lista &lt;-<span class="st"> </span><span class="kw">list</span>(tabla, matriz)</a></code></pre></div>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1"><span class="kw">rm</span>( <span class="dt">list =</span> <span class="kw">ls</span>() ) <span class="co">#eliminemos primero todos los objetos</span></a></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1">    x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">100</span>,<span class="dv">10</span>, <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb133-2" data-line-number="2">    y &lt;-<span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">100</span>, <span class="dv">10</span> ,<span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb133-3" data-line-number="3">    z &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>,<span class="dv">200</span>, <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb133-4" data-line-number="4">        g  &lt;-<span class="st"> </span><span class="kw">sample</span>(letters,<span class="dv">100</span>, T)</a>
+<a class="sourceLine" id="cb133-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb133-6" data-line-number="6">        tabla &lt;-<span class="st"> </span><span class="kw">data.frame</span>(x,y,g)</a>
+<a class="sourceLine" id="cb133-7" data-line-number="7">        matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="kw">c</span>(x,y,g), <span class="dt">ncol=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb133-8" data-line-number="8">        lista &lt;-<span class="st"> </span><span class="kw">list</span>(tabla, matriz)</a></code></pre></div>
 <p>Para cada una de las siguientes líneas de código explicar por que se obtiene un mensaje de error, warnning, o un resultado no esperado</p>
 <ol style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1"><span class="kw">plot</span>(x,y, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">col =</span> blue)</a></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1"><span class="kw">plot</span>(x,y, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">col =</span> blue)</a></code></pre></div>
 <!--
 "blue"
 -->
 <ol start="2" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1">mhist &lt;-<span class="st"> </span><span class="kw">hist</span>(x)<span class="er">)</span></a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1">mhist &lt;-<span class="st"> </span><span class="kw">hist</span>(x)<span class="er">)</span></a></code></pre></div>
 <!--
 sobra un paréntesis
 -->
 <ol start="3" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1"><span class="kw">plot</span>(x, y, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">label =</span> T, <span class="dt">col =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">main=</span><span class="st">&quot;mifigura&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="kw">plot</span>(x, y, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">label =</span> T, <span class="dt">col =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">main=</span><span class="st">&quot;mifigura&quot;</span>)</a></code></pre></div>
 <!--
 label no es un parámetro de la función plot
 -->
 <ol start="4" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="kw">plot</span>(x, y, <span class="kw">ylim</span>(<span class="dv">1</span>,<span class="dv">100</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="kw">plot</span>(x, y, <span class="kw">ylim</span>(<span class="dv">1</span>,<span class="dv">100</span>))</a></code></pre></div>
 <!--
 falta la función concatenar en ylim
 -->
 <ol start="5" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="kw">barplot</span>(g)</a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="kw">barplot</span>(g)</a></code></pre></div>
 <!--
 g no es un objeto numérico
 -->
 <ol start="6" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="kw">plot</span>(x, y, <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span> <span class="st">&quot;blue&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1"><span class="kw">plot</span>(x, y, <span class="dt">col=</span><span class="kw">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;green&quot;</span> <span class="st">&quot;blue&quot;</span>))</a></code></pre></div>
 <!--
 falta una coma entre "green" y "blue"
 -->
 <ol start="7" style="list-style-type: decimal">
 <li></li>
 </ol>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="kw">plot</span>(x, y, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">col =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">main=</span><span class="st">&quot;&quot;&quot;)</span></a></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="kw">plot</span>(x, y, <span class="dt">pch =</span> <span class="dv">16</span>, <span class="dt">col =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">main=</span><span class="st">&quot;&quot;&quot;)</span></a></code></pre></div>
 <!--
 Sobra una comilla en main
 -->

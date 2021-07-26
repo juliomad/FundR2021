@@ -24,7 +24,7 @@
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -142,8 +142,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="" data-path="r02-rstudio.html"><a href="r02-rstudio.html"><i class="fa fa-check"></i>R02 Rstudio</a><ul>
 <li class="chapter" data-level="0.2" data-path="crear-un-archivo-de-script-r.html"><a href="crear-un-archivo-de-script-r.html"><i class="fa fa-check"></i><b>0.2</b> Crear un archivo de script (R)</a></li>
-<li class="chapter" data-level="0.3" data-path="r.html"><a href="r.html"><i class="fa fa-check"></i><b>0.3</b> (R)</a></li>
-<li class="chapter" data-level="0.4" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.4</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.3" data-path="interacción-con-r-rr.html"><a href="interacción-con-r-rr.html"><i class="fa fa-check"></i><b>0.3</b> interacción con R (RR)</a></li>
+<li class="chapter" data-level="0.4" data-path="visualizar-en-consola-rr.html"><a href="visualizar-en-consola-rr.html"><i class="fa fa-check"></i><b>0.4</b> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="r03-básicos.html"><a href="r03-básicos.html"><i class="fa fa-check"></i>R03 Básicos</a><ul>
 <li class="chapter" data-level="0.5" data-path="ayudas-1-rr.html"><a href="ayudas-1-rr.html"><i class="fa fa-check"></i><b>0.5</b> Ayudas 1 (RR)</a></li>
@@ -292,15 +292,15 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">0.88</span> Funciones: No contar los NAs (RRR)</h2>
 <p>Las funciones de la familia <strong><em>apply</em></strong> no tienen argumentos para eliminar los NA’s de los resultados cuando se usa <strong><em>length()</em></strong>
 Ejemplo</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1">    x &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">4</span>) )</a>
-<a class="sourceLine" id="cb182-2" data-line-number="2">    x</a></code></pre></div>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1">    x &lt;-<span class="st"> </span><span class="kw">c</span>( <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="kw">rep</span>(<span class="ot">NA</span>, <span class="dv">4</span>) )</a>
+<a class="sourceLine" id="cb184-2" data-line-number="2">    x</a></code></pre></div>
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 NA NA NA NA</code></pre>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1">        y &lt;-<span class="st"> </span><span class="kw">rep</span>( <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="dt">each=</span><span class="dv">12</span>) </a>
-<a class="sourceLine" id="cb184-2" data-line-number="2">    y</a></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1">        y &lt;-<span class="st"> </span><span class="kw">rep</span>( <span class="kw">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="dt">each=</span><span class="dv">12</span>) </a>
+<a class="sourceLine" id="cb186-2" data-line-number="2">    y</a></code></pre></div>
 <pre><code> [1] &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;A&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot;
 [20] &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot; &quot;B&quot;</code></pre>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1">        z &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pob=</span>y,<span class="dt">x=</span>x)</a>
-<a class="sourceLine" id="cb186-2" data-line-number="2">    z</a></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1">        z &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">pob=</span>y,<span class="dt">x=</span>x)</a>
+<a class="sourceLine" id="cb188-2" data-line-number="2">    z</a></code></pre></div>
 <pre><code>   pob  x
 1    A  1
 2    A  2
@@ -326,10 +326,10 @@ Ejemplo</p>
 22   B NA
 23   B NA
 24   B NA</code></pre>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1">        <span class="kw">tapply</span>(z<span class="op">$</span>x, z<span class="op">$</span>pob, mean, <span class="dt">na.rm=</span>T) <span class="co">#esto funciona</span></a></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1">        <span class="kw">tapply</span>(z<span class="op">$</span>x, z<span class="op">$</span>pob, mean, <span class="dt">na.rm=</span>T) <span class="co">#esto funciona</span></a></code></pre></div>
 <pre><code>   A    B 
  6.5 16.5 </code></pre>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1">    <span class="kw">tapply</span>(z<span class="op">$</span>x, z<span class="op">$</span>pob, length) <span class="co">#esto funciona pero cuenta los NA&#39;s</span></a></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">    <span class="kw">tapply</span>(z<span class="op">$</span>x, z<span class="op">$</span>pob, length) <span class="co">#esto funciona pero cuenta los NA&#39;s</span></a></code></pre></div>
 <pre><code> A  B 
 12 12 </code></pre>
 <ol style="list-style-type: decimal">
@@ -337,7 +337,7 @@ Ejemplo</p>
 </ol>
 <!-- RTA -->
 <p>La salida de tapply() usando la función debería dar:</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">    <span class="kw">tapply</span>(z<span class="op">$</span>x, z<span class="op">$</span>pob, sinNA)</a></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">    <span class="kw">tapply</span>(z<span class="op">$</span>x, z<span class="op">$</span>pob, sinNA)</a></code></pre></div>
 <pre><code>##  A  B 
 ## 12  8</code></pre>
 </div>

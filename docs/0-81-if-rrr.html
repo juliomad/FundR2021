@@ -14,7 +14,7 @@
 
 <meta name="author" content="Patricia Dell’Arciprete y Julio Lancelotti" />
 
-<meta name="date" content="2021-07-23" />
+<meta name="date" content="2021-07-26" />
 
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
@@ -158,8 +158,8 @@ details > summary {
 </ul></li>
 <li class="has-sub"><a href="r02-rstudio.html#r02-rstudio">R02 Rstudio</a><ul>
 <li><a href="0-2-crear-un-archivo-de-script-r.html#crear-un-archivo-de-script-r"><span class="toc-section-number">0.2</span> Crear un archivo de script (R)</a></li>
-<li><a href="0-3-r.html#r"><span class="toc-section-number">0.3</span> (R)</a></li>
-<li><a href="0-4-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.4</span> interacción con R (RR)</a></li>
+<li><a href="0-3-interacción-con-r-rr.html#interacción-con-r-rr"><span class="toc-section-number">0.3</span> interacción con R (RR)</a></li>
+<li><a href="0-4-visualizar-en-consola-rr.html#visualizar-en-consola-rr"><span class="toc-section-number">0.4</span> Visualizar en consola (RR)</a></li>
 </ul></li>
 <li class="has-sub"><a href="r03-básicos.html#r03-básicos">R03 Básicos</a><ul>
 <li><a href="0-5-ayudas-1-rr.html#ayudas-1-rr"><span class="toc-section-number">0.5</span> Ayudas 1 (RR)</a></li>
@@ -292,10 +292,10 @@ details > summary {
 <div id="if-rrr" class="section level2">
 <h2><span class="header-section-number">0.81</span> if (RRR)</h2>
 <p>Supongamos que queremos ejecutar la siguiente operación:</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1">        x=<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>  ; x<span class="op">^</span><span class="dv">2</span>  <span class="co"># no hay ningún problema</span></a></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1">        x=<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>  ; x<span class="op">^</span><span class="dv">2</span>  <span class="co"># no hay ningún problema</span></a></code></pre></div>
 <pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
 <p>Pero si hacemos</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1">      x=<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]; x<span class="op">^</span><span class="dv">2</span> </a></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1">      x=<span class="st"> </span>letters[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]; x<span class="op">^</span><span class="dv">2</span> </a></code></pre></div>
 <p>Aparece un aviso de error <code>Error in x^2 : non-numeric argument to binary operator</code></p>
 <ol style="list-style-type: decimal">
 <li>Qué tal si armamos nuestro propio aviso de error?</li>
