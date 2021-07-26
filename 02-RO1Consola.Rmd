@@ -1,0 +1,10 @@
+# RO1 Consola de R {-}
+
+## Pimeras líneas de comando (R)
+Abrir el programa R (<span style="color:red">NO</span> el Rstudio), pegar el siguiente código y explicar que hace cada uno de los tres comandos recién ejecutados
+
+```{r, comment=""}
+1:40
+x <- 1:40
+x
+```

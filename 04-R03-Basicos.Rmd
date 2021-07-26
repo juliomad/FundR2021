@@ -1,0 +1,351 @@
+# R03 Básicos {-}
+
+##  Ayudas 1 (RR)
+
+Trabajaremos en este punto con la función _**median()**_ (mediana). Analizar las diferencias entre   
+* ??median
+
+```{r, eval=F, echo=F}
+??median
+```
+
+<!--
+lista los paquetes (de los paquetes instalados) donde figura median en el nombre de alguna función
+-->
+
+* ?median 
+```{r, eval=F, echo=F}
+?median
+```
+<!--
+Muestra la hoja de ayuda de esta función en particular (hay que conocer el nombre de la función)
+-->
+
+* apropos("median")
+
+```{r, eval=F, echo=F}
+apropos("median")
+```
+
+<!--
+devuelve un vector con los nombres de las funciones disponibles (para los paquetes que tenemos cargados) que contengan el nombre "median"
+-->
+
+
+## Ayudas 2 (RRR)
+
+Averiguar qué hace la siguiente función
+
+```{r, eval=FALSE}
+sample(1:10, 20, replace=TRUE)
+```
+<!--
+toma una muestra aleatoria de 20 elementos con remplazo (replace= T) del vector 1:10 
+-->
+
+## Cómputos (RRR)
+
+1. Calcular en R:
+
+    $$\frac{2^{pi}}{2^{7}}-1$$  
+
+
+**RTA: `r  (2^pi/2^7)  - 1` **
+
+
+**NOTA:** podemos usar el valor de pi (3.141593) o utilizar la constante pi que trae el R (si es necesario acceder a la ayuda)
+
+2. Calcular en R:
+
+    $$\frac{3 - cos({pi})} {\sqrt[2]{7}}$$  
+
+**RTA: `r (3 - cos(pi) )/sqrt(7)` **
+
+## Comandos básicos (RRR)
+
+Resolver los siguientes puntos
+<ol>
+<li> Listar los objetos del workspace </li>
+<li> Asignar a un objeto que llamaremos **_y_** un vector que contenga los números 2, 5, 7, y 9 </li> 
+<li> Aplicar la función **max()** para obtener el valor máximo del elemento **_y_** </li>
+<li> Reasignar el valor obtenido en el punto anterior al objeto llamado **_y_** (es decir reescribir **_y_**) ¿Cuántos elementos tendrá ahora **_y_**? </li>
+</ol>
+
+## Creando vectores (RR)
+<ol>
+<li> Asignar a un objeto que llamaremos **_x_** los valores 90, 3, -5 </li>  
+<li> Asignar a un objeto que llamaremos **_y_** los elementos 90, 3, "A". Comparar visualmente los objetos **_y_** y **_x_** ¿Se ve alguna diferencia entre ambos objetos? </li> 
+</ol>
+
+<!-- **RTA**   -->
+
+```{r, comment="", echo= F, include= F}
+##RTA##
+x <- c(90, 3, -5)
+y <- c(90, 3, "A")
+x; y
+## x es un vector numérico mientras que y es clase texto. Un vector solo puede tener elementos de una clase, por lo tanto y es convertido automáticamente a texto
+```
+
+
+## Nombres de objetos (RR)
+
+Identificar cuáles de las siguientes opciones podrían ser utilizadas como nombres de objetos en R. En los casos que sea necesario, proponer cambios para que esos nombres sean aceptados por el programa (lo más parecido posible a los nombres originales)
+
+* RecorCholis  
+* tamaño máximo de célula  
+* SUperficie_del:Area  
+* 4min  
+* site#7 
+* sitio?3
+
+<!-- **RTA**   -->
+
+<!---
+max_cel, MaxCel, maxCel
+sup_area, SupArea, supArea
+min4, min_4
+site_7, site7
+sitio_3, sitio3
+-->
+
+## Operando con vectores (RR)
+
+<ol>
+<li> Crear un objeto llamado **_zx_**  de 100 valores en el **rango** 100-200. Verificar que el vector creado tenga 100 elementos </li> 
+<li>  Crear un objeto llamado **_zy_** de dos elementos, con valores 1 y 2 </li> 
+<li>  Realizar **_zx_/_zy_** ¿Qué resultado arroja? ¿Aparece algún mensaje?  </li>
+<li>  Repetir el inciso anterior, pero **_zy_** tendrán valores 1, 2 y 3  </li>
+<li>  ¿Y ahora apareció algún mensaje?  </li>
+<li>  ¿Se ejecutó la línea?  </li>
+<li>  Seguramente a esta altura ya han recibido algún triste mensaje de **_error_**, ¿qué diferencia hay entre un mensaje **_warning_** y un mensaje **_error_**?  </li>
+</ol>
+
+<!-- **RTA**   -->
+
+```{r, include= F, eval= F}
+##RTA##
+zx <- 100:199
+length(zx)
+zy <- 1:3
+zx/zy
+## R muestra un mensaje de warning() indicando que los vectores no son múltiplos entre sí. Lo que hace internamente es aplicar la regla de reciclaje, es decir, usa los valores en orden de aparición y una vez que se acaban vuelve a empezar por el primer valor del vector. LO IMPORTANTE es que si la longitud del vecotor largo es múltiplo de la longitud del vector corto, el mensaje NO APARECE!!!
+```
+
+\
+\
+
+## Dar nombre a los elementos de un vector (RRR)
+
+<ol>
+<li> Dado el siguiente vector: </li>
+
+```{r, comment= ""}
+miX <- 1:15
+```
+
+¿Qué resultado dará **names(miX)**?
+
+```{r, eval=F}
+names(miX)
+```
+
+<li> Sabiendo la respuesta, dar nombres a los elementos de miX, donde a cada elemento se le asignará la letra del abecedario correspondiente a su posición</li>
+</ol>
+miX debería verse así:
+
+```{r, echo= F, comment= ""}
+miX <- 1:15
+names(miX) <- LETTERS[1:15]
+miX
+```
+
+\
+\
+
+## Aplicando funciones a vectores (RR)
+
+<ol>
+<li> Crear un vector **_y_** con los valores -5, 6, 0, 0, 0, 90, -38. Aplicar una función para convertir todos los valores de **_y_** a números positivos </li>
+<li> Aplicar una función para obtener la mediana de **_y_** </li>
+</ol>
+
+<!-- **RTA**   -->
+
+```{r, warning= F, echo = F, include= F}
+y <- c(-5, 6, 0, 0, 0, 90, -38)
+abs(y)
+```
+
+## Pruebas y operaciones lógicas (RRR)
+(tomado de swirl(); swirlstats.com)  
+  
+1 ¿Cuáles de las siguientes expresiones se evaluarán como FALSE?    
+  
+<ol>
+<li> TRUE & TRUE </li>  
+<li> TRUE &  FALSE  </li>
+<li> FALSE &  TRUE  </li>
+<li> FALSE &  FALSE  </li>
+<li> TRUE | TRUE  </li>
+<li> TRUE | FALSE  </li>
+<li> FALSE | TRUE  </li>
+<li> FALSE | FALSE </li>
+</ol>  
+
+<!-- **RTA** -->
+<!-- <ol> -->
+<!-- <li> TRUE </li>   -->
+<!-- <li> FALSE </li> -->
+<!-- <li> FALSE </li> -->
+<!-- <li> FALSE </li> -->
+<!-- <li> TRUE </li> -->
+<!-- <li> TRUE </li> -->
+<!-- <li> TRUE </li> -->
+<!-- <li> FALSE </li> -->
+<!-- </ol>  -->
+
+2 ¿Cuál será el resultado y porqué? 
+  
+<ol>  
+<li> TRUE & c(TRUE, FALSE, FALSE)  </li> 
+<li> TRUE && c(TRUE, FALSE, FALSE)  </li> 
+</ol> 
+
+<!-- **RTA**   -->
+
+<!-- <ol>   -->
+<!-- <li> El resultado es un vector de tres elementos (T,F,F), uno para cada comparación entre la primera parte de la expresión (TRUE) y cada elemento de  c(TRUE, FALSE, FALSE) </li>  -->
+<!-- <li> El doble && hace que solamente se ejecute la prueba lógica con el primer elemento  de  c(TRUE, FALSE, FALSE). EL resultado puede ser solamente T (como en este caso) o F </li>  -->
+<!-- </ol>  -->
+
+## Pruebas lógicas
+  
+Dados los siguientes vectores  
+```{r}
+x <- c(1,2,3,4,5)
+y <- c(1,3,3,3,5)
+z <- c(T,T,T,F,F)
+k <- c(T,F,T,F,T)
+```
+
+En cada uno de los siguientes casos analizar cual va a ser el resultado y de cuantos elementos estará compuesto el mismo. Luego correr en consola para verificar  
+
+```{r, eval=F}
+x > 3
+x == y
+x != y
+x[1] == y[1]
+x && y
+z & k
+z && k
+z == k
+(x > 3 & y > 3) | x == 1
+x > 3 & y > 3 & z
+x > 3 & y > 3 | z
+any(x > 4)
+any (y > 4)
+any(x > 15 | y > 4)
+any (x > 15 | y > 5)
+all(x[1] == y[1])
+all(x[1] != y[1])
+```
+
+<!-- **RTA**   -->
+
+```{r, include= F}
+x > 3 # un vector de T y F para cada elemento de x que cumpla (T) o no (F) con la condición (>3)
+x == y # un vector de T y F para cada elemento de x que cumpla (T) o no (F) con la condición (x == y)
+x != y # un vector de T y F para cada elemento de x que cumpla (T) o no (F) con la condición (x != y)
+x[1] == y[1] # un vector de un elemento de comparar si son iguales el primer elemento de x y el primero de y, en este caso T
+x && y  # similar al punto anterior
+z & k # pregunta elemento a elemento si son T & T en caso de no serlo la salida es F
+z && k # Preguna si son T y T el primer elemento de k y z
+z == k # ¿Son iguales los elementos z y k? elemento por elemento
+(x > 3 & y > 3) | x == 1 # da un valor T si se cumple que (x > 3 & y > 3) o si x vale 1. Elemento a elemento
+x > 3 & y > 3 & z # las tres condiciones tienen que ser T para que el resultado sea T
+x > 3 & y > 3 | z # si las dos primeras condiciones son T en simultáneo el resultado es T. Si alguna de esas condiciones no se cumple pero z==T entonces el resultado también es T
+any(x > 4) # ¿Algún valor de x es mayor a 4?
+any (y > 4) # ¿Algún valor de y es mayor a 4?
+any(x > 15 | y > 4) #¿hay algún valor de x mayor a 15 o algún valor de y mayor a 4?
+any (x > 15 | y > 5)
+all(x[1] == y[1]) #esto es redundante, es equivalente a x[1] == y[1]
+all(x[1] != y[1])
+```
+
+
+## Debugging, detectando errores {-}
+Es importante **LEER LOS MENSAJES DE ERROR** y **WARNINGS
+**, en la mayoría de los casos son bastante informativos y ayudan a encontrar fallas en el script
+
+Para cada una de las siguientes líneas de código explicar porqué se obtiene un mensaje de error, warnning, o un resultado no esperado.
+
+```{r}
+rm( list = ls() ) #eliminemos primero todos los objetos
+```
+
+1.
+
+``` {r, eval=F, comment=""}
+  y = c(1:7, 33/(2 + 5)
+  y
+```
+
+<!--
+Cerrar paréntesis
+-->
+
+2.
+
+``` {r, eval=F, comment=""}
+  mi_X
+```
+<!--
+miX no existe
+-->
+
+3.
+
+``` {r, eval=F, comment=""}
+  myZ <- (1,4,5,7)
+```
+<!--
+falta el nombre de la función (c)
+-->
+
+4.
+
+``` {r, eval=F, comment=""}
+  mean(C(x,y))
+```
+<!--
+la función C (mayúscula) no existe
+-->
+
+5.
+
+``` {r, eval=F, comment=""}
+  var-3 <- mean(x)
+```
+<!--
+el formato del nombre del objeto no está permitido
+-->
+
+6.
+
+``` {r, eval=F, comment=""}
+  var@ <- mean(x)
+```
+<!--
+el formato del nombre del objeto no está permitido
+-->
+
+7.
+
+``` {r, eval=F, comment=""}
+  sample(letters, 100)
+```
+<!--
+falta replace = T
+-->
+

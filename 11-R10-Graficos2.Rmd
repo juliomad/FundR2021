@@ -1,0 +1,120 @@
+# R10 Gráficos 2 {-}
+
+
+## Figura múltiple simple (RR)
+
+Trabajaremos con el objeto iris (del paquete base de R)
+
+```{r, echo= T}
+head(iris)
+```
+
+Realizar una figura de dos paneles. En el panel superior graficar la relación entre las variables Sepal.Length y Sepal.With y en el panel inferior graficar un histograma de la variable Sepal.Length. En esta etapa no vamos a personalizar los ejes y leyendas, pero se espera que se modifiquen los parámetros _**mar**_ y _**oma**_ de _**par()**_, para que la figura luzca similar a la que se muestra a continuación
+
+<!-- RTA -->
+```{r, echo= F}
+# x11()
+par(mfrow= c(2,1), mar= c(6,4,1,1), oma= c(1,1,1,1))
+plot(iris$Sepal.Length, iris$Sepal.With)
+hist(iris$Sepal.Length)
+```
+
+```{r, include= F}
+dev.off()
+```
+
+## Dispersión 2 (RR)
+
+Dados los siguientes vectores (por ahora sólo importa el resultado y no como lo generamos)
+
+Obtener la siguiente figura. Donde rojo corresponde a las hembras (H en el vector sexo) y azul a los machos (M en el vector sexo).  
+**Ayuda:** usar el vector sexo para indexar los vectores **_x_** y **_y_**.
+
+``` {r}
+x <- runif(100, 0, 100)
+y <- 0.03 + 3* rnorm(100, x, 5)
+yest <- 0.03 + 3*x
+sexo <- rep(c("H", "M"), each=50)
+```
+
+<!-- RTA -->
+```{r, echo= F}
+plot(x, y, pch=16, col=c("red", "blue")[as.factor(sexo)], xlab="variable x",  ylab="variable y", cex=1.3)
+abline(a=0.03, b=3, lwd=3)
+```
+
+```{r, include= F}
+dev.off()
+```
+
+1.2 Obtener la siguiente figura. Prestar atención a leyendas, espacios entre figuras, tamaño de símbolos y texto y colores
+
+<!-- RTA -->
+```{r, echo= F}
+par(mfrow=c(2,1), mar=c(4,4,1,1))
+hist(y, ylab= "Frecuencia", main= "", xlab = "variable y", col="grey")
+plot(x, y, pch=16, col=c("red", "blue")[as.factor(sexo)], xlab="variable x",  ylab="variable y", cex=1.3) ### QUE LO HAGAN CON POINTS
+lines(x, yest, lwd=3)
+```
+
+```{r, include= F}
+dev.off()
+```
+
+## Figura completa (RRRR)
+  
+1. Importar el archivo DoubsEnv.csv que se encuentra en la carpeta 4-Datos (la descripción de la base de datos se encuentra en el archivo [datos_eer.html](datos_eer.html)).
+
+2. Generar una figura múltiple de dos paneles, mostrando dos gráfico de dispersión. El gráfico del panel superior corresponde a la relación amonio (variable amm) vs fosfato (variable pho) y el del panel inferior a nitrato (ni) vs fosfato (pho). Los colores negro, rojo y verde corresponden respectivamente a las secciones lower, middle y upper.
+
+<!-- RTA -->
+```{r, echo= F}
+# x11()
+
+env <- read.table("4-Datos/DoubsEnv.csv", sep=",", dec=".", header=T, as.is=T)
+Spe <- read.table("4-Datos/DoubsSpe.csv", sep=",", dec=".", header=T, as.is=T)
+model <- lm(env$amm ~ env$pho)
+
+par( mfrow= c(2,1), mar= c(2, 4, 1,1), oma= c(2,2,1,1) )
+plot(env$amm ~ env$pho, col= as.factor(env$sec), pch= 16, xlab= "", ylab="Amonio", xaxt="n", las= 2)
+abline(a= -0.025, b= 0.419, lwd= 3, col = "blue")
+axis(side= 1, labels= F)
+par(usr= c(0,10,0,10))
+text(x= 3, y= 8, paste("a = -0.025; b = 0.419"))
+
+model2 <- lm(env$ni ~ env$pho)
+plot(env$ni ~ env$pho, col= as.factor(env$sec), pch= 16, xlab= "Fosfato", ylab="Nitrato", xaxt= "n", las= 2)
+abline(a= 0.93, b= 1.3, lwd= 3, col= "blue")
+axis(side= 1, labels= T)
+par(usr= c(0,10,0,10))
+text(x= 3, y= 8, paste("a = 0.94; b = 1.3"))
+mtext("Fosfato", side= 1, outer= T, line= 1, adj= 0.56)
+```
+
+```{r, include= F}
+dev.off()
+```
+
+Lineamientos generales  
+
+* Definir la función _**par()**_ para componer una figura con dos paneles (superior e inferior)  
+* Generar la primera figura, que no debe tener rótulos en el eje x, para lo cual hay que especificar en _**plot()**_ que no queremos que lo grafique. Luego agregar un eje x mediante la funció _**axis()**_
+*  Utilizar la función _**abline()**_ para trazar la recta de regresión utilizando los valores que se muestran en la figura  
+* Agregar la leyenda con los valores de los parámetros a y b mediante la función _**text()**_. Considerar la conveniencia de definir el parámetro _**usr**_ dentro del _**par()**_ (ver archivo de clase)  
+* Generar la segunda figura. Repetir los paso para la figura 1. En este caso el eje x tiene rótulos, pero queremos que la orientación de los rótulos de los ejes se muestren como en la figura de muestra. Por lo tanto, conviene volver a definir el eje utilizando _**axis()**_ como en la primera figura.  
+* Utilizar los parámetros mar y oma para ajustar los márgenes internos y externos de la/las figuras
+
+``` {r, eval= F}
+par( mfrow= c(), mar=c(), oma= c() )
+plot()
+axis()
+abline()
+par( usr= c() )
+text()
+#segunda figura
+plot()
+axis()
+abline()
+par( usr= c() )
+text()
+```

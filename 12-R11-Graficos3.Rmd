@@ -1,0 +1,155 @@
+# R11 Gráficos3 {-}
+
+## Pairs (RR)
+
+1. Asignar a un objeto que llamaremos **_env_** la tabla contenida en el archivo DoubsEnv.csv que se encuentra en la carpeta 4-Datos (la descripción de la base de datos se encuentra en el archivo [datos_eer.html](datos_eer.html)).   
+
+2. Utilizar la función _pairs()_ para analizar la relación entre las variables correspondientes a las columnas 7 a 14 de **_env_**. 
+
+<!-- RTA -->
+```{r, echo= F}
+env <- read.table("4-Datos/DoubsEnv.csv", sep=",", header=T, as.is=T)
+colores <- c("red", "green", "blue")
+pairs(env[ ,7:14])
+```
+
+```{r, include= F}
+dev.off()
+```
+
+## Boxplot
+
+Generar una figura boxplot de la variable fosfato (pho) discriminando por sección del río Doubs. Notar la orientación de la leyenda de los ejes. Recurrir a la función _**axis()**_.
+
+<!-- RTA -->
+```{r, echo= F}
+# x11()
+boxplot(env$pho ~ env$sec, ylab = "Concentración de fosfato (mg/L)", yaxt= "n")
+axis(side=2, las=2)
+```
+
+
+```{r, include= F}
+dev.off()
+```
+
+## Gráficos condicionales xyplot
+
+Utilizando las función gráfica _**xyplot()**_ del paquete _**lattice**_  generar una figura múltiple como la mostrada a continuación  
+
+<!-- RTA -->
+```{r, echo= F}
+library(lattice)
+# x11()
+par(mfrow= c(2,2))
+xyplot(env$pho ~ env$alt | env$sec, main= "", xlab= "Altura", ylab="Fosfato", col="red")
+dev.off()
+```
+
+
+```{r, include= F}
+dev.off()
+```
+
+La figura muestra la relación entre las variables fosfato (pho) y altura (alt) condicional a las tres secciones del río 
+
+## Gráficos condicionales coplot
+
+Utilizar la función coplot del paquete lattice para generar la siguiente figura
+
+<!-- RTA -->
+```{r, echo= F}
+library(lattice)
+x11()
+par(mfrow= c(2,2))
+coplot(env$amm ~ env$pho | env$alt, overlap= 0.1, show.given = T, ylab="Amonio", xlab = c("Fosfato", "Altura") )
+dev.off()
+```
+
+```{r, include= F}
+dev.off()
+```
+
+La figura muestra la relación entre las variables amonio (amm) y fosfato (pho) condicional a rangos de valores de altura (alt), con parámetro de _**overlap= 0.1.  
+**NOTA** el argumento xlab es un vector con dos elementos para los ejes x inferior (primer elemento) y superior (segundo elemento). Entonces definir xlab= c("Fosfato", "Altura").
+
+## Debugging, detectando errores
+
+Correr las siguientes líneas de comando para generar datos de prueba. Examinar cada uno de los objetos
+
+```{r}
+rm( list = ls() ) #eliminemos primero todos los objetos
+```
+
+```{r, comment=""}
+    x <- runif(100,10, 100)
+    y <- rnorm(100, 10 ,100)
+  	z <- seq(0,200, 2)
+		g  <- sample(letters,100, T)
+
+		tabla <- data.frame(x,y,g)
+		matriz <- matrix(c(x,y,g), ncol=3)
+		lista <- list(tabla, matriz)
+```
+
+Para cada una de las siguientes líneas de código explicar por que se obtiene un mensaje de error, warnning, o un resultado no esperado
+
+1.
+``` {r, eval=F }
+plot(x,y, pch = 16, col = blue)
+```
+
+<!--
+"blue"
+-->
+
+2.
+``` {r, eval=F }
+mhist <- hist(x))
+```
+<!--
+sobra un paréntesis
+-->
+
+3.
+``` {r, eval=F }
+plot(x, y, pch = 16, label = T, col = "orange", main="mifigura")
+```
+<!--
+label no es un parámetro de la función plot
+-->
+
+4.
+``` {r, eval=F }
+plot(x, y, ylim(1,100))
+```
+<!--
+falta la función concatenar en ylim
+-->
+
+5.
+``` {r, eval=F }
+barplot(g)
+```
+<!--
+g no es un objeto numérico
+-->
+
+6.
+``` {r, eval=F }
+plot(x, y, col=c("red", "green" "blue"))
+```
+<!--
+falta una coma entre "green" y "blue"
+-->
+
+7.
+``` {r, eval=F }
+plot(x, y, pch = 16, col = "orange", main=""")
+```
+``` {r, eval=F, echo=F}
+"
+```
+<!--
+Sobra una comilla en main
+-->

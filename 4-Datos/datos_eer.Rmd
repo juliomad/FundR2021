@@ -1,0 +1,130 @@
+---
+title: "<h3>Fundamentos de R. Bases de datos para Ejercicios </h3>"
+author: "Patricia Dell'Arciprete - Julio Lancelotti"
+css: css/R.css
+date: "Friday, December 26, 2014"
+output:
+  html_document:
+    toc: true
+    theme: united
+  pdf_document:
+    toc: true
+highlight: zenburn
+---
+
+
+Durante el curso utilizaremos varias bases de datos para ejemplificar en las clases y resolver ejercicios. Además de los datos contenidos en iris y crabs, que fueron descriptos en la clase <b style="color:red"> R_Datos.r </b> Durante las sesiones de  ejercicios utiizaremos la base de datos Doubs, que se describe a continuación
+
+Base de datos Doubs
+========================================================
+
+Base de datos utilizada en el libro "Numerical Ecology with R"<sup>1</sup> en base a la tesis doctoral de Vereneaux (1973)<sup>2</sup>. Los datos fueron utilizados para caracterizar y clasificar rios y arroyos eurpoeos, en función de la presencia y abundancia de especies de peces. Para nuestros propósitos utilizaremos tres tablas con datos correspondientes al río Doubs:
+
+* DoubsEnv.csv: datos ambientales en 30 sitios a lo largo del río Doubs (ver tabla)  
+* DoubsSpe.csv: abundancias de 27 especies de peces en 30 sitios a lo largo del río Doubs, donde cada columna corresponde a una especie  
+* DoubsSNam.csv: Tabla de nombres comúnes y científicos de las 27 especies de peces  
+  
+##### Tabla 1. Nombres, códigos y unidades de variables ambientales medidas en el río Doubs. La tabla original fue modifiada para los fines del curso.
+
+<table cellspacing="0" border="0" align="center">
+  <colgroup width="259"></colgroup>
+  <colgroup span="2" width="85"></colgroup>
+	<tr>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" height="17" align="left"><b>Variable</b></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="center"><b>Code</b></td>
+		<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000" align="center"><b>Units</b></td>
+	</tr>
+	<tr>
+		<td height="17" align="left">Longitud</td>
+		<td align="center">lon</td>
+		<td align="center">grad. Dec.</td>
+	</tr>
+	<tr>
+		<td height="17" align="left">Latitud</td>
+		<td align="center">lat</td>
+		<td align="center">grad. Dec.</td>
+	</tr>
+	<tr>
+		<td height="17" align="left">Distance from source</td>
+		<td align="center">das</td>
+		<td align="center">km</td>
+	</tr>
+	<tr>
+		<td height="17" align="left">River section (upper-middle-lower)</td>
+		<td align="center">sec</td>
+		<td align="center">–</td>
+	</tr>
+	<tr>
+		<td height="17" align="left">Altitude</td>
+		<td align="center">alt</td>
+		<td align="center">m a.s.l.</td>
+	</tr>
+	<tr>
+		<td height="17" align="left">Slope</td>
+		<td align="center">pen</td>
+		<td align="center">‰</td>
+	</tr>
+	<tr>
+		<td height="17" align="left">Mean minimum discharge</td>
+		<td align="center">deb</td>
+		<td align="center">m 3  s −1</td>
+	</tr>
+	<tr>
+		<td height="17" align="left">pH of water</td>
+		<td align="center">pH</td>
+		<td align="center">–</td>
+	</tr>
+	<tr>
+		<td height="17" align="left">Calcium concentration (hardness)</td>
+		<td align="center">dur</td>
+		<td align="center">mg L −1</td>
+	</tr>
+	<tr>
+		<td height="17" align="left">Phosphate concentration</td>
+		<td align="center">pho</td>
+		<td align="center">mg L −1</td>
+	</tr>
+	<tr>
+		<td height="17" align="left">Nitrate concentration</td>
+		<td align="center">nit</td>
+		<td align="center">mg L −1</td>
+	</tr>
+	<tr>
+		<td height="17" align="left">Ammonium concentration</td>
+		<td align="center">amm</td>
+		<td align="center">mg L −1</td>
+	</tr>
+	<tr>
+		<td height="17" align="left">Dissolved oxygen</td>
+		<td align="center">oxy</td>
+		<td align="center">mg L −1</td>
+	</tr>
+	<tr>
+		<td style="border-bottom: 1px solid #000000" height="17" align="left">Biological oxygen demand</td>
+		<td style="border-bottom: 1px solid #000000" align="center">dbo</td>
+		<td style="border-bottom: 1px solid #000000" align="center">mg L −1</td>
+	</tr>
+</table>
+
+##
+
+##### Tabla 2. Primeras 6 filas de la tabla DoubsEnv
+```{r, echo= F, comment= ""}
+env <- read.table("../datos/DoubsEnv.csv", sep= ",", dec= ".", header= T, as.is= T)
+head(env)
+```
+
+##### Tabla 3. Primeras 6 filas de la tabla DoubsSpe
+```{r, echo= F, comment= ""}
+spe <- read.table("../datos/DoubsSpe.csv", sep= ",", dec= ".", header= T, as.is= T)
+head(spe)
+```
+##### Tabla 4. Nombres y abreviaturas de las especies de peces de la base de datos Doubs (DoubsEnv)
+```{r, echo= F, comment= "", result="as.is"}
+nam <- read.table("../datos/DoubsNam.csv", sep= ",", dec= ".", header= T, as.is= T)
+nam
+```
+<br><br> <!--- líneas en blanco -->
+
+<sup>1</sup> Borcard D., Guillet F., Legendre P. 2011. Numerical Ecology with R. Springer. New York.  
+<sup>2</sup> Verneaux, J. (1973) Cours d'eau de Franche-Comté (Massif du Jura). Recherches écologiques sur le réseau hydrographique du Doubs. Essai de biotypologie. Thèse d'état, Besançon. 1–257.

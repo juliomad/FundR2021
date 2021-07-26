@@ -1,0 +1,341 @@
+# R14 Funciones {-}
+
+
+
+## Funciones: elevar al cuadrado (R)
+
+*  Escribir una función que llamaremos **elev2** que calcule el cuadrado de una serie de números
+* La función debe devolver en un data.frame con los números de ingreso y sus correspondientes valores al cuadrados
+
+<!-- RTA -->
+```{r, include= F}
+elev2 <- function(x) {
+  y <- x^2
+  data.frame(x= x, x2 = y)
+  }
+```
+
+``` {r, echo= T, comment=""}
+  x <-1:10
+  elev2(x) 
+```
+
+Estructura
+
+``` {r, echo= T, eval= F}
+elev2 <- function(completar) {
+  y <- COMPLETAR ^2
+  data.frame(x= x, x2 = y)
+  }
+```
+
+##  Funciones: elevar al cuadrado 2 (RRR)
+
+* Agregar a la estructura de la función anterior un "control", para que en los casos en que el vector de ingreso no sea numérico aparezca un cartel que diga "ERROR: Los datos de ingreso no son numéricos"
+     
+<!-- RTA -->
+```{r, include= F}
+elev2 <- function(x) {
+      if(is.numeric(x)) {
+        y <- x^2
+        data.frame(x= x, x2 = y)
+        } else {
+        print("ERROR: Los datos de ingreso no son numéricos")
+       }
+    }
+```
+
+``` {r, echo= T, comment=""}
+  x <-c(1:10, NA, NA, NA)
+  elev2(x) 
+
+  y <- letters
+  elev2(y)
+```
+
+Estructura
+
+``` {r, echo= T, eval= F}
+elev2 <- function(COMPLETAR) {
+      if(COMPLETAR) {
+        COMPLETAR CON COMANDOS SI T
+        } else {
+        COMPLETAR CON COMANDOS SI F
+       }
+    }
+```
+
+## Funciones: Promedio (RR)
+Generar una función a la que llamaremos "promedio", que calculará el valor promedio de un vector numérico como:  
+$$promedio = \frac{\sum x_{i}}{N}$$  
+
+Donde N es número de elementos del vector x  (length(x))
+Por el momento la función tendrá un único argumento  _x_ y no estará definida para vectores con NA's  
+
+<!-- RTA -->
+```{r, include= F}
+x= 1:20
+promedio <- function (x) sum(x)/length(x)
+```
+
+Por ejemplo:
+
+```{r, echo= T}
+y <- c(3, 5, 4, NA, NA, 8)
+promedio(y)
+# En este caso el resultado es NA porque sum(x) = NA
+
+z <- c(3, 5, 4, 4, 5, 8)
+promedio(z)
+```
+
+## Funciones: Promedio 2 (RRR)
+Generar la misma función que en el punto anterior pero con un argumento extra que permita eliminar los valores NA para el cálculo del promedio
+
+<!-- RTA -->
+```{r, include= F}
+x= 1:20
+promedio <- function (x) sum(x[!is.na(x)])/length(x[!is.na(x)])
+```
+```{r}
+y <- c(3, 5, 4, NA, NA, 8)
+promedio(y)
+```
+
+## Función obtener números pares o impares
+
+Dado un vector numérico cualquiera, como el que se muestra a continuación:
+
+```{r}
+x <- c(1,2,5,7,9,8,2,51)
+```
+
+Mediante el siguiente comando se puede obtener un vector de 1's y 0's para aquellos valores impares y pares del vector 
+
+```{r}
+x %% 2
+```
+
+Generar una función, que llamaremos **__parimpar__** que permita obtener los valores pares o impares de un vector numérico. La función deberá tener dos argumentos, el primero, al que llamaremos **__vec__**, corresponderá al vector de entrada y el segundo al que llamaremos impar tomará valor por defecto TRUE y seleccionará a los valores impares, mientras que seleccionará a los pares en caso de ser FALSE
+
+Pasos sugeridos
+* generar un vector lógico (idx1) con la condición vec %% 2 == 1 (impares)
+* generar un vector lógico (idx2) con la condición vec %% 2 == 0 (pares)
+* incluir un condicional que indexe por idx1 en caso de que el parámetro impar sea T y que indexe por idx2 en caso contrario
+
+```{r, echo= F}
+parimpar <- function(vec, impar= T ) {
+  idx1 <- vec  
+  idx2 <- vec %% 2 == 0
+  if(impar) vec[idx1] else vec[idx2]
+  }
+```
+
+Probando la función
+```{r}
+x <- c(1,2,5,7,9,8,2,51)
+
+parimpar(x)
+
+parimpar(x, F)
+
+```
+
+## Funciones: No contar los NAs (RRR)
+Las funciones de la familia **_apply_** no tienen argumentos para eliminar los NA's de los resultados cuando se usa **_length()_** 
+Ejemplo
+
+``` {r, echo= T, comment=""}	  
+    x <- c( 1:20, rep(NA, 4) )
+    x
+		y <- rep( c("A", "B"), each=12) 
+    y
+		z <- data.frame(pob=y,x=x)
+    z
+		tapply(z$x, z$pob, mean, na.rm=T) #esto funciona
+    tapply(z$x, z$pob, length) #esto funciona pero cuenta los NA's
+```
+
+
+1. Generemos entonces una función que llamaremos **_sinNA_** para usar funciones de la familia  **_apply_** y que no cuente los NA's
+
+<!-- RTA -->
+```{r, include= F}
+sinNA <- function(x){length(x[!is.na(x)])}
+```
+
+La salida de tapply() usando la función debería dar:
+
+``` {r, echo= T}  
+    tapply(z$x, z$pob, sinNA)
+``` 
+
+## Función frecuencia relativa (RRR)
+Muchas veces es necesario expresar valores de tablas en forma de frecuencia relativa. Es decir, pasar valores absolutos de observaciones a formato de frecuencia
+
+> FR = $\frac{Ni}{N}*100$
+
+Donde N<sub>i</sub> es el valor de la celda i y N es la suma de todos los valores del vector
+
+Los siguientes comandos generan datos simulados de 5 poblaciones de una especie hipotética de depredador que consume 5 tipos de presa. 
+
+``` {r}  
+  presas <- paste("presa", 1:5)
+  pobl <- paste("pob", 1:5)
+  set.seed(300)
+  datos <- round( runif(25, 1, 100), 0)
+  tabla <- matrix(datos, ncol=5, dimnames=list(presas, pobl))
+  tabla
+```
+
+1. El ejercicio consiste en estimar el índice de frecuencia relativa de las presas para cada ejemplar. Para ello, generaremos una función (**FR**) que calcule la frecuencia de ocurrencia en base a un vector de observaciones. Finalmente, la función será utilizada como argumento de la función de resumen en el ejercicio que sigue.
+
+<!-- RTA -->
+```{r, include= F}
+FR <- function(x) { x/sum(x)*100 }
+```
+
+Aplicando la función recién creada a la primera fila de la tabla debería dar el siguiente resultado
+
+```{r}
+prueba <- FR(tabla[1, ])
+prueba
+sum(prueba)
+```
+
+La tabla de salida debería verse como la siguiente (los valores obtenidos fueron redondeados ( **_round()_** ) a dos decimales)
+
+``` {r}  
+salida <- round (apply(tabla, 1, FR), 2)
+salida
+colSums(salida) ## la suma de las frecuencias realtivas por columna debe dar 1
+```
+
+<!-- ### 14.8 Función t test (RRR) -->
+
+<!-- En un archivo nuevo al que llamaremos _t.test.R_, generar una función para comparar dos muestras mediante una prueba t de Student. La salida de la función deberá tener los siguientes elementos:   -->
+<!-- * Una tabla, lista, o vector que informe el tamaño y valor medio de cada muestra y los valores de t, p-value y grados de libertad (df) estimados     -->
+<!-- *  Una figura compuesta con tres filas y una columna, donde la primera figura será un boxplot con ambas variables y las restantes serán un qplot para cada variable. Rotular las figuras adecuadamente.   -->
+<!-- * Nombrar a la función t_test y guardar el script.    -->
+
+<!-- funciones necesarias: -->
+
+<!-- ```{r, eval= F, comment= ""} -->
+<!--   t.test(x,y) -->
+<!--   boxplot(x, y, names= c("x", "y")) -->
+<!--   qqnorm(x, main="x") -->
+<!--   qqnorm(y, main="y") -->
+<!-- ```   -->
+
+<!-- * Convocar a la función utilizando la función **source()** y ponerla a prueba con las siguientes muestras: -->
+
+<!-- ```{r} -->
+<!--  x= rnorm(50,10,1)   -->
+<!--  y= rnorm(20,9,3) -->
+<!-- ``` -->
+
+<!-- <!-- RTA --> -->
+<!-- ```{r, echo= F} -->
+<!--   t_test <-function(x, y) {  -->
+<!--   test <- t.test(x, y) -->
+
+<!--   N.x <- length( x[!is.na(x)] ) -->
+<!--   N.y <- length( y[!is.na(y)] ) -->
+<!--   Promedio.x <- mean(x, na.rm= T) -->
+<!--   Promedio.y <- mean(y, na.rm= T) -->
+<!--   df <- as.vector(test$parameter) -->
+<!--   valor_t <- as.vector(test$statistic) -->
+<!--   p_value <- test$p.value -->
+
+<!--   salida <- data.frame(N.x, N.y, Promedio.x, Promedio.y, df, valor_t, p_value)  -->
+
+<!--   par( mfrow= c(3,1), mar= c(4,3,2,2) ) -->
+<!--   boxplot(x, y, names= c("x", "y")) -->
+<!--   qqnorm(x, main="x") -->
+<!--   qqnorm(y, main="y") -->
+
+<!-- print(salida) -->
+
+<!--   }# fin de la función t_test -->
+<!-- ``` -->
+
+<!-- ```{r, include= F} -->
+<!-- dev.off() -->
+<!-- ``` -->
+
+<!-- ```{r, comment= ""} -->
+<!-- t_test(x, y) -->
+<!-- ``` -->
+
+## Debugging, detectando errores
+
+Correr las siguientes líneas de comando para generar datos de prueba. Examinar cada uno de los objetos
+
+```{r}
+rm( list = ls() ) #eliminemos primero todos los objetos
+```
+
+```{r, comment=""}
+  x <- runif(100,10, 100)
+    y <- rnorm(100, 10 ,100)
+		z <- seq(0,200, 2)
+		g  <- sample(letters,100,T)
+
+		tabla <- data.frame(x,y,g)
+		matriz <- matrix(c(x,y,g), ncol=3)
+		lista <- list(tabla, matriz)
+```
+
+Para cada una de las siguientes líneas de código explicar por que se obtiene un mensaje de error, warnning, o un resultado no esperado
+
+1.
+``` {r, eval=F }
+mm <- ifelse(x >= 23 & y =< 5, "target", NA)
+```
+<!--
+Cambiar de lugar el segundo =
+-->
+
+2.
+``` {r, eval=F }
+log(y)
+```
+<!--
+Logaritmo de números negativos
+-->
+
+3.
+``` {r, eval=F }
+dim.names(tabla)
+```
+<!--
+no existe la función dim.names(), usar dimnames
+-->
+
+4.
+``` {r, eval=F }
+if(is.numeric(x)) hist(x) print("la variable no es numerica")
+```
+<!--
+falta el argumento else entre hist(x) y print()
+-->
+
+4.
+``` {r, eval=F }
+if(is.numeric(g)){
+  	hist(g) 
+	 	} else 
+		print("la variable no es numerica")
+  }
+```
+<!--
+falta una llave después de else
+-->
+
+5.
+``` {r, eval=F }
+if(x>5) "grande" else "chico"
+```
+<!--
+el argumento de if() es T o F, pero no un vector de más de un valor lógico
+-->

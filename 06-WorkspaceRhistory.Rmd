@@ -1,0 +1,97 @@
+# R05 Workspace y RHistory {-}
+
+
+## Responder con Verdadero o Falso (RRR)
+
+<ol>
+<li> El working directory siempre es el directorio donde tenemos guardado el script </li>
+<li>Todos los scripts deben estar guardados en la misma ubicación que el directorio de trabajo </li>
+<li> El Rstudio tiene definido un directorio de trabajo por defecto </li>
+<li> En una sesión de R sólo puede haber un directorio de trabajo. Sin embargo en un script se puede re-definir el directorio de trabajo tantas veces como uno quiera </li>
+<li> Hice una simulación que tardó 3 hs en correr y no guardé los objetos generados. No me preocupo porque el resultado siempre se guarda en el Rhistory </li>
+<li> Hice una simulación que tardó 3 hs en correr y no guardé los objetos generados, pero no me preocupo porque el resultado siempre se guarda en el RData </li>
+<li> Por defecto (default) R genera el RHistory, donde guarda los comandos y objetos generados en la última sesión </li>
+<li> En el RHistory quedan registrados los pasos en el mismo orden que aparecen en el script </li>
+<li> Podemos selectivamente guardar un único objeto y cargarlo cuando lo necesitemos </li>
+<li> El comando "ctrl + l" aplicado a la consola (clear console, limpiar consola) tiene el mismo efecto que remover los objetos rm( list= ls() ) </li>
+</ol>
+
+<!-- **RTA**   -->
+
+<!-- <ol> -->
+<!-- <li> Falso. El working directory se puede definir usando setwd() </li> -->
+<!-- <li>Falso. Los script se pueden guardar en cualquier ubicación </li> -->
+<!-- <li> Verdadero ver tools/Global Options. Aunque en cada sesión se puede cambiar con setwd() </li> -->
+<!-- <li> Verdadero </li> -->
+<!-- <li> Falso. El Rhistory guarda todos los comandos ejecutados pero no los objetos creados </li> -->
+<!-- <li> Falso. Los objetos se guardan si usamos la función save() o bien si guardamos antes de salir (save RData) </li> -->
+<!-- <li> Falso, si bien se guarda el RHistory, los objetos no se guardan en este archivo </li> -->
+<!-- <li> Falso. Los comandos se guardan en el orde que se ejecutan </li> -->
+<!-- <li> Verdadero, mediante save() y load() podemos hacerlo </li> -->
+<!-- <li> Falso. "ctrl + l" limpia la consola pero tiene un efecto visual, los objetos siguen exisitiendo en la sesión abierta.  En cambio, los objetos eliminados mediante rm() son eliminados </li> -->
+<!-- </ol> -->
+
+\
+\
+
+## Salvar y cargar objetos (RR)
+Correr la siguiente línea para remover todos los objetos creados durante esta sesión
+
+```{r}
+rm( list = ls() )
+```
+
+Comprobar que no hay objetos en nuestra sesión
+
+```{r}
+ls()
+```
+
+Dados los siguientes objetos
+
+```{r}
+y <- rnorm(100)
+x <- 1:10
+z <- letters
+```
+
+<ol>
+<li> Guardar la sesión de trabajo </li>
+<li> Guardar solamente los objetos x, y </li>
+<li> Remover todos los objetos y volver a cargar solamente x </li>
+<li> Pedir un listado de todos los objetos </li>
+</ol>
+
+<!-- **RTA**   -->
+
+```{r, include= F, eval= F}
+save.image()
+save(x, y, list= c("x", "y"), file= "Resultados/salida.RData")
+rm(list=ls())
+load(file= "Resultados/salida.RData")
+x
+head(y)
+```
+
+\
+\
+
+## Debugging, detectando errores
+
+Para cada una de las siguientes líneas de código explicar porqué se obtiene un mensaje de error, warnning, o un resultado no esperado 
+
+```{r}
+rm( list = ls() ) #eliminemos primero todos los objetos
+```
+
+1.
+``` {r, eval=F }
+setwd("C:\R2021/R_Archivos/")
+```
+<!-- dirección de las barras -->
+
+2.
+``` {r, eval=F }
+setwd(C:/R2021/R_Archivos/)
+```
+<!-- comillas -->

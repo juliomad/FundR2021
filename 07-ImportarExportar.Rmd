@@ -1,0 +1,105 @@
+# R06 Importar y Exportar {-}
+
+
+## Responder con Verdadero o Falso (RRR)
+
+<ol>
+<li> Los archivos que se quieren cargar (read.table) deben estar en el mismo directorio de trabajo que el script que los carga  </li>
+<li> Los campos de un archivo a importar siempre deben estar separados por comas  </li>
+<li> Para importar un archivo el separador decimal siempre tiene que ser el punto (".") </li>
+<li> Tanto los archivos de entrada como los de salida tienen que tener definidos los nombres de filas y columnas </li>
+<li> Al importar una tabla los cambios generados en R no modificarán los datos contenidos en el archivo de origen  </li>
+<li> Una ruta absoluta es aquella que especifica la ubicación de una carpeta o archivo desde su directorio raíz  </li>
+<li> Para ser importados a R los datos siempre deben estar ordenados en un sistema de filas y columnas </li>
+<li> Para importar una tabla con encabezados, todas las columnas deben estar nombradas </li>
+<li> Si importamos una tabla con nombres de encabezado repetidos R renombrará cada encabezado para que éstos no tengan nombres repetidos </li>
+<li> Siempre hay que ingresar la ruta absoluta del archivo a importar o a exportar  </li>
+
+<!-- <li> Tengo un script que importa a R (read.table) datos contenidos en una determinada carpeta. Con el script se realizaron una serie procesamientos sobre esos datos y los objetos resultantes fueron guardados en un .RData. Luego, cambié de lugar el archivo de datos, por lo que mi script ya no puede encontrarlos/leerlos. Sin embargo, los objetos generados siguen estando en el .RData </li> -->
+<!-- </ol> -->
+
+<!-- **RTA** -->
+<!-- <ol> -->
+<!-- <li> Falso, se puede definir cualquier directorio para guardar/cargar archivos  </li> -->
+<!-- <li> Falso, el separador de campos se define con el argumento _sep_ que tiene múltiples opciones (ej. coma, punto y coma, tabulaciones, etc.)  </li> -->
+<!-- <li> Falso, eso se puede definir con el parametro _dec_ </li> -->
+<!-- <li> Falso, se pueden cargar/guardar archivos sin nombres de filas y columnas </li> -->
+<!-- <li> Verdadero  </li> -->
+<!-- <li> Verdadero </li> -->
+<!-- <li> Falso, algunas funciones del tipo _scan_ contemplan la situación de datos con otos formatos  </li> -->
+<!-- <li> Verdadero, si alguna de las columnas tiene encabezado no puede haber columnas sin encabezados </li> -->
+<!-- <li> Verdadero, cada columna debe tener un nombre único, en caso contrario el R le asignar un nuevo nombre para diferenciarlas </li> -->
+<!-- <li> Falso, se pueden utilizar rutas relativas, tomando como punto de partida la ubicación del _working directory_ </li> -->
+<!-- <li> Verdadero </li> -->
+<!-- </ol> -->
+
+## read.table y write.table 
+
+<ol>
+<li> Con un editor de texto (ej bloc de notas, o el propio Rstudio) abrir los archivos "MiTrayect1.csv" y "MiTrayect2.csv", alojados en la carpeta "4-Datos". Identificar el separador de campos y el símbolo decimal. Los datos son posiciones geográficas de una determinada trayectoria </li>
+<li> Importar a R (**_read.table()_**) ambos arvhivos, asignando el resultado de la importación a dos objetos que llamaremos respectivamente _tray1_ y _tray2_  </li>
+<li> Mostrar en consola ambos objetos para ver su estructura </li>
+<li> Generar un objeto al que llamaremos "tray3" combinando los dos objetos recién creados. El nuevo objeto deberá tener dos columnas (dlon y dlat) y tantas filas como la suma de las filas de los dos archivos recién incorporados. </li> 
+  
+Usar la función **rbind()** (row binding, juntar por filas) para "juntar" ambas series de datos en una sola tabla. La función se usa: 
+
+``` {r, eval= F}
+rbind (x, y)
+```
+
+<li> Guardar en la carpeta "Resultados" (**_write.table()_**) un archivo de texto con el contenido de _**tray3**_ con el nombre "Trayect1+2.csv". Asegurarse que el archivo de salida tenga el mismo formato que los archivos originales (nombres de columnas, separadores de campos, símbolo decimal, sin nombre de filas, etc.) </li> 
+</ol>
+
+<!-- RTA -->
+``` {r, include = F}
+setwd("/home/julio/aaa/cursos/ofrecidos/R/R2021_virtual/practicas/")
+tray1 <- read.table("4-Datos/MiTrayect1.csv", sep=",", header=T)
+tray2 <- read.table("4-Datos/MiTrayect2.csv", sep=",", header=T)
+tray3 <- rbind(tray1, tray2)
+
+# write.table(tray3, "../Resultados/Trayect1+2.csv", sep=",", col.names=T, row.names= F)
+```
+
+
+## Debugging, detectando errores
+
+Para cada una de las siguientes líneas de código explicar porqué se obtiene un mensaje de error, warnning, o un resultado no esperado  
+
+```{r}
+rm( list = ls() ) #eliminemos primero todos los objetos
+```
+
+```{r}
+#Generamos un objeto de prueba
+x <- 1:100
+```
+
+1.
+``` {r, eval=F }
+read.table(c:/R2015/R_Archivos/4-Datos/MiTrayect1.csv, sep= ",", dec= ".", header= T )
+```
+<!-- La ruta no está entre comillas -->
+
+2.
+``` {r, eval=F }
+read.table("C:/R2015/R_Archivos/4-Datos/MiTrayect1.csv", sep= ",", dec= ".", header= "T" )
+```
+<!-- header= T (sin comillas) -->
+
+3.
+``` {r, eval=F }
+write.table("C:/R2015/R_Archivos/Resultados/nombre.csv", sep= ",", dec= ".")
+```
+<!-- falta el objeto a guardar (x) -->
+
+4.
+``` {r, eval=F }
+write.table(x, "C:/R2015/R_Archivos/Resultados/nombre.csv", sep= ",", dec= ".", header= T)
+```
+<!-- header no es un argumento de write.table -->
+
+5.
+``` {r, eval=F }
+write.table(x "C:/R2015/R_Archivos/Resultados/nombre.csv", sep= ",", dec= ".")
+```
+<!-- Falta una coma entre tray3 y ruta -->

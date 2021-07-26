@@ -1,0 +1,274 @@
+# R09 Gráficos 1 {-}
+
+## Figura sencilla (R)
+Dados los siguientes objetos:
+
+```{r}
+set.seed(330)
+x <- runif(100)
+set.seed(100)
+y <- 3*x + rnorm(100)
+```
+
+Obtener una figura como se muestra a continuación
+
+```{r, echo= F}
+plot(x, y, pch= 16)
+```
+
+
+```{r, include= F}
+dev.off()
+```
+
+<!-- RTA -->
+```{r, include= F}
+plot(x, y, pch= 16)
+```
+
+## Configurar figuras (RR)
+
+Modificar la figura del punto anterior con las siguientes características
+
+* El color de los puntos debe ser azul
+* La leyenda de los ejes _y_ y _x_ deberán decir respectivamente "mi variable y" y "mi variable x"
+
+<!-- RTA -->
+
+```{r, include= F}
+plot(x, y, pch= 16, col= "blue", xlab="mi variable x", ylab= "mi variable y")
+```
+
+## axis (RRR)
+
+Modificar el script para rotar la leyenda de los valores del eje y, de la figura anterior, como se muestra en la siguiente figura
+
+<!-- RTA -->
+```{r, echo= F}
+set.seed(330)
+x <- runif(100)
+set.seed(100)
+y <- 3*x + rnorm(100)
+plot(x, y, pch= 16, col= "blue", xlab="mi variable x", ylab= "mi variable y", las= 1)
+```
+
+
+```{r, include= F}
+dev.off()
+```
+
+Para hacerlo examinar las opciones del parámetro **_las_** 
+
+## Figura sencilla (RR)
+
+1. Importar el archivo DoubsEnv.csv que se encuentra en la carpeta 4-Datos (la descripción de la base de datos se encuentra en el archivo [datos_eer.html](datos_eer.html)) 
+
+```{r, echo= F, comment=""}
+env <- read.table("4-Datos/DoubsEnv.csv", sep=",", dec=".", header=T, as.is=T)
+head(env)
+```
+
+
+2. Graficar mediante gráfico de dispersión (el default de plot) la relación entre las variables nit (x) y amm (y). Rotular los ejes x e y como se muestra en la figura
+
+<!-- RTA -->
+
+```{r, include= F}
+plot(env$nit, env$amm, xlab= "Nitratos", ylab="Amonio", pch= 16)
+```
+
+## Posiciones Doubs (RRR)
+
+1. Importar el archivo DoubsEnv.csv que se encuentra en la carpeta 4-Datos (la descripción de la base de datos se encuentra en el archivo [datos_eer.html](datos_eer.html))    
+
+2. Obtener la siguiente figura de las posiciones de los sitios de muestreo (Site, de la tabla DoubsEnv). Los colores negro, rojo y verde corresponden a las secciones (sec, de la tabla DoubsEnv) lower, middle y upper respectivamente.
+
+<!-- RTA -->
+
+```{r, echo= F}
+env <- read.table("4-Datos/DoubsEnv.csv", sep=",", header=T, as.is=T)
+
+plot(x= env$lon, y= env$lat, type="l", xlab="Longitud", ylab="Latitud", col="blue", lwd=3)
+lower <- env[env$sec == "lower", ]
+middle <-  env[env$sec == "middle", ]
+upper <- env[env$sec == "upper", ]
+
+#versión corta: points(x=env$lon, y=env$lat, col=as.factor(env$sec))
+points(lower$lon, lower$lat, pch=16, col="black", cex=2)
+points(middle$lon, middle$lat, pch=16, col="red", cex=2)
+points(upper$lon, upper$lat, pch=16, col="green", cex=2)
+# text(x=env$lon, y=env$lat, env$Site, pos= 4, offset=1, cex= 1.3)
+```
+
+```{r, include= F}
+dev.off()
+```
+
+Pasos sugeridos
+
+* Generar una figura con toda la serie de datos (x= lon, y= lat), con lty= "l" (tipo de figura línea)
+* Generar tres objetos, cada uno con los registros correspondientes a las tres secciones del río (los objetos podrían llamares lower, middle y upper)
+* mediante points() agregar a la figura los puntos correspondientes a cada una de las secciones, utilizando los objetos recién generados
+
+## Rotulando puntos (RRR)
+
+1. Importar el archivo DoubsEnv.csv que se encuentra en la carpeta 4-Datos (la descripción de la base de datos se encuentra en el archivo [datos_eer.html](datos_eer.html))    
+
+2. Obtener la siguiente figura que corresponde a las posiciones de las estaciones de muestreo (variables lon y lat) y cuyo color corresponde a la sección (negro, rojo y verde para las secciones lower, middle y upper respectivamente). Donde cada número se refiere al ID del sitio (variable Site). Este paso puede hacerse mediante la función text(), donde los valores de _**x**_ y _**y**_ son los mismos usados en la figura
+
+<!-- RTA -->
+
+```{r, echo= F}
+env <- read.table("4-Datos/DoubsEnv.csv", sep=",", header=T, as.is=T)
+
+plot(x= env$lon, y= env$lat, type="l", xlab="Longitud", ylab="Latitud", col="blue", lwd=3)
+lower <- env[env$sec == "lower", ]
+middle <-  env[env$sec == "middle", ]
+upper <- env[env$sec == "upper", ]
+
+#versión corta: points(x=env$lon, y=env$lat, col=as.factor(env$sec))
+points(lower$lon, lower$lat, pch=16, col="black", cex=2)
+points(middle$lon, middle$lat, pch=16, col="red", cex=2)
+points(upper$lon, upper$lat, pch=16, col="green", cex=2)
+text(x=env$lon, y=env$lat, env$Site, pos= 4, offset=1, cex= 1.3)
+```
+
+
+## Regresión (RRRR)
+
+1. Importar el archivo DoubsEnv.csv que se encuentra en la carpeta 4-Datos (la descripción de la base de datos se encuentra en el archivo [datos_eer.html](datos_eer.html))    
+
+2. Obtener la siguiente figura tomando las variables amm y pho como _**y**_ y _**x**_ respectivamente. Para agregar la línea de regresión utilizar la función _**abline()**_, tomando los valores de pendiente e intercepto que se muestran en la figura. Los colores negro, rojo y verde corresponden a las secciones lower, middle y upper respectivamente.
+
+<!-- RTA -->
+
+```{r, echo= F}
+env <- read.table("4-Datos/DoubsEnv.csv", sep=",", dec=".", header=T, as.is=T)
+
+model <- lm(env$amm ~ env$pho)
+
+plot(env$amm ~ env$pho, col= as.factor(env$sec), pch=16, xlab= "Fosfato", ylab="Amonio")
+abline(a=-0.025, b=0.419, lwd= 3, col = "blue")
+text(x=0.5, y=1.5, paste("a = 0.025; b=0.419"))
+```
+
+```{r, include= F}
+dev.off()
+```
+
+## Histograma (RRR)
+
+1. Importar el archivo DoubsEnv.csv que se encuentra en la carpeta 4-Datos (la descripción de la base de datos se encuentra en el archivo [datos_eer.html](datos_eer.html))
+
+Obtener la siguiente figura en base a la variable amm de DoubsEnv. Prestar atención a leyendas, tamaño de texto, colores y patrones de colores. Recurrir a la ayuda de hist()
+
+<!-- RTA -->
+```{r, echo= F}
+hist(env$amm, main= "", xlab= "Concentración de Amonio", ylab= "Frecuencia", col="grey", border="blue", density=9, cex= 4)
+```
+
+## Factores para ordenar figuras (RRR)
+
+El archivo soil.RData contiene datos simulados de un experimento hipotético. En el experimento se tomaron valores de una variable hipotética (var) en cuatro sitios. En cada sitio se seleccionaron condiciones de suelo clasificadas en cuatro categorías en función de su calidad (fact). 
+
+```{r, echo= F}
+load(file= "4-Datos/soil.RData")
+```
+1. Explorar visualmente el objeto x. Utilizar str() para ver las características de sus variables
+
+2. Se quiere realizar una figura como la que se muestra a continuación para evaluar si hay diferencias entre sitios y los tipos de suelo. ** NOTA ** Por ahora no nos vamos a preocupar por embellecer la figura, simplemente nos interesa que se muestre en el orden adecuado. Como se muestra a continuación
+
+<!-- RTA -->
+
+```{r, echo= F}
+par( mar= c(8,3,1,1) )
+soil$fact2 <- factor(soil$fact, levels = c("malo", "regular", "bueno", "muy bueno") )
+boxplot(soil$var ~ soil$sitio +  soil$fact2, las= 2, xlab="")
+```
+
+```{r, include= F}
+dev.off()
+```
+
+Sin embargo boxplot() ordena a las variables por un índice alfabético, y por lo tanto con los datos recién generados la figura quedaría como se muestra a continuación (correr los siguientes comandos para confirmarlo).
+
+
+```{r, echo= F}
+par(mar= c(8,3,1,1))
+boxplot(soil$var ~ soil$sitio +  soil$fact, las= 2, xlab="")
+```
+
+```{r, include= F}
+dev.off()
+```
+
+Si bien los sitios aparecen ordenados nos gustaría que la figura también muestre los boxplot de la variable considerando el órden de las calidades de suelo (fact) como se muestra en la primera figura. 
+
+¿Cómo podríamos hacerlo? Este es uno de los casos donde los factores vienen a ayudarnos. La variable fact ya es un factor, pero éste no está ordenado!!! ** Ver la clase 07_Objetos1.r la sección de factores **
+
+## Usando reshape para generar boxplots (RRR)
+
+El objeto _lago_, que se encuentra en el archivo _4-Datos/lago.RData_, contiene datos de frecuencia relativa de presas en contenidos estomacales de truchas. 
+
+```{r, echo= F, comment= ""}
+load("4-Datos/lago.RData")
+head(lago)
+```
+
+Se desea generar un gráfico boxplot mostrando variaciones en el contenido estomacal de truchas en tres años de muestreo, incluyendo solamente las tres presas más importantes en la dieta, como muestra la siguiente figura
+<!-- RTA -->
+
+```{r, echo= F, message= F}
+
+library(reshape2)
+x <- lago[ , c("year", "anfipodos","copepodos", "cladoceros")]
+x <- melt(x, value.name= "frec")
+ley <- rep( c(2004, 2013, 2017), 3)
+if (Sys.info()['sysname'] == "Windows") windows() else x11()
+
+par(mar= c(8,5,1,1))
+  boxplot(x$frec ~ x$year + x$variable, las= 2, ylab= "Frecuencia relativa", xlab="")
+```
+
+```{r, include= F}
+dev.off()
+```
+
+Sin embargo, habrán notado que el objeto _lago_ está en formato ancho, mientras que la función boxplot requiere que los datos estén en formato largo
+
+Seguir los siguientes pasos para generar la figura
+  1. Generar un nuevo objeto _x_ con las variables "year", "anfipodos","copepodos" y "cladoceros"
+   
+<!-- RTA -->
+```{r, include= F}
+x <- lago[ , c("year", "anfipodos","copepodos", "cladoceros")]
+```
+  2. Usando la función adecuada del paquete _reshape2, cambiar de formato ancho a formato largo y definir  value.name= "frec"
+
+<!-- RTA -->
+```{r, include= F}
+x <- melt(x, value.name= "frec")
+```
+
+```{r}
+head(x); tail(x)
+```
+
+  
+3. Correr las siguientes líneas de comando para realizar la figura. NO es necesario endender cada uno de las líneas de comando utilizadas. La figura final tiene algunas modificaciones para lograr un formato más agradable. Si llamaron al objeto con otro nombre que no sea _x_, cambiar únicamente las partes de boxplot donde se haga referencia al objeto _x_
+
+
+```{r, echo= T}
+ley <- rep( c(2004, 2013, 2017), 3) ## un vector con los nombres del eje x
+if (Sys.info()['sysname'] == "Windows") windows() else x11() #chequea el sistema operativo (windows o linux) y abre una ventana gráfica de acuerdo a cada sistema
+
+par(mar= c(6,5,1,1)) # define los valores de los márgenes de la figura
+boxplot(x$frec ~ x$year + x$variable, names= ley, las= 2, ylab= "Frecuencia relativa", xlab="")
+  par(usr= c(0, 10, 0, 10) ) # redefine la escala de x e y de la figura
+  text(x= c(1.5, 3.8, 6, 8.5), y= -2, c("anfipodos","copepodos", "cladoceros"), xpd= NA) # el parámetro xpd= NA dice que text() opera fuera del área de trazado de la figura
+dev.off()
+```
+
+```{r, include= F}
+dev.off()
+```

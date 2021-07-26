@@ -1,0 +1,189 @@
+# R04 Indexación y Filtros {-}
+
+## Vector LETTERS (R)
+
+Explorar el objeto LETTERS que viene definido con el paquete básico de R ¿cuántos elementos tiene?
+
+```{r, comment=""}
+LETTERS
+```
+
+## Indexación de vectores (RR)
+
+Obtener los 10 primeros elementos de LETTERS
+
+```{r, comment="", echo= F}
+LETTERS[1:10]
+```
+
+<!-- RTA -->
+
+```{r, comment="", include= F}
+LETTERS[1:10]
+```
+
+
+## Indexación de vectores (RRR)
+
+Explicar que hacen las siguientes líneas de comando
+
+``` {r, comment= "", }
+miX <- 10:1
+names(miX )
+names(miX ) <- LETTERS[1:10]
+```
+
+```{r}
+miX
+```
+
+## Indexación de vectores (RRR)
+
+Dado el siguiente vector miX
+
+``` {r, comment= "", echo= F}
+miX <- 10:1
+names(miX ) <- LETTERS[1:10]
+miX
+```
+
+Obtener los cinco primeros elementos de **_miX_** mediante:  
+  <ol>
+  <li> Un vector numérico  </li>
+  <li> Un vector con los **nombres** correspondientes a esos elementos  </li>
+  <li> Un vector lógico  </li>
+  </ol>
+  
+<!-- **RTA**   -->
+
+```{r, comment="", include= F}
+miX[1:5]
+miX[c("A", "B", "C", "D", "E")]
+miX[c(T, T, T, T, T, F, F, F, F, F)]
+```
+
+## Indexación de vectores (RRR)
+
+Explorar el objeto **_x_** que se da a continuación (Por ahora no importan los comandos que utilizamos para generarlo)
+
+```{r}
+  set.seed(300)
+  x <- sample(1:100, 40, replace=T)
+```
+
+<ol>
+<li> Obtener los **_valores_** de los **_elementos_** ubicados en las posiciones 5, 10, 15 y 20 de este vector </li>
+<li> Generar un nuevo objeto llamado **_miY_**, repitiendo cuatro veces el primer elemento de **_x_**, tres veces el segundo elemento y dos veces el tercer elemento. **_miY_** debería verse así:  </li>
+</ol>
+
+```{r, echo = F}
+x[rep(x=1:3, times= 4:2)]
+```
+
+<!-- **RTA**   -->
+
+```{r, comment="", include= F}
+x[c(5, 10, 15, 20)]
+miY <- x[c(1,1,1,1,2,2,2,3,3)]
+miY
+```
+
+## Indexación: índices lógicos vs which (RRR)
+
+Explorar el objeto **_x_** que se da a continuación
+
+```{r}
+  set.seed(300)
+  x <- sample(1:100, 40, replace= T)
+```
+
+```{r, echo= F}
+  idx1 <- x >= 20
+  idx2 <- which(x >= 20)
+```
+
+<ol>
+<li> Generar un vector lógico, que llamaremos **_idx1_**. El mismo tomará valores <span style="color:red">T</span>  para aquellos valores de **_x_** mayores o iguales a 20 y <span style="color:red">F</span> para los valores de **_x_** menores a 20 </li>
+<li> Utilizar el objeto **_idx1_** recién generado para obtener los **valores** del vector **_x_** mayores o iguales a 20
+
+<li> Utilizando la función **which()**, obtener la **posición** de los elementos de **_x_** cuyos valores sean mayores o iguales a 20. Asignar la salida de la función a un objeto que llamaremos **_idx2_** </li>
+<li> Utilizar el objeto **_idx2_** recién generado para obtener los **valores** del vector **_x_** mayores o iguales a 20 </li>
+
+<li> El resultado obtenido fue el mismo cuando indexamos con el vector lógico (**_idx1_**) y cuando usamos la función which (**_idx2_**). Sin embargo, **_idx1_** tiene `r length(idx1)` elementos, mientras que **_idx2_** tiene `r length(idx2)` elementos ¿por qué?</li>
+</ol>
+
+<!-- RTA -->
+
+```{r, include= F}
+
+  idx1 <- x >= 20
+  idx2 <- which(x >= 20)
+
+# En el primer caso evalúa elemento por elemento y asigna un valor T o F donde corresponda, el resultado es un vector de T y F con tantos elementos como elementos tenga x
+## En el segundo caso, el vector resultante da LAS POSICIONES de los registros que cumplen conla condición impuesta (es decir los T  de la prueba lógica).
+```
+
+
+## Indexación en vectores ejemplo colors() (RRR)
+
+<ol>
+<li> Escribir **colors()** en consola para examinar el objeto  </li>
+<li> ¿Qué diferencia estructural hay entre los objetos colors y letters? Recurrir a la ayuda si fuera necesario </li>
+</ol>
+
+```{r, echo=F, eval= F}
+length(colors(T)) ; length(colors(F))
+```
+
+Volveremos a utilizar este objeto en varias ocasiones durante el curso. Por ahora simplemente lo usaremos como ejemplo.
+
+``` {r, echo=T, eval=F}
+colors()
+```
+<ol>
+<li> Asignar el objeto **colors()** a un nuevo objeto que llamaremos **_misColores_** </li>
+<li> Generar un objeto, al que llamaremos **_amarillos_**, con aquellos elementos de **_misColores_** que contengan en alguna parte del texto la palabra "yellow"</li> 
+<li> ¿Cuántos elementos tiene el objeto **_amarillos_**? </li>
+<li> Para generar el objeto **_amarillos_** ¿era necesario generar el objeto **_misColores_**? </li> 
+</ol>
+
+<!-- RTA -->
+
+```{r, include= F}
+#colors es una función objeto(), con un solo argumento, mientras que letters/LETTERS es un vector con valroes pre-definidos
+
+misColores <- colors()
+idx <- grep("yellow", misColores)
+amarillos <- misColores[idx]
+
+## esto mismo se podría hacer directamente como
+idx <- grep("yellow", colors())
+amarillos <- colors()[idx]
+```
+
+## Debugging, detectando errores {-}
+
+Para cada una de las siguientes líneas de código explicar porqué se obtiene un mensaje de error, warnning, o un resultado no esperado
+
+```{r}
+rm( list = ls() ) #eliminemos primero todos los objetos
+```
+
+1.
+``` {r, eval=F }
+k <- letters(1)
+```
+<!-- letters[1] -->
+
+2.
+``` {r, eval=F }
+month.name(1:10)
+```
+<!-- month.name[1:10] -->
+
+3.
+``` {r, eval=F }
+y <- c("A", "B", "C", "D")
+txt <- letters[y]
+```
+<!-- y no es numérico -->

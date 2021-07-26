@@ -291,13 +291,20 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="usando-reshape-para-generar-boxplots-rrr" class="section level2">
 <h2><span class="header-section-number">0.61</span> Usando reshape para generar boxplots (RRR)</h2>
 <p>El objeto <em>lago</em>, que se encuentra en el archivo <em>4-Datos/lago.RData</em>, contiene datos de frecuencia relativa de presas en contenidos estomacales de truchas.</p>
-<pre><code>             ID year anfipodos  copepodos cladoceros ostracodos parabroteas   larvas  insectos
-1 str01022017-2 2017  38.84514 52.7559055  3.6745407          0           0 0.000000  4.724409
-2   str030217-2 2017  84.44976  0.9569378 10.0478469          0           0 0.000000  4.545455
-3   str050207-1 2017  97.05015  0.2949853  0.1474926          0           0 0.000000  2.507375
-4   str050217-2 2017  84.89583  4.6875000  6.7708333          0           0 1.041667  2.604167
-5   str050217-3 2017  65.38462 28.8461538  5.7692308          0           0 0.000000  0.000000
-6 str07022017-1 2017  84.07080  0.0000000  0.0000000          0           0 0.000000 15.929204</code></pre>
+<pre><code>             ID year anfipodos  copepodos cladoceros ostracodos parabroteas
+1 str01022017-2 2017  38.84514 52.7559055  3.6745407          0           0
+2   str030217-2 2017  84.44976  0.9569378 10.0478469          0           0
+3   str050207-1 2017  97.05015  0.2949853  0.1474926          0           0
+4   str050217-2 2017  84.89583  4.6875000  6.7708333          0           0
+5   str050217-3 2017  65.38462 28.8461538  5.7692308          0           0
+6 str07022017-1 2017  84.07080  0.0000000  0.0000000          0           0
+    larvas  insectos
+1 0.000000  4.724409
+2 0.000000  4.545455
+3 0.000000  2.507375
+4 1.041667  2.604167
+5 0.000000  0.000000
+6 0.000000 15.929204</code></pre>
 <p>Se desea generar un gráfico boxplot mostrando variaciones en el contenido estomacal de truchas en tres años de muestreo, incluyendo solamente las tres presas más importantes en la dieta, como muestra la siguiente figura
 <!-- RTA --></p>
 <p><img src="R_ejercicios2021_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>

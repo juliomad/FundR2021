@@ -1,0 +1,604 @@
+# R08 Objetos2 {-}
+
+
+## Responder con verdadero o falso (RRR)
+
+1. Tanto las matrices como los data.frame son arreglos rectangulares de datos. Lo que significa que están formados por uno o más vectores de iguales dimensiones y todos los elementos que los componen tienen datos o valores NA
+2. A diferencia de los data.frame, las matrices tienen el mismo número de filas que de columnas
+3. Todos los vectores que componen una matriz deben tener el mismo formato (numérico, texto o lógico), aunque también pueden incluir NA's o ser de NA's únicamente
+4. Los data.frame permiten que un mismo vector-columna contenga datos con más de un tipo de formato
+5. Un array **puede pensarse** como un vector con n elementos, donde cada elemento es una matriz y todas las matrices tienen las mismas dimensiones
+6. Las listas, arrays, matrices y data.frames tienen las mismas dimensiones
+7. El objeto par() es una lista
+8. El siguiente objeto x es un data frame de una fila y 10 columnas
+
+```{r, comment=""}
+x <- 1:10
+    names(x) <- letters[1:10]
+		x
+```	
+
+9. La siguiente es una matriz compuesta por una columna de datos con formato numérico y una columna de texto
+
+```{r, comment=""}
+matrix(c(1:3,"a", "b","c"), ncol=2)
+```
+
+10. Las dimensiones de un data.frame difieren si al mismo se le agrega nombre de filas (rownames)
+
+<!-- **RTA** -->
+<!-- <ol> -->
+<!-- <li> Verdadero </li> -->
+<!-- <li> Falso. Las matrices al igual que los data.frame pueden tener cualquier combinación de número de filas y columnas </li> -->
+<!-- <li>  Verdadero </li>  -->
+<!-- <li>  Falso, las "columnas" son vectores y los vectores solamente pueden ser de un tipo  </li> -->
+<!-- <li>  Verdadero </li> -->
+<!-- <li>  Falso, las matrices y data.frame tienen dos dimensiones (filas columnas), los arrays tienen tres dimensiones (filas, columnas, elemento) y las listas tienen una dimensión (numero de elementos) </li> -->
+<!-- <li>  Verdadero </li> -->
+<!-- <li>  El siguiente objeto x es un data frame de una fila y 10 columnas </li> -->
+<!-- ```{r, comment=""} -->
+<!-- x <- 1:10 -->
+<!--     names(x) <- letters[1:10] -->
+<!--   	x -->
+<!-- ``` -->
+<!-- Falso, es un vector con nombres de elementos   -->
+
+<!-- <li>  La siguiente es una matriz compuesta por una columna de datos con formato numérico y una columna de texto  </li> -->
+
+<!-- ```{r, comment=""} -->
+<!-- matrix(c(1:3,"a", "b","c"), ncol=2) -->
+<!-- ``` -->
+<!-- Falso. Es una matriz de texto, ya que en una matriz no pueden "convivir" dos formatos diferentes  -->
+<!-- <li>  Falso, como tampoco cambia cuando se le da nombre a las columnas </li> -->
+<!-- </ol> -->
+
+
+## Generar un data.frame 1 (R)
+
+Con los siguientes vectores crear un objeto del tipo data.frame, al que llamaremos _MiDf_.
+
+```{r, echo= T, comment=""}
+letras <- LETTERS[1:10]  
+enteros <- round( runif(10, 0, 10), 0 )  
+decimales <- round( runif(10, 0, 10), 3 )  
+logicos <- sample( c(T,F), 10, replace=T ) 
+```
+
+```{r, echo= F, comment=""}
+MiDf <- data.frame(letras, enteros, decimales, logicos) 
+```
+
+```{r, echo= T, comment=""}
+MiDf
+```
+
+<!-- RTA -->
+```{r, echo= F, include= F}
+MiDf <- data.frame(letras, enteros, decimales, logicos) 
+```
+
+## Agregar columnas a un data.frame (RR)
+Agregar al data frame del punto anterior una columna con valores NA's. A esta columna la llamaremos _sin.dato_ 
+
+```{r, echo= F, comment=""}
+MiDf$sin.dato <- NA
+```
+
+```{r, echo= T, comment=""}
+MiDf
+```
+<!-- RTA -->
+
+```{r, comment="", include= F}
+MiDf$sin.dato <- NA
+```
+
+##  Generar un data.frame 2: seq(), rep(), paste() (RRR)
+
+Utilizar una combinación de funciones **rep()**, **paste()**, **seq()** y **data.frame()** para generar una tabla similar a la que se muestra a continuación:  
+
+<!-- RTA -->
+
+``` {r, comment="", echo= F}
+## RTA
+trat <- paste("tratamiento", rep( seq(1, 9, 2), each= 5))
+dosis <- c(0,1,10,100,1000)
+data.frame(tratamiento = trat, dosis, resultado = NA)
+```
+
+Nota 1: los valores 1 a 15 no forman parte de la tabla, son los indicadores del nro de fila que da la consola de R
+Nota 2: la secuencia dosis puede generarse a partir del siguiente vector
+
+```{r}
+dosis <- c(0,1,10,100,1000)
+```
+
+Nota 3: es conveniente aprovechar la regla de reciclado de vectores
+
+
+``` {r, include= F}
+## RTA larga
+trat <- rep("tratamiento", 25)
+nro <-  rep(seq(1, 9, 2), each= 5)
+trat <- paste(trat, nro)
+dosis <- c(0,1,10,100,1000)
+dosis <- rep(dosis, 5)
+tabla <- data.frame(tratamiento = trat, dosis)
+tabla$resultado <- NA
+tabla
+data.frame(tratamiento = trat, dosis, resultado = NA)
+```
+		
+## sort vs order (RR)
+
+Dado el siguiente vector
+
+``` {r}
+miX <- 15:1
+names(miX) <- letters[1:15]
+miX 
+```
+
+Ordenar en forma ascendente el vector **_miX_** utilizando:  
+* La función **sort()**  
+* La función **order()**
+
+```{r, echo= F, comment= ""}
+idx <- order(miX)
+miX[idx]
+```
+
+<!-- RTA -->
+```{r, comment= "", include= F}
+idx <- order(miX)
+miX[idx]
+```
+
+## Ordenar un data.frame (RRR)
+La utilidad de _**order()**_ es más evidente cuando queremos ordenar un data.frame.
+Dado el siguiente data.frame 
+
+```{r}
+trat <- paste("tratamiento", rep( seq(1, 9, 2), each=5))
+dosis <- c(0,1,10,100,1000)
+tabla <- data.frame(tratamiento= trat, dosis= dosis, resultado= NA)
+tabla
+```
+
+Utilizar la función order() para ordenar el objeto _tabla_ en orden creciente de la variable _dosis_ como se muestra a continuación
+
+```{r, echo=F, comment=""}
+idx <- order(tabla$dosis)
+tabla[idx, ]
+```
+
+<!-- RTA -->
+
+```{r, comment="", include= F}
+idx <- order(tabla$dosis)
+tabla[idx, ]
+```
+
+## Generar matrices (RR)
+
+1. Generar dos matrices (_MiMz1_ y _MiMz2_) de dos columnas y 100 filas con números del 1 al 200. En la primera los números deberán llenarse por filas y en la segunda por columnas
+
+```{r, echo= F, comment=""}
+MiMz1 <- matrix(1:200, nrow= 100, byrow = T )
+MiMz2 <- matrix(1:200, nrow= 100, byrow = F )
+```
+
+```{r, comment=""}
+head(MiMz1)
+```
+
+
+```{r, comment=""}
+head(MiMz2)
+```
+
+<!-- RTA -->
+
+```{r, comment="", include= F}
+MiMz1 <- matrix(1:200, nrow= 100, byrow = T )
+MiMz2 <- matrix(1:200, nrow= 100, byrow = F )
+```
+
+2. Ahora generar una matriz (_MNa_) de 10 columnas cada una con 100 elementos con valores NA
+
+```{r, echo= F, comment=""}
+MNa <- matrix(rep(NA, 1000), ncol=10)
+```
+
+```{r, comment=""}
+head(MNa)
+```
+<!-- RTA -->
+
+```{r, comment="", include= F}
+MNa <- matrix(rep(NA, 1000), ncol=10)
+```
+
+## Combinar matrices (RR)
+
+Generar una tercer matriz (_M3_) combinando las tres matrices anteriores
+
+```{r, echo= F}
+M3 <- cbind( MiMz1, MiMz2, MNa )
+```
+
+```{r}
+head(M3[,1:7]) # Notar que solamente mostramos las primeras 7 columnas
+```
+<!-- RTA -->
+
+```{r, include= F}
+M3 <- cbind( MiMz1, MiMz2, MNa )
+```
+
+## Nombrar columnas de matrices (RR)
+Dar nombres a las columnas de la matriz con el texto _var.1_ a var.n_, donde _n_ es el número de columnas
+
+```{r, echo= F, comment=""}
+colnames(M3) <- paste("var_", 1:ncol(M3))
+head( M3[,1:7] ) # Notar que solamente mostramos las primeras 7 columnas
+```
+<!-- RTA-->
+```{r, include= F}
+colnames(M3) <- paste("var_", 1:ncol(M3))
+head( M3[,1:7] ) # Notar que solamente mostramos las primeras 7 columnas
+```
+
+## Generar listas (RR)
+
+1. Generar una lista -- que llamaremos **_MiLista_** -- con los siguientes objetos
+
+```{r}
+letras <- letters
+midf <- data.frame(sitio= 1:50, valor= NA)
+mimz <- matrix(NA, ncol= 2, nrow= 3)
+```
+
+<!-- RTA -->
+```{r, include= F}
+MiLista <- list(letras, midf, mimz)
+names(MiLista) <- c("letras", "midf", "mimz")
+```
+
+## Función split (RRR)
+
+1. Importar el archivo DoubsEnv.csv que se encuentra en la carpeta 4-Datos (la descripción de la base de datos se encuentra en el archivo [datos_eer.html](/datos_eer.html)) y asignar la tabla a un objeto que llamaremos **_env_**
+
+2. Utilizando la función **split()** generar una lista donde cada elemento de la misma corresponderá a los datos de cada una de las secciones del río Doubs.
+
+<!-- RTA -->
+
+```{r, echo= F}
+env <- read.table("4-Datos/DoubsEnv.csv", sep=",", header=T, as.is=T)
+split(env, env$sec)
+```
+
+## Generar arrays (RRR)
+
+Dadas las siguientes matrices
+
+```{r}
+MiMz1 <- matrix(1:200, nrow= 100, byrow = T )
+MiMz2 <- matrix(1:200, nrow= 100, byrow = F )
+```
+
+1. Generar un array al que llamaremos **_MiArray_** cuyas dos únicas matrices serán **_MiMz1_** y **_MiMz2_**.  
+
+* Opción 1: generar primero un array de dos matrices con NA's, de las mismas dimensiones que _MiMz1_  y luego reemplazar esas matrices por los objetos *MiMz1* y *MiMz2*
+* Opción 2: generar el array a partir de las dos matrices combinadas mediante cbind
+
+<!-- RTA -->
+
+```{r, include= F} 
+MiArray <- array(NA, dim= c(100, 2,2)) 
+MiArray[, , 1] <- MiMz1
+MiArray[, , 2] <- MiMz2
+```
+
+```{r, include= F}
+MiArray <- array(cbind( MiMz1, MiMz2 ), dim= c(100, 2,2)) 
+MiArray[, , 1] <- MiMz1
+MiArray[, , 2] <- MiMz2
+MiArray
+```
+
+## indexar data frame sencillo(RR)
+
+1. Asignar el objeto iris (que viene con el paquete base) a un objeto que llamaremos **_midf_**
+
+```{r, echo= F}
+head(iris, 3)
+```
+
+2. Mediante indexación obtener las primeras 10 filas de **_midf_** de las columnas Sepal.Width Petal.Length y Species
+
+<!-- RTA -->
+```{r, echo= F}
+midf <- iris[1:10, c("Sepal.Width", "Petal.Length", "Species")]
+```
+
+
+## indexar data.frame (RRR)
+
+1. Generar un objeto al que llamaremos **_Env_** a partir del archivo DoubsEnv.csv de la carpeta 4-Datos
+
+<!-- RTA -->
+```{r, include= F}
+env <- read.table("4-Datos/DoubsEnv.csv", sep=",", dec=".", header=T, as.is=T)
+```
+
+2. Seleccionar todas las columnas de **_Env_**, pero solamente las filas pares utilizando:
+
+* un vector lógico
+
+<!-- RTA -->
+
+```{r, include= F}
+idx1 <- rep(c(F,T), ncol(env))
+```
+
+* un vector numérico 
+
+<!-- RTA -->
+
+```{r, include= F}
+idx2 <- seq(2, ncol(env), 2)
+head(env[idx2, 1:8])
+```
+
+3. Selecionar los registros de env que cumplan simultáneamente con las siguientes condiciones
+  * Que sean de la sección alta del río (cateogría _upper_ de la variable _sec_)
+  * Que los valores de la variable altura (_alt_) esté en el rango  700-900
+  * Que la pendiente (pen) sea menor que 10
+
+El resultado debería verse como la tabla mostrada a continuación
+
+<!-- RTA -->
+
+```{r, echo= F}
+idx3 <- which(env$alt >= 700 & env$alt <= 900 & env$alt >= 200 & env$pen < 10 & env$sec == "upper")
+```
+
+```{r, echo= F}
+env[idx3,]
+```
+
+## Eliminando duplicados
+
+Las siguientes líneas de comando generan una tabla con registros que a propósito están repetidos (una o más veces). El objetivo es utilizar una combinación de comandos, eliminar las repeticiones de los registros repetidos. Propongo utilizar las funciones unique() y match() para realizar la tarea
+
+```{r}
+set.seed(200)
+sitio <-  paste("sitio", 1:20, sep= " ")
+humedad <- sample(20:100, 2)
+datos <- data.frame(sitio, humedad)
+datos <- datos[sample(1:20, 30, replace=T), ]
+rownames(datos) <- NULL
+datos
+```
+
+<!-- RTA -->
+
+```{r, echo= F}
+unicos <- unique(datos$sitio)
+idx <- match(unicos, datos$sitio)
+datos[idx, ]
+
+#otra forma
+idx <- !duplicated(datos$sitio)
+ccc <- datos[idx,]
+```
+
+## indexar una matriz(RR)
+
+1. Generar una matríz a la que llamaremos _mtz_ de 20 filas por 5 columnas, con números consecutivos de 100 a 1 y que se complete por filas
+
+<!-- RTA -->
+
+```{r, include= F}
+mtz <- matrix(100:1, ncol= 5, nrow= 20, byrow= T)
+```
+2. obtener los elementos de las posiciones de las filas 5 a 10 de las columnas 2 y 4. Asignar el resultado a un objeto que llamaremos _mtz2_.
+
+<!-- RTA -->
+
+```{r, include= F}
+mtz2 <- mtz[5:10, c(2,4)]
+```
+calcular el valor prmoedio de los valores de _mtz2_ (el promedio de toda la matríz)
+
+<!-- RTA -->
+
+```{r, include= F}
+mean(mtz2)
+```
+
+## indexar una lista 1 (RR)
+1. Generar una lista (**_MiLista2_**) cuyos dos únicos elementos serán los objetos **_iris_** (incluido en el paquete base) y **_crabs_** del paquete _MASS_.
+
+2.  Asegurarse que los dos elementos de la lista tengan nombres (**_iris_** y **_crabs_**), ya sea porque fuera definido en la creación de la lista o mediante la función names()
+
+<!-- RTA -->
+
+```{r, include= F}
+library(MASS)
+MiLista2 <- list(iri = iris, crabs= crabs )
+```
+
+2. Seleccionar el segundo elemento de esta lista mediante los tres métodos que se listan a continuación
+
+* El operador *$*
+* Un vector numérico (un solo valor)
+* El nombre del elemento (*crabs*)
+
+<!-- RTA -->
+
+```{r, include= F}
+MiLista2$crabs
+MiLista2[[2]]
+MiLista2[["crabs"]]
+```
+
+## Indexar una lista 2 (RRR)
+A partir de la lista generada en el punto anterior obtener las filas pares de **_crabs_**, pero solamente de la quinta y sexta columna, utilizando para seleccionar las columnas:
+
+* el nombre de las columnas
+* un vector numérico
+
+<!-- RTA -->
+
+```{r,include= F}
+filas <- nrow(MiLista2$crabs)
+# idx <- seq(2, filas, by=2)
+idx <- c(F,T)
+MiLista2$crabs[idx, 5:6]
+MiLista2$crabs[idx, c("FL", "RW")]
+```
+
+## Obtener valores de una salida de prueba estadística (RRR)
+Vamos a ejemplificar el uso de algunos de los resultados obtenidos de una prueba estadística, que en este cas será una regresión lineal.
+
+Las siguientes líneas generan datos simulados de una variable independiente (x) y de una variable dependiente (y). La variable está simulada con un error normal aditivo, con un intercepto = 0.2 y una pendiente = 0.3.
+
+<!-- RTA -->
+
+```{r, echo= T}
+x <- runif(100, 1, 100) ## Valores de x
+y <- 0.2 + 0.3 * x + rnorm(100, 0, 2) ## valores de y agregando un error normal aditivo
+plot(x, y)
+modelo <- lm(y ~ x) # modelo lineal simple (distribución normal) de y en función de x 
+```
+
+```{r, include= F}
+dev.off()
+```
+
+1. ¿Qué tipo de objeto es modelo? Si la respuesta no es informativa recurrir a la ayuda de lm y leer la sección **value**
+
+2.¿Cuántos elementos tiene modelo?
+
+3. Utilizar los coeffientes del modelo (mediante indexación) para obtener el valor esperado de x= 3
+
+<!-- RTA -->
+
+```{r, include= F}
+class(modelo) 
+## El modelo es una lista
+length(modelo)
+rta <- modelo$coefficients[1] + modelo$coefficients[2]* 3
+```
+
+```{r, echo= F}
+# valor esperado para x= 3
+rta
+```
+
+## Valores esperados lm (RRR)
+
+1. En base a los valores de los coeficientes (a, b) y utilizando la función **_abline()_** agregar los valores esperados a la figura del punto anterior
+
+  
+<!-- RTA -->
+
+```{r, echo= F}
+x <- runif(100, 1, 100) ## Valores de x
+y <- 0.2 + 0.3 * x + rnorm(100, 0, 2) ## valores de y agregando un error normal aditivo
+plot(x, y)
+modelo <- lm(y ~ x) # modelo lineal simple (distribución normal) de y en función de x 
+abline(a= modelo$coefficients[1], b= modelo$coefficients[2], col= "blue" )
+```
+
+```{r, include= F}
+dev.off()
+```
+
+## Debugging, detectando errores
+
+Correr las siguientes líneas de comando para generar datos de prueba. Examinar cada uno de los objetos
+
+```{r}
+rm( list = ls() ) #eliminemos primero todos los objetos
+```
+
+```{r, comment=""}
+  x <- runif(100, 10, 100)
+		y <- rnorm(100, 10 ,100)
+		z <- seq(0, 200, 2)
+		g  <- sample(letters, 100, T)
+
+		tabla <- data.frame(x, y, g)
+		matriz <- matrix( c(x, y, g ), ncol=3)
+		lista <- list(tabla, matriz)
+```
+
+Para cada una de las siguientes líneas de código explicar por que se obtiene un mensaje de error, warnning, o un resultado no esperado
+
+1.
+``` {r, eval=F }
+dim( data.frame(x, y, z) )
+```
+<!--
+z tiene distinta longitud que x y y
+-->
+
+2.
+``` {r, eval=F }
+dim(X)
+```
+<!--
+X (may) no existe
+-->
+
+3.
+``` {r, eval=F }
+dim(y)
+```
+<!--
+la función dim() no es aplicable a vectores, debería ser length(y)
+-->
+
+4.
+``` {r, eval=F }
+cbind(x, y, z)
+```
+<!--
+Aviso de que está reciclando valores ya que x, y y z tienen distinta dimensión
+-->
+
+5.
+``` {r, eval=F }
+matrix(1:10, ncol=2, nrow=3)
+```
+<!--
+Aviso porque está recortando valores dadas las dimensiones de la matriz (6)
+-->
+
+7.
+``` {r, eval=F }
+matrix( c(x, y, z), ncol=3 )
+```
+<!--
+Aviso de que está reciclando valores ya que x, y y z tienen distinta dimensión
+-->
+
+8.
+``` {r, eval=F }
+matriz$x
+```
+<!--
+El signo pesos se aplica a data.frame y list, pero no a matrices
+-->
+
+9.
+
+``` {r, eval=F }
+names( lista[1] )
+```
+<!--
+Sobra una comilla en main
+-->

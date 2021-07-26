@@ -1,0 +1,86 @@
+# R07 Objetos 1 {-}
+
+
+
+## Vectores 1 (RR)
+
+1. Generar cinco vectores de **10 elementos** cada uno con los nombres y características que se dan a continuación. Utilizar las funciones **seq()** y **rep()** en los casos pertinentes.  
+
+``` {r, echo = F}
+texto <- LETTERS[1:10]
+enteros <- seq(1, 20, 2)
+decimales <- seq(1, 1.9,0.1)
+logico <- rep(c(T,F), each=5)
+factor1 <- factor(letters[1:10])
+factor2 <- factor(letters[1:10], levels=letters[10:1], ordered = T)
+### ojo con decimales si hacen seq(1, 2, 0.1) length() = 11
+``` 
+
+* texto: un vector texto con las 10 primeras letras del abecedario
+
+```{r, comment= ""}
+texto
+```
+
+* enteros: primeros 10 números impares
+
+```{r, comment= ""}
+enteros 
+```
+
+* decimales: valores entre 1 y 1.9 en intervalos de 0.1
+
+```{r, comment= ""}
+decimales 
+```
+
+* lógico: 5 valores T seguidos de 5 F 
+
+```{r, comment= ""}
+logico 
+```
+
+* factor1: un vector tipo factor con las 10 primeras letras del abecedario
+
+```{r, comment= ""}
+factor1
+```
+
+* factor2: el mismo objeto que el punto anterior pero con orden de jerarquía, donde a > b > c.... >j
+
+```{r, comment= ""}
+factor2
+```
+
+<!-- RTA -->
+
+``` {r, include = F}
+texto <- LETTERS[1:10]
+enteros <- seq(1, 20, 2)
+decimales <- seq(1, 1.9,0.1)
+logico <- rep(c(T,F), each=5)
+factor1 <- factor(letters[1:10])
+factor2 <- factor(letters[1:10], levels=letters[10:1], ordered = T)
+### ojo con decimales si hacen seq(1, 2, 0.1) length() = 11
+``` 
+
+2. Comparar la salida en consola de cada uno de los objetos 
+
+## Vectores 2 (RR)
+
+¿Cuál es el error en las siguientes lineas de comando?
+
+```{r, comment="", eval=F}
+
+miX <- ("uno", "dos", "tres")
+
+miY <- c(uno, dos, tres)
+
+miZ <- "a":"Z"
+
+```
+
+<!-- RTA -->
+<!-- Falta c() -->
+<!-- los valores deben estar entre comillas -->
+<!-- el operador dos puntos (:) no funciona para variables de tipo character -->

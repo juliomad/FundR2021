@@ -1,0 +1,182 @@
+# R12 Resumir {-}
+
+
+## summary (R)
+
+Asignar a un objeto que llamaremos **_env_** la tabla contenida en el archivos DoubsEnv.csv, que se encuentra en la carpeta 4-Datos (la descripción de la base de datos se encuentra en el archivo [datos_eer.html](datos_eer.html)).   
+
+Asignar la salida de la función **_summary(env)_** a un objeto que llamaremos **_resumen_** 
+* ¿Qué clase de objeto es **_resumen_**?
+
+<!-- RTA -->
+```{r, include= F}
+env <- read.table("4-Datos/DoubsEnv.csv", sep=",", dec=".", header=T, as.is=T)
+resumen <- summary(env)
+class(resumen)
+```
+
+## table (R)
+Aplicar la función **_table()_** a la variable sec 
+¿qué información nos da esta salida?
+
+<!-- RTA -->
+```{r, include= F}
+env <- read.table("4-Datos/DoubsEnv.csv", sep=",", dec=".", header= T, as.is= T)
+table(env$sec)
+```
+
+## apply (RR)
+1. Asignar a un objeto que llamaremos **_env_** la tabla contenida en el archivos DoubsEnv.csv que se encuentra en la carpeta 4-Datos (la descripción de la base de datos se encuentra en el archivo [datos_eer.html](datos_eer.html)).
+
+2. Utilizando la función apply() calcular el rango de valores de cada una de las variables de campo de env (variables 4 a 14)
+
+<!-- RTA -->
+```{r, include= F}
+env <- read.table("4-Datos/DoubsEnv.csv", sep=",", dec=".", header=T, as.is=T)
+apply(env[ ,4:14], 2, range)
+```
+
+## apply (RRR)
+
+1. Asignar a un objeto que llamaremos **_env_** la tabla contenida en el archivos DoubsEnv.csv que se encuentra en la carpeta 4-Datos (la descripción de la base de datos se encuentra en el archivo [datos_eer.html](datos_eer.html)).
+
+2. Utilizando la función **_apply()_** generar una figura múltiple de 8 paneles (4 filas y dos columnas) utilizando las columnas 7 a 14 de env. La figura se muestra a continuación
+
+<!-- RTA -->
+```{r, echo= F, results= 'hide'}
+env <- read.table("4-Datos/DoubsEnv.csv", sep=",", dec=".", header=T, as.is=T)
+par(mfrow=c(4,2), mar= c(3,2,2,2))
+apply(env[ ,7:14], 2, hist, main="", col= "grey")
+```
+
+Estructura
+
+```{r, eval= F}
+par(mfrow=c(4,2), mar= c(3,2,2,2))
+apply(COMPLETAR)
+```
+
+## tapply (RRR)
+
+Asignar a un objeto que llamaremos **_env_** la tabla contenida en el archivos DoubsEnv.csv que se encuentra en la carpeta 4-Datos (la descripción de la base de datos se encuentra en el archivo [datos_eer.html](datos_eer.html)).
+
+Utilizar la función  tapply para estimar los cuantiles 5 y 95 de la variable pho del objeto **_env_** categorizando por sección del río (sec). Asignar la salida a un objeto que llamaremos **_tabla_**. La función para necesaria es quantile (recurrir a la ayuda)
+
+<!-- RTA -->
+```{r, include= F}
+env <- read.table("4-Datos/DoubsEnv.csv", sep=",", dec=".", header=T, as.is=T)
+tabla <- tapply(env$pho, list(env$sec), quantile, c(0.25, 0.75) )
+```
+
+* ¿Qué clase de objeto es **_tabla_** ?
+
+<!-- RTA -->
+```{r, include= F}
+class(tabla)
+```
+
+## Múltiples variables (RR)
+
+1. Utilizar una función de la que hemos visto en la clase R12_Resumir  para calcular el valor de la mediana de las variables ambientales del objeto **_env_** para cada una de las secciones del río
+
+<!-- RTA -->
+```{r, include= F}
+tabla2 <- aggregate(env[ ,4:14], list(env$sec), median)
+names(tabla2)[1] <- "Sección"
+tabla2
+```
+
+## grep() which() resumir (RRRR)
+
+El archivo "SP_aves_BI.csv", de la carpeta 4-Datos, contiene un listado de aves de Sudamérica categorizadas de acuerdo a su estado de conservación ( [BirdLife International](http://www.birdlife.org/datazone/)
+Las especies fueron clasificadas en las siguientes categorías:
+
+<ol>
+<li> Threatened Species </li>
+<li> CR - Critically Endangered </li>
+<li> CR (PE) - Critically Endangered (Possibly Extinct) </li>
+<li> CR (PEW) - Critically Endangered (Possibly Extinct In The Wild) </li>
+<li> EN - Endangered </li>
+<li> VU - Vulnerable </li>
+<li> NT - Near Threatened </li>
+<li> LC - Least Concern </li>
+<li> DD - Data Deficient </li>
+</ol>   
+
+Responder los siguientes puntos  
+1. ¿cuántas especies hay listadas en cada una de las categorías de amenaza?  
+2. ¿cuántas especies de cada género se encuentran en cada una de las categorías de amenaza?  
+3. ¿cuál es el género con mayor número de especies listadas?  
+4. Identificar las especies del género _Larus_ (gaviotas) que se encuentren en las categorías NT (Near threatened) o VU (vulnerable).  
+
+<!-- RTA -->
+```{r, include= F}
+aves <- read.table("4-Datos/SP_aves_BI.csv", sep= ",", dec= ".", header= T)
+head(aves)
+# Nro de especies en cada categoría de amenaza
+rta1 <- tapply(aves$especie, list(aves$categoria), length)
+# nro de especies de cada género en cada categoría de amenaza
+rta2 <- tapply(aves$especie, list(aves$genero, aves$categoria), length )
+# género con mayor nro de sp amenazadas
+suma <- rowSums(rta2, na.rm= T)
+idx <- which( suma == max(suma) )
+maximo <-suma[idx ]
+# Especies del género Larus
+idx2 <- which(aves$genero == "Larus" & ( aves$categoria == "NT" | aves$categoria == "VU") )
+aves [idx2, ]
+```
+
+## Debugging, detectando errores
+
+Correr las siguientes líneas de comando para generar datos de prueba. Examinar cada uno de los objetos
+
+```{r}
+rm( list = ls() ) #eliminemos primero todos los objetos
+```
+
+```{r, comment=""}
+x <- runif(100,10, 100)
+y <- rnorm(100, 10 ,100)
+z <- seq(0,200, 2)
+g  <- sample(letters,100,T)
+
+tabla <- data.frame(x,y,g)
+matriz <- matrix(c(x,y,g), ncol=3)
+lista <- list(tabla, matriz)
+```
+
+Para cada una de las siguientes líneas de código explicar porqué se obtiene un mensaje de error, warnning, o un resultado no esperado
+
+1.
+``` {r, eval=F }
+apply(lista[[1]], 2, mean)
+```
+``` {r, eval=F }
+apply(lista[[1]][ ,1:2], 2, mean) #funciona
+```
+<!--
+la tercera columna del primer elemento de la lista es texto
+-->
+
+2.
+``` {r, eval=F }
+apply(lista[[1][1:2], 2, mean)
+```
+<!--
+falta un corchete en lista[[1]]
+-->
+
+3.
+``` {r, eval=F }
+tapply(c(x,y), g, mean)
+```
+<!--
+el objeto g no puede ser usado porque tiene menos elementos que y y x
+-->
+
+4.
+``` {r, eval=F }
+colMeans(x)
+```
+<!--
+colMeans no está definido para vectores

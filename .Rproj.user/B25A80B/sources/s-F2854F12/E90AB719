@@ -5,13 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1988533495",
+    "hash" : "3039831496",
     "id" : "E90AB719",
-    "lastKnownWriteTime" : 1627041695,
-    "last_content_update" : 1627041695,
+    "lastKnownWriteTime" : 1627041832,
+    "last_content_update" : 1627041833002,
     "path" : "~/aaa/cursos/ofrecidos/R/R2021_virtual/practicas/bookdown/R_ejercicios2021/_bookdown.yml",
     "project_path" : "_bookdown.yml",
     "properties" : {
+        "cursorPosition" : "2,17",
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [

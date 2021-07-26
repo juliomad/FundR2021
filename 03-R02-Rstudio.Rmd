@@ -1,0 +1,56 @@
+# R02 Rstudio {-}
+
+## Crear un archivo de script (R)
+
+Desde el RStudio abrir un nuevo archivo de texto (file/new file/Text File) al que llamaremos script_RO2.<span style="color:red">txt</span>  
+
+## (R) 
+En el script recién creado pegar el siguiente código:  
+
+```{r, comment= "", eval= F}
+# Este es mi primer script de ejercicios en R
+x <- 5:10
+x
+mean(x)
+```
+¿Se ven las líneas de código con diferentes colores?
+
+¿Se puede usar la combinación de teclas CTR + R (los usuarios linux probablemente deban usar CTR + enter) para enviar código a la consola?
+
+Ahora guardar el **script_R02.<span style="color:red">txt</span>**, como **script_R02.<span style="color:red">R</span>** (File/Save as)   
+¿Se aprecia algún cambio en los colores del código?   
+¿Se puede usar la combinación de teclas CTR + R (los usuarios linux probablemente deban usar CTR + enter) para enviar código a la consola?  
+Si funciona en la consola debería verse:  
+
+```{r, echo = F}
+x <- 5:10
+x
+mean(x)
+```
+
+¿Que se puede concluir acerca de la diferencia entre guardar un script con extensión txt o r/R? 
+
+<!-- **RTA** Cuando guardamos el archivo con extensión txt, el RStudio lo procesa como a un archivo de texto común. Al leer el archivo con extensión r/R, entiende que tiene un formato particular y habilita las funcionalidades específicas para ese idioma de programación. -->
+
+##  interacción con R (RR)
+Ejecutar las siguientes líneas de comando. Por ahora no es importante que identifiquen que es lo que se hace en cada línea. El objetivo es familiarizarse con las ventanas y la interacción RStudio y R  
+
+```{r}
+# mi grafiquito
+x <- 1:10
+y <- x*10
+plot(x, y)
+```
+
+```{r, include= F}
+dev.off()
+```
+
+¿Cuál de los siguientes pasos siguieron para realizar la tarea?  
+<ol>
+<li>  Tipeando en la consola  </li>
+<li>  Tipeando en el script y enviando el código a consola (CTRL + R) </li> 
+<li>  Copiando y pegando en consola </li>
+<li>  Copiando y pegando en el script y enviando el código a consola (CTRL + R) </li>   
+</ol>
+

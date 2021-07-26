@@ -1,0 +1,16 @@
+# Breve introducción a Ejercicios {-}
+
+Los ejercicios están diseñados para que se resuelvan utilizndo herramientas y conceptos vistos durante las clases teórico/prácticas. el objetivo de los mismos es que los alumnos se expongan situaciones de procesamiento de datos que probablemente requieran cuando trabajen con sus datos. Esta guía de ejercicios sigue el orden de las clases.
+
+Usaremos los siguientes códigos para indicar el grado de dificultad de cada ejercicio. Las definiciones corresponden a transcripciones textuales de un diccionario web, pero son una selección totalmente arbitraria de las opciones disponibles en el mismo
+
+(R)  <span style="color:blue">_*R*_</span>egalo: Lo que se da a alguien sin esperar nada a cambio, como muestra de afecto o agradecimiento
+
+(RR) <span style="color:blue">_*R*_</span>egular: Ordenado y sin excesos
+
+(RRR) <span style="color:blue">_*R*_</span>azonable: Bastante, suficiente en cantidad o calidad
+
+(RRRR) <span style="color:blue">_*R*_</span>íspido: Que es difícil o costoso de realizar o soportar, por su dureza o violencia, porque requiere mucho esfuerzo o porque causa padecimiento
+
+
+_*NOTA*_: a lo largo de todo este documento lo que esté con color de fondo es código, mientras que con fondo blanco se  muestra el resultado que debería verse en consola al ejecutar el/los comando/s
