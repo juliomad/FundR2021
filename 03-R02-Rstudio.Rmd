@@ -53,3 +53,11 @@ dev.off()
 <li>  Copiando y pegando en el script y enviando el código a consola (CTRL + R) </li>   
 </ol>
 
+## Visualizar en consola (RR)
+Visualizar en consola la salida del siguiente código
+
+```{r}
+300:400
+```
+
+¿Qué nos indican los números entre corchetes a la izquierda de la consola?
