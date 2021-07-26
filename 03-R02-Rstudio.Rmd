@@ -4,7 +4,6 @@
 
 Desde el RStudio abrir un nuevo archivo de texto (file/new file/Text File) al que llamaremos script_RO2.<span style="color:red">txt</span>  
 
-## (R) 
 En el script recién creado pegar el siguiente código:  
 
 ```{r, comment= "", eval= F}
